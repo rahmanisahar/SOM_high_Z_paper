@@ -115,6 +115,7 @@
             These small differences might be very hard to distinguish in normal classification methods and might lead to wrong classifications.
 
         \subsubsection{ CLASSIFYING SAMPLE OF GALAXIES}
+         \label{sec: 1Dv}
             We used each network that we trained in Sec.~\ref{sec: 1Dt}, to classifying the sample 142 galaxies from T12.
             Upper plot in the Fig.~\ref{fig: 1by2V} shows the result of the classifying of the T12 galaxies using the $1 \times 2$~network from Fig.~\ref{fig: 1by2T}.
             It shows that 80 of the galaxies have SEDs similar to the early type galaxies and the SEDs of the rest of them are similar to star burst galaxies.
@@ -215,21 +216,140 @@
             Therefore, if the SED of galaxies do not match completely with any of the model SEDs in Fig.~\ref{fig: k96}, they can be categorized as a SED with similarity to two or more of the groups.
 
                         
-        \subsubsection{1D NETWORKS results and Properties of galaxies} 
+        
+        
+        \subsubsection{1D NETWORKS results and Properties of galaxies}
+        In order to check weather our conclusions in Sec.~\ref{sec: 1Dv}~is meaningful and correct, we plot the some physical properties listed in the Tab.~\ref{tab: props} of galaxies in each neurons in the networks.
+        
+        \begin{figure}
+            \centering
+            \includegraphics[width=0.5\textwidth]{../images/1d/prop1_by_2.png}
+            \caption{Comparing the median of four propertied of galaxies in each nod of Fig.~\ref{fig: 1by2V}}
+            \label{fig: prop1by2}
+        \end{figure}
+        
+                \begin{figure}
+            \centering
+            \includegraphics[width=0.5\textwidth]{../images/1d/prop1_by_3.png}
+            \caption{Comparing the median of four propertied of galaxies in each nod of Fig.~\ref{fig: 1by3V}}
+            \label{fig: prop1by3}
+        \end{figure}
+        
+                \begin{figure}
+            \centering
+            \includegraphics[width=0.5\textwidth]{../images/1d/prop1_by_22.png}
+            \caption{Comparing the median of four propertied of galaxies in each nod of Fig.~\ref{fig: 1by22V}}
+            \label{fig: prop1by22}
+        \end{figure}
+       
+        Figs.~\ref{fig: prop1by2} to ~\ref{fig: prop1by22} show the results of median of stellar mass, age, specific star formation rate (SSFR; star formation rate per stellar mass), and $f_\mathrm{burst}$ of the galaxies in each nodes in the upper maps of the Figs.~\ref{fig: 1by2V} to ~\ref{fig: 1by22V}.
+        In all the plots $x$-axis shows the number of the neurons from left to right, and $y$-axis shows one of the mentioned properties.
+        
+        In Fig.~\ref{fig: prop1by2}, from early type galaxies to star burst ones, stellar mass and age decreases while SSFR and $f_\mathrm{burst}$ increases. 
+        The same trend is noticeable in both Fig.~\ref{fig: prop1by3} and Fig.~\ref{fig: prop1by22}. 
+        The gaps in the Fig.~\ref{fig: prop1by22} is due to the empty neurons in Fig.~\ref{fig: 1by22V}. These trends are another evidence that this method is working properly and can be used to categorized galaxies based on their SEDs or even their physical properties.
+        
+    
+    
+    
     
     \subsection{2D SOMs}
     \label{sec: 2D}
     Although the 1D networks are great tools to categorize the SEDs and monitor the changes of properties of galaxies in each category, each neurons in these networks is limited to be connected to on other neurons in each direction.
     Since each neuron can have more than two immediate neighbours in the 2D networks, they provide more complete pictures of the relation between each SED type.
-    For analysing 2D networks, we consider two approaches; at first we assumed that all the galac
+    As described in the Sec.\ref{sec: method}, one of the main advantages of the SOM method is when weight of one neurons is adjusted after finding the BMU, weight of the whole map will be changed.
+    This quality of the SOMs provide us an opportunity to analysing 2D networks in two approaches. 
+    At first, as we had in the 1D SOMs, we assumed that all the galaxies must have SEDs similar to any of the 12 models in Fig.~\ref{fig: k96}.
+    For the second path, we trained networks assuming that there might be some other and completely different types of the galaxies that we never encountered with before.
+    Second approach could be used to trace the outliers as well.
     
+    %maybe I should move the following paragraph to method section?! I am not sure, yet.
+    For getting the best result from both of these ways, we should have SOMs with high ``enough"  neurons to give any new sets of galaxies a chance to find their best place in the map.
+    The  high ``enough"  neurons is a vague statement, but as mentioned in the Sec.~\ref{sec: method} the size of SOMs is arbitrary and depends on the size of the input data and what kind of the information you need from the SOMs.
+    Since the training data (K96 ones) have 12 galaxies, we assumed a SOM with size of $8\times8$~would be a good start.
+    We then increased the size of SOM to find the highest size suitable for the training sample.
+    We noticed that SOMs with size of $12\times12$~are the maximum possible choice.
+    With increasing from $12\times12$~neurons, the SOMs would be repeat the same shapes just in bigger grids.
     
+    \begin{figure}
+        \begin{subfigure}[b]{0.5\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{../images/2d/dist_12_by_12.png}
+            %\caption{$1\times22$ weight map}
+             %\label{fig: 1by22T}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[b]{0.5\textwidth}
+            \includegraphics[width=\textwidth]{../images/2d/hit_t_12_by_12.png}
+             %\caption{$1\times22$ hits map}
+             %\label{fig: 1by22Thits}
+        \end{subfigure}
+        \caption{Results of training network in $12\times12$~grid, when we considered that there are only 12 types of SEDs for galaxies.}
+        \label{fig: 12by12T_newsom}
+    \end{figure}
+    Fig.~\ref{fig: 12by12T_newsom} shows the SOM results for the first approach. 
+    Since we considered that SEDs of all galaxies can be categorized using the K96 model, the galaxies took place all over the map.
+    Using this network to categorize any set of SEDs, forced the SEDs to be in the same neurons as the K96 ones or the neurons between them.
+    However, all the K96 galaxies are in small side of the map in Fig.~\ref{fig: 12by12T_selforg}, which provide enough freedom for SED of the galaxies to take place everywhere in the map even it is way far away from the K96 samples.
+    \begin{figure}
+        \begin{subfigure}[b]{0.5\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{../images/2d/dist_12_by_self_org_res12.png}
+            %\caption{$1\times22$ weight map}
+             %\label{fig: 1by22T}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[b]{0.5\textwidth}
+            \includegraphics[width=\textwidth]{../images/2d/hit_t_12_by_self_org_res12.png}
+             %\caption{$1\times22$ hits map}
+             %\label{fig: 1by22Thits}
+        \end{subfigure}
+        \caption{Results of training network in $12\times12$~grid, when we considered that there might be some outlier or other type of SEDs.}
+        \label{fig: 12by12T_selforg}
+    \end{figure}
     
+    In the upper map in Fig.~\ref{fig: 12by12T_newsom}, there is a strip of the red, dark red and in some case black colours is distinguishable. 
+    This strip is separating early type galaxies with star burst ones.
+    The lower map shows that 5 of the neurons on left side of the strip are full. 
+    These 5s are the same ones in the left hand side of the Fig.~\ref{fig: 1by2T} (early type galaxies).
+    The only difference is that here, in this map they have more space to be separated from each other.
+    When we use this network to categorized the SED of galaxies any galaxy places on the left hand side of the strip is an early type galaxy and any one placed in the right side of the strip is a star burst one.
+    Decision about what type of the early type or star burst galaxy is it, is based upon its relative position to each type in the neurons.
+    
+    The border between the early type galaxies and the star burst ones,in the Fig.~\ref{fig: 12by12T_selforg}, is the black strips in the middle of the upper map, which end up with bright red colour at the bottom of the map in the fifth neuron.
+    In this network, neurons in the right side of the strip represent the early type galaxies and the neurons in the left side represent the star burst ones.
+    In case of the categorizing a new set of SEDs, if the new SEDs are similar to K96 sample all of them will place in the bottom of the map, but if there are different type of the galaxies, they would sit in any other neurons in the map.
+    
+    We used the both 2D networks to categorized the T12 galaxies and showed the results in Fig.~\ref{fig: 12by12V}.
+    In the lower plot, we used the network from Fig.~\ref{fig: 12by12T_selforg}.
+    Since all the galaxies placed in the bottom part of the map, we can conclude that there in no outlier or very different type of the SED in from K96 models in T12 samples.
+    The upper plot of the Fig.~\ref{fig: 12by12V} represents the T12 galaxies categorization based on the network in the Fig.~\ref{fig: 12by12T_newsom}. 
+    In both maps in the Fig.~\ref{fig: 12by12V}, majority of the galaxies are in the early type side of the SOM, which was predictable from the results in the Sec.\ref{sec: 1Dv}.
+    
+       \begin{figure}
+        \begin{subfigure}[b]{0.5\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{../images/2d/hit_v_12_by_12.png}
+            %\caption{$1\times22$ weight map}
+             %\label{fig: 1by22T}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[b]{0.5\textwidth}
+            \includegraphics[width=\textwidth]{../images/2d/hit_v_12_by_self_org_res12.png}
+             %\caption{$1\times22$ hits map}
+             %\label{fig: 1by22Thits}
+        \end{subfigure}
+        \caption{Results of categorizing T12 galaxies using $12\times12$~network. Up: categorizing with network shown in Fig.~\ref{fig: 12by12T_newsom}. Down: using network in Fig.~\ref{fig: 12by12T_selforg}.}
+        \label{fig: 12by12V}
+    \end{figure} 
+    
+    Although because of the fluency of the paper, we first talked about 1D networks and continued to 2D networks we suggest that in case of using the SOMs to categorize the SED of the galaxies or to explore any related data, first step to be checking data using networks similar to the Fig.~\ref{fig: 12by12T_selforg} ones.
+    In this case, all the outlier or specific cases would be identified and removed from the sample. 
 
-    
     
     \subsection{Caveat}
     There is no established method to find the best SOM initial values. Size of the maps, number of neighbours in each steps, number of iterations could vary and each one give us a new result.
     Also, since at the beginning the weights are generated randomly, in each run the results could have small differences.
+    %no quantitative way to analyse the data?!
     
     

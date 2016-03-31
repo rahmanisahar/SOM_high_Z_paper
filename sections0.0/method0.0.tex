@@ -21,8 +21,7 @@
  %Sahar_self_notes: maybe "some" is better instead of one or more
  Moreover,a weight vector ``\boldit{W}" with same dimension of the input data associates with each node which will be change during the process and has a key factor in a position of nodes in the map. 
  
- \cite{Geach12} presented the application of the SOM and demonstrate the algorithm of the SOM in detail. In this section we are going to talk briefly about the algorithm of the SOM, how we create our maps and a test model which will help to interpret our results. %PB20160218: contrast SOM with principal component analysis (PCA), which may be more familiar?
- 
+ \cite{Geach12} presented the application of the SOM and demonstrate the algorithm of the SOM in detail. In this section we are going to talk briefly about the algorithm of the SOM, how we create our maps and a test model which will help to interpret our results. 
  \subsubsection{Algorithm of SOM} 
  \label{sec: algorithm}
      Assuming we have a data set which contains vectors, \boldit{V} $\in \Re^n$ and we want to map them on S1 by S2 map. 
@@ -53,7 +52,7 @@
 \subsection{Creating SOM}
 \label{sec: create_som}
      In order to create SOM, we used {\tiny MATLAB} neural network toolbox~\citep[NNT,][]{matlabtolbox}.
-     SOM in {\tiny NNT} can be created by {\tiny newsom} library which works in two phases. 
+     SOM in {\tiny NNT} can be created by {\tiny newsom} or {\tiny selforgmap} library which both work in two phases. 
      Phase one is the ``ordering phase". 
      This phase starts with maximum neighbourhood distance, and initial high learning factor usually 0.9 which is provided by user. 
      The ordering phase continues for requested number of iterations and it continues till the learning factor reduces to tuning phase leaning factor and the neighbourhood distance reaches to the number set by the user.
@@ -77,9 +76,9 @@
     %Although size of the SOM could be anything \cite{Vesanto05} suggested that the total number of  $5\sqrt{n}$ neurons provides the most sufficient size.
      Size of SOM maps is arbitrary and there is no rules or restrictions on choosing the size of maps. 
      Users usually must choose the size of grids based on their data set and their usages of the results.
-     For our 10 regions we created maps with sizes from $1\times2$ to $50\times50$ to choose the sufficient size for our maps.
-     varying grids of the maps helps us to monitor whether grouping regions in smaller maps is real or its because of the shortage of the neurons.
-     Based on size of our data and our results, we chose max of the grid size to be 1$\times$10 and 10$\times$10 in 1D and 2D maps, respectively. 
+     For training networks using 12 galaxies from K96, we created maps with sizes from $1\times2$ to $50\times50$ to choose the sufficient size.
+     varying grids of the maps helps us to monitor whether grouping galaxies in smaller maps is because they have similar SEDs or its because of the shortage of the neurons.
+     Based on size of our data and our results, we chose max of the grid size to be 1$\times$22 and 12$\times$12 in 1D and 2D maps, respectively. 
      
      Also for each grid we created different SOM with different, learning factors, neighbourhood distances, and iteration numbers to find the optimize result for our sample.
      Based on our data we created our final SOMs with following initial values: number of iteration in ordering phase = 1000; ordering phase learning factor = 0.9; tuning phase learning factor= 0.02; and tuning phase neighbourhood distance to be 1.

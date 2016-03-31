@@ -37,14 +37,40 @@ Moreover, to test our networks, we obtained SED and physical properties of 142 g
  \subsection{SED and Properties of the sample galaxies}
     T12 selected 142 galaxies from the spectroscopic campaign of the ESO GOODS-South field, which have a photometry data from the Good-MUSIC catalogue. 
     The photometry data contains data in 10 - 13 filters with wavelength range of $\sim 0.4-24 \mu$m. 
-    They used these photometry data as inputs for Code Investigating GALaxy Emission (CIGALE code;~\citep{Noll09}) to generate the best fitted SED for each galaxy as well as some of the physical properties of the galaxies.
+    They used these photometry data as inputs for Code Investigating GALaxy Emission ({\em CIGALE} code;~\citep{Noll09}) to generate the best fitted SED for each galaxy as well as some of the physical properties of the galaxies.
     
-    CIGALE is a valuable tool to investigate the properties of the galaxy using UV to IR wavebands.
+    {\em CIGALE} is a valuable tool to investigate the properties of the galaxy using UV to IR wavebands.
     It uses stellar populations, synthetic attenuation and dust emission models, spectral line templates, and active galactic nuclei's optical spectral templates to model SED of the galaxies.
     This code were successfully tested with data from 39 galaxies selected from the Spitzer Infrared Nearby Galaxy Survey (SINGS;~\citep{Kennicutt03}) by N09.
     T12 produced the best SED match for each galaxies.
     For testing the created networks, we only used part of the spectra that have the same wavelength as K96 SEDs.
     Then, they used an exponentially decreasing SFR, visual attenuation ($\tau$) model and derived physical properties of galaxies such as age, and stellar mass.
-    They assumed the Salpeter initial mass function~\citep{Salpeter55} and old stellar population age of $\sim 10$~Gyr.More details on creating SEDs and extracting information about galaxies properties using CIGALE can be found in N09 and T12.
+    Some of these properties are shown in Tab~\ref{tab: props}.
+    In the Sec.~\ref{sec: 1D}, we studied these properties for each categorization.
+    They assumed the Salpeter initial mass function~\citep{Salpeter55} and old stellar population age of $\sim 10$~Gyr.
+    More details on creating SEDs and extracting information about galaxies properties using {\em CIGALE} can be found in N09 and T12.
     
-    
+    \begin{table}
+\caption[]{Description of the properties of T12 galaxies; the output result of {\em CIGALE}}     
+\label{tab: props}
+\centering
+\begin{tabular}{l l l}
+\hline\hline
+\noalign{\smallskip}
+Par. & Unit & Description\\
+\noalign{\smallskip}
+\hline
+\noalign{\smallskip}
+$t_{\,\mathrm{oSP}}$ & Gyr & age of old SP model \\
+$t_{\,\mathrm{ySP}}$ & Gyr & age of young SP model \\
+$f_\mathrm{burst}$ & --- & mass fraction of \\
+& & young SP model \\
+\noalign{\smallskip}
+$t_{\,\mathrm{D4000}}$ & Gyr & D4000-related age. \\
+\noalign{\smallskip}
+$M_\mathrm{star}$ & M$_\odot$ & total stellar mass  \\
+SFR & M$_\odot$/yr & instantaneous SFR  \\
+\noalign{\smallskip}
+\hline
+\end{tabular}
+\end{table}
