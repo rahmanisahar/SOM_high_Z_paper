@@ -1,0 +1,58 @@
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+%Intro
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+\section{Introduction}
+\label{sec: intro}
+% categorizing galaxies based on their SED
+The light from galaxies is all the information we could get from them. 
+All the observable phenomena inside galaxies leave footprint on galaxies' spectral energy distributions (SEDs).
+With proper modeling of various features on their SEDs, some of the galaxies' physical properties can be determined.
+Beside the physical properties of galaxies, SEDs of galaxies can be used as an identifier of the morphological type of the galaxies.
+In the first attempt the morphological features of galaxies can be categorized to three main groups: elliptical, spiral or irregular galaxies.
+Each of these groups have their own characteristic features and the first two groups can be divided to many branches.
+
+Advances in imaging techniques, and photometry and spectroscopy devises help to have higher resolution data and more detailed SED. 
+Thus, the variations between SEDs become more clear and the classification of galaxies became more complicated.
+Many groups used data from nearby galaxies in order to composite a thorough template for categorizing the spectral type of the galaxies~\citep[e.g.][]{Kinney94}~\citep[][hereafter K96]{Kinney96}~\citep[][]{Bershady00}.%and more references
+These templates are mostly restricted to wavelengths from near-IR to ultraviolet (UV), so they contain main features from physical properties of galaxies i.e. age, star formation rate (SFR), stellar mass, wide range of the stellar population, interstellar medium (ISM)'s absorption and emission lines, and extinction from ISM of the galaxies.
+
+One of the main usage of the SED templates is finding the morphological type of high redshift galaxies. 
+However, since not two galaxies, even with same morphology, are exactly the same, classifying the SED of the galaxies are a challenge.
+Many fitting methods are developed and used to find the best matches of template for each SED.
+$\chi^2$ minimizing method is the most commonly used method to do so. 
+Artificial neural networks (ANNs) are the other method to find the morphological type of the galaxies based on their SED.
+
+%ANNs
+ANNs are very powerful tools to used in data processing and pattern recognitions problems.
+Their information process method inspired by the way neurons in human brains work.
+An ANN contains many interconnected units (neurons) which process data and work together to solve problems.
+It uses sets of trainings method to learn about a nonlinear and complex relations between input and output data and how to apply it on new sets of data.
+Studies shows that ANNs provides better fitting than minimizing chi square and would be an alternative choice for fitting data \citep[e.g.][]{Marquez91,Moayed09}
+
+%SOMs and its advantages over supervised methods
+Kohonen Self organizing map (or self organizing map, SOM) is an unsupervised neural network for mapping and visualizing a complex and non linear high dimension data introduced by~\citep{Kohonen82}.
+The SOM is a technique that shows a simple geometry relationship of a non-linear high dimension data on a map \citep{Kohonen98}.
+%Both advantage and disadvantage of the unsupervised method is that there are no previous predictions about the outcome.
+In supervised method, a neural network would be trained using input data based on desired outcome.
+This method is very useful for classification of data with specific target values (i.e. classifying SED of galaxies from a SED template).
+On the other hand, in unsupervised method there is no prediction of output data.
+This method classifies data based on their underlying structures and hidden variables.
+The unsupervised method is a very helpful method to knowledge discovery of your data, or when the underlying structure of data is not well established (i.e. producing a template of SED of galaxies) %eh
+
+%What is this paper about
+We obtained SED of a 142 galaxies with 0.5 < $z$ < 1 from~\citet[][hereafter T12]{Hossein12} paper.
+T12 classified SED of a sample of galaxies using supervised neural network method, based on the spectral model presented by K96.
+They classified SED of the 105 out of 142 galaxies using K96 template. 
+The SED of the 37 galaxies from their samples could not be matched with any of those in the template. 
+They found that the unclassified galaxies can be matched with a combined spectrum of the K96 model. 
+They also showed that there are tight correlations between physical properties of galaxies and this correlations might be different based on the types of the galaxies.
+
+In this paper, we used data from K96 template to train an unsupervised neural network.
+The network clustered the SEDs and mapped those clusters and their relative relations.
+We compared our results with K96 galaxies classification.
+Then we classify the SED of the sample of 142 galaxies using the constructed SOM.
+ In Section $\S$~\ref{sec: data}, we present the data. We describe the SOM in Section $\S$~\ref{sec: method}. The results of the SED classifications are shown in Section $\S$~\ref{sec: result} and discussed in Section $\S$~\ref{sec: diss}. In Section $\S$~\ref{sec: summary}, we present the summary of our conclusion and the future works in this subject.
