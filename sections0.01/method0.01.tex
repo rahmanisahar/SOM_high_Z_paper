@@ -97,7 +97,7 @@
             \begin{subfigure}[b]{0.5\textwidth}
                 \includegraphics[width=\textwidth]{../images0.01/sample/sample2_hits.png}
             \end{subfigure}
-            \caption{SOM of the mock sample. In both plots axis shows the position of the neurones. Hexagonal shapes represent the neurons. The upper plot is a distance map. The gray cycle colours shows the differences between weight of each neuron with withe is the minimum differences and black has the maximum one. The lower plot is a hit plot. It represents number of samples in each neurons, while the empty with neurons means zero hit. In this sample the 27 galaxies clustered in 4 groups of 8, 7, 6 and 6 galaxies.}
+            \caption{SOM of the mock sample. In both plots axis shows the position of the neurones. Hexagonal shapes represent the neurons. The upper plot is a distance map. The gray cycle colours shows the differences between weight of each neuron with white is the minimum differences and black has the maximum one. The lower plot is a hit plot. It represents number of samples in each neurons, while the empty with neurons means zero hit. In this sample the 27 galaxies clustered in 4 groups of 8, 7, 6 and 6 galaxies.}
             \label{fig: sample}
         \end{figure}
  
@@ -129,8 +129,10 @@ The lower plot in Fig.~\ref{fig: sample} shows only 4 neurons out of 100 were oc
 The reason of that there are only 4 filled neurons in the network is the simplicity of the input data, and the fact that each entry only could get either 0 or 1 as for type of galaxy and 0 or 0.5 as an indicator of SFR.
 It shows us although each galaxy had enough space to occupy any of the neurons in the network, because of the similarity of values they stayed in only four groups. 
 
-As we see in the following sections, In the real world with the real data, we never have two galaxies with exactly the same information.
-Therefore, if we gave them enough space they would eventually separate from each other to smaller and smaller groups. 
-However, if the  the number of neurons are maaaaauch higher than number of input samples, it shows the input data are pretty similar to each other.
+As we show in the following sections, in the real world with the real data, we never have two galaxies with exactly the same information.
+Therefore, if the network has high enough neurons, the input data would eventually separate from each other and cluster into the smaller and smaller groups. 
+However, if the information of the input data are pretty similar to each other, the number of neurons are going to be much higher than number of input samples. 
+In similar cases, one can decide that the amount of similarity or dissimilarity between the input samples.
+
 
 
