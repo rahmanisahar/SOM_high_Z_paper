@@ -86,4 +86,51 @@
      
 
    
- %using self organizing maps instead of the newsom
+\subsection{Mock sample}
+ 
+         \begin{figure}
+            \begin{subfigure}[b]{0.5\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{../images0.01/sample/sample2_dist.png}
+            \end{subfigure}
+            \hfill
+            \begin{subfigure}[b]{0.5\textwidth}
+                \includegraphics[width=\textwidth]{../images0.01/sample/sample2_hits.png}
+            \end{subfigure}
+            \caption{SOM of the mock sample. In both plots axis shows the position of the neurones. Hexagonal shapes represent the neurons. The upper plot is a distance map. The gray cycle colours shows the differences between weight of each neuron with withe is the minimum differences and black has the maximum one. The lower plot is a hit plot. It represents number of samples in each neurons, while the empty with neurons means zero hit. In this sample the 27 galaxies clustered in 4 groups of 8, 7, 6 and 6 galaxies.}
+            \label{fig: sample}
+        \end{figure}
+ 
+ We created  a mock sample of 27 galaxies to illustrate the results of SOMs and how they can be analyzed, and to show how this method works.
+ The mock sample contains two information from each galaxy; first type of galaxies: type 1 or type 2, and either they are high or low star forming galaxies.
+ We generated a SOM with size of $10 \times 10$ using the same initial values mentioned in the Section ~\ref{sec: create_som}.
+
+ Fig. ~\ref{fig: sample} shows the SOM of the mock sample. 
+ The upper plot is a distance map. 
+ The axis show the position of the neurons in a $10 \times 10$ network. 
+ The purple hexagons are illustration of the neurons, and the colours of the area between neighbours are showing the differences between weight of each two neurons.
+ In distance maps colour white between neurons represents the minimum value of the differences between weights of neurons and the colour black shows the maximum values. 
+ The gray cycle colour between white and black shows values between minimum and maximum with darker colour means more differences.
+ 
+ The lower plot in the Fig.~\ref{fig: sample} shows a hit map.
+ In this map similar to the distance map the axis shows the position of the neurons where the hexagonal shapes are neurons.
+ %White neurons show the empty neurons.
+ The purple neurons with a number on them shows the number of galaxy in that neurons.
+ Colour coverage of neurons is different and depends on the number of the hits on the sample.
+ The neuron with the maximum number of hits is completely coloured while the empty neurons are white.
+
+Using this method, as we predicted, we were able to divide the mock sample galaxies in 4 distinct groups: Type 1 with high SFR, type 1 with low SFR, type 2 with high SFR and type 2 with low SFR. 
+The upper plot in the Fig.~\ref{fig: sample}, clearly shows this division.
+The upper part of the plot are high star forming galaxies, while the lower part of it belongs to the low star forming galaxies.
+The left part of the plots is where type 1 galaxies belong to and the right side is for type 2 galaxies.
+Grey to black colours shows the border between regions.
+The lower plot in Fig.~\ref{fig: sample} shows only 4 neurons out of 100 were occupied. 
+8 galaxies are type 1 galaxies with high SFR, 7 are type 2 galaxies with high SFR, 6 are type 1 galaxies with low SFR and the other 6 are type 2 galaxies with low SFR. 
+The reason of that there are only 4 filled neurons in the network is the simplicity of the input data, and the fact that each entry only could get either 0 or 1 as for type of galaxy and 0 or 0.5 as an indicator of SFR.
+It shows us although each galaxy had enough space to occupy any of the neurons in the network, because of the similarity of values they stayed in only four groups. 
+
+As we see in the following sections, In the real world with the real data, we never have two galaxies with exactly the same information.
+Therefore, if we gave them enough space they would eventually separate from each other to smaller and smaller groups. 
+However, if the  the number of neurons are maaaaauch higher than number of input samples, it shows the input data are pretty similar to each other.
+
+
