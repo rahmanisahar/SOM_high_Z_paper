@@ -26,15 +26,6 @@
             Upper part of the figures shows neurons and their relative distances ($D_j$) from each other.
             As it was mentioned in the Sec.~\ref{sec: method}, the colours between neurons represents the relative distance $D_j$ between the neurons and the darker is the colour the more $D_j$ is between them.
             The lower part shows how many galaxies from K96 template places in each neurons. 
-        
-        
-            In upper side of the Fig.~\ref{fig: 1by2T}, the red colour between two neurons indicate that the $D_j$ between these two groups are relatively high, and these two groups are distinguishable groups.
-            In the lower part of the Fig.~\ref{fig: 1by2T}, we see galaxies divided to two groups of 5 and 7.
-            Although we know from K96 and T12 that 6 of the galaxies are quiescent and the other 6 are star bursts, the SOM results show 5 of the galaxies in one group and the other 7 in the second group.
-            In this method, the Sc galaxies have been categorized as star burst galaxy due to their high amount of the emission lines.
-        
-            %add more about why Sc is acting differently
-
             \begin{figure}
                 \begin{subfigure}[b]{0.5\textwidth}
                     \centering
@@ -48,6 +39,14 @@
                  \label{fig: 1by2T}
             \end{figure}
         
+        
+            In upper side of the Fig.~\ref{fig: 1by2T}, the red colour between two neurons indicate that the $D_j$ between these two groups are relatively high, and these two groups are distinguishable groups.
+            In the lower part of the Fig.~\ref{fig: 1by2T}, we see galaxies divided to two groups of 5 and 7.
+            Although we know from K96 and T12 that 6 of the galaxies are quiescent and the other 6 are star bursts, the SOM results show 5 of the galaxies in one group and the other 7 in the second group.
+            In this method, the Sc galaxies have been categorized as star burst galaxy due to their high amount of the emission lines.
+        
+            %add more about why Sc is acting differently
+
             Fig.~\ref{fig: 1by3T} shows results of the training in a 1$\times$3 network.
             In these plots we forced the galaxies to categorized themselves in maximum 3 groups. 
             If the galaxies in Fig.~\ref{fig: 1by2T} are very similar to each other or are exactly the same, they still want to be divided in two groups and left the middle node empty. 
@@ -176,7 +175,7 @@
                      %\caption{$1\times2$ hits map}
                      %\label{fig: 1by3Thits}
                 \end{subfigure}
-                \caption{Same as Fig.~\ref{fig: 1by2V}, but in this figure, we used network with size of $1\times22$ (Fig.~\ref{fig: 1by22T}) to classify the sample galaxies.}
+                \caption{Same as Fig.~\ref{fig: 1by2V}, but in this figure, we used network with size of $1\times22$ (Fig.~\ref{fig: 1by22T}) to classify the sample galaxies. In the average SED of each neurons we can clearly see the changes from early type galaxies to the star burst ones. 4000\AA~ breaks reduces from left to right and emission lines increases.}
                 \label{fig: 1by22V}
             \end{figure*}
             And the lower plot of the figure represents the average SED of the galaxies in each neurons.
@@ -210,38 +209,56 @@
                         
         
         
-        \subsubsection{1D NETWORKS results and Properties of galaxies}
+        \subsubsection{1D NETWORKS results and Properties of clustered galaxies}
+        
         In order to check weather our conclusions in Sec.~\ref{sec: 1Dv}~is meaningful and correct, we plot the some physical properties listed in the Tab.~\ref{tab: props} of galaxies in each neurons in the networks.
         
-        \begin{figure*}
+        \begin{figure}
             \centering
-            \includegraphics[width=\textwidth]{../images0.01/1d/props3.png}
+            \includegraphics[width=0.5\textwidth]{../images0.01/1d/props4.png}
             \caption{Comparing the median of four propertied of galaxies in each nod in $1\times2$, $1\times4$, and $1\times8$ networks.}
             \label{fig: props}
-        \end{figure*}
-        
-        %         \begin{figure}
-        %     \centering
-        %     \includegraphics[width=0.5\textwidth]{../images/1d/prop1_by_3.png}
-        %     \caption{Comparing the median of four propertied of galaxies in each nod of Fig.~\ref{fig: 1by3V}}
-        %     \label{fig: prop1by3}
-        % \end{figure}
-        
-        %         \begin{figure}
-        %     \centering
-        %     \includegraphics[width=0.5\textwidth]{../images/1d/prop1_by_22.png}
-        %     \caption{Comparing the median of four propertied of galaxies in each nod of Fig.~\ref{fig: 1by22V}}
-        %     \label{fig: prop1by22}
-        % \end{figure}
+        \end{figure}
        
         Fig.~\ref{fig: props} shows the results of median of stellar mass, age, specific star formation rate (SSFR; star formation rate per stellar mass), and $f_\mathrm{burst}$ of the galaxies in each nodes in the upper maps of the Figs.~\ref{fig: 1by2V} to ~\ref{fig: 1by22V}.
-        In all the plots $x$-axis shows the number of the neurons from left to right, and $y$-axis shows one of the mentioned properties.
+        In all the plots $x$-axis shows the normalized number of the neurons from left to right, and $y$-axis shows one of the mentioned properties.
         
+                \begin{figure*}
+        \begin{subfigure}[b]{\textwidth}
+            \centering
+            \includegraphics[width=\textwidth,height=6cm]{../images0.01/1d/age_vs_ssfr.png}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[b]{\textwidth}
+            \includegraphics[width=\textwidth,height=6cm]{../images0.01/1d/ssfr_vs_stellar_mass.png}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[b]{\textwidth}
+            \includegraphics[width=\textwidth,height=6cm]{../images0.01/1d/age_vs_stellar_mass.png}
+        \end{subfigure}
+        \caption{From up to down: Correlation between age ($^tD4000$) and SSFR, SSFR and stellar mass, and  age ($^tD4000$) and stellar mass. Points show the mean values of these properties from galaxies in $1\times22$ network. colours shows the type of the galaxies in the new classification. The most pure red colour shows E type galaxies and the most blue one indicates the SB1 galaxies. The other colours depends on how much they are close to red or blue show that the galaxies are early type or star burst.}
+        \label{fig: props_vs_props}
+    \end{figure*}
+
         In Fig.~\ref{fig: props}, from early type galaxies to star burst ones, stellar mass and age decreases while SSFR and $f_\mathrm{burst}$ increases, in all three lines. 
         These trends are another evidence that this method is working properly and can be used to categorized galaxies based on their SEDs or even their physical properties.
         
-    
-    
+        In order to compare our classifications with other works, we ploted some properties of the galaxies against each other for each network.%reproduced figure 16 in T12 using properties of galaxies in each networks.
+        All the plots shows the similar trend as plots in the Fig.~\ref{fig: props_vs_props} which shows the plots from $1\times22$ network. 
+        Points are mean values of the properties of the galaxies from T12 sample, with the standard deviation of those properties.
+        colours show the galaxy types where B type galaxies are shown with red and SB1 ones are shown with blue colours.
+        The spectrum from the red to blue shows the type of the galaxies in the new classifications. 
+        The redder the colour the more similarity with early type galaxies, while the purple to blue colours show more similarity to star burst galaxies.
+        Since in this method we allow galaxies to stay in the classes between the original 12 types of the galaxies, we have more than 12 colours in the Fig.~\ref{fig: props_vs_props}.
+        
+        Both N09 and T12 have the similar plots with the same properties.
+        However, since in both of these papers they considered only 12 types for the galaxies, those plots have a different colours than ours.
+        Our results shows the same relation between parameters with tighter correlation in all three plots.
+        galaxies with SED similar to type Sc having bright purple colour but as expected from the shape of the SED they are young galaxies with high SSFR.
+        Therefore, in all three plots of the Fig.~\ref{fig: props_vs_props}, there is a purple point in the middle of the blue points.
+        
+        
+
     
     
     \subsection{2D SOMs}
@@ -278,10 +295,12 @@
         \caption{Same as Fig.~\ref{fig: 1by2V}, but this figure shows results of training network in $12\times12$~grid, when we considered that there are only 12 types of SEDs for galaxies.}
         \label{fig: 12by12T_newsom}
     \end{figure}
+    
     Fig.~\ref{fig: 12by12T_newsom} shows the SOM results for the first approach. 
     Since we considered that SEDs of all galaxies can be categorized using the K96 model, the galaxies took place all over the map.
     Using this network to categorize any set of SEDs, forced the SEDs to be in the same neurons as the K96 ones or the neurons between them.
     However, all the K96 galaxies are in small side of the map in Fig.~\ref{fig: 12by12T_selforg}, which provide enough freedom for SED of the galaxies to take place everywhere in the map even it is way far away from the K96 samples.
+    
     \begin{figure}
         \begin{subfigure}[b]{0.5\textwidth}
             \centering
@@ -339,7 +358,8 @@
 
     
     \subsection{Caveat}
-    There is no established method to find the best SOM initial values. Size of the maps, number of neighbours in each steps, number of iterations could vary and each one give us a new result.
+    There is no established method to find the best SOM initial values. 
+    Size of the maps, number of neighbours in each steps, number of iterations could vary and each one give us a new results.
     Also, since at the beginning the weights are generated randomly, in each run the results could have small differences.
     %no quantitative way to analyse the data?!
     
