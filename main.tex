@@ -88,14 +88,11 @@ We use unsupervised self organizing map to train and validate an artificial neur
 We utilize the spectral model introduced by Kinney et al. as a training set and a sample of 142 galaxies with 0.5 < $z$ < 1 a validation set.
 We obtain physical properties of the sample galaxies measured using {\em CIGALE} code to study and compare the properties of each cluster.
 In this paper we introduce a new method of classifying high red shift galaxies, based on their SED.
-%%%%%%From this point it is just repeated%%%%%%%%%
-We use unsupervised self organizing map to train and validate an artificial neural network which can categorize the spectral energy distribution (SED) of galaxies. 
-We utilize the spectral model introduced by Kinney et al. as a training set and a sample of 142 galaxies with 0.5 < $z$ < 1 a validation set.
-We obtain physical properties of the sample galaxies measured using CIGALE code to study and compare the properties of each cluster.
-We use unsupervised self organizing map to train and validate an artificial neural network which can categorize the spectral energy distribution (SED) of galaxies. 
-We utilize the spectral model introduced by Kinney et al. as a training set and a sample of 142 galaxies with 0.5 < $z$ < 1 a validation set.
-We obtain physical properties of the sample galaxies measured using CIGALE code to study and compare the properties of each cluster.
+We used an unsupervised self organizing map (SOM)method, to create a network based in SED models of galaxies and used sample of galaxies to test the networks. 
+We classify galaxies in different groups and studied the correlation between properties of the galaxies.
+we conclude that the SOM is a very useful and accurate method to be used in classifying galaxies base on their morphology.
 
+%%%%%%From this point it is just repeated%%%%%%%%%
 
 
 \end{abstract}
@@ -160,11 +157,20 @@ We obtain physical properties of the sample galaxies measured using CIGALE code 
 \label{sec: summary}
 1) We introduced the self organizing maps to be used to categorizing the SED of galaxies.
 \newline
-2) Using this method we not only can categorized the galaxies with more precision but also we could recognize the galaxies have similarity to two or more groups of galaxies.
+2) Using this method we not only can categorized the galaxies with more precision but also we can see the relative similarity or dissimilarity between each type of galaxies.  
 \newline
-3) This method can help us to find outliers or new categories of galaxies very easily and fast.
-
-4) We plot the properties of the galaxies using new classification and see the correlation between age and SSFR and stellar mass of the galaxies.
+3) We show that using SOM, we could recognize the galaxies have similarity to two or more morphological types of galaxies.
+\newline
+4) We trained networks using sample of SEDs and test them with sample of galaxies with SEDs in the similar badpasses.
+\newline
+5) We plot the properties of the galaxies using new classification and see the correlation between age and SSFR and stellar mass of the galaxies.
+\newline
+6) We show that the properties of the galaxies in each groups is in good agreement between their morphological types.
+\newline
+7) We show that SOM can help us to easily identified new type of the galaxies, in large surveys very easy. 
+\newline
+8) This method can be used to find outliers very fast.
+\newline
 
 
 \section*{ACKNOWLEDGMENTS}

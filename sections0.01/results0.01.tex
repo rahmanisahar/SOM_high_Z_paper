@@ -211,56 +211,82 @@
         
         \subsubsection{1D NETWORKS results and Properties of clustered galaxies}
         
-        In order to check weather our conclusions in Sec.~\ref{sec: 1Dv}~is meaningful and correct, we plot the some physical properties listed in the Tab.~\ref{tab: props} of galaxies in each neurons in the networks.
+        In order to check weather our conclusions in Sec.~\ref{sec: 1Dv}~is meaningful and correct, in this section we are going to show the relatins between properties of the galaxies in each neurons.
         
-        \begin{figure}
+        \begin{figure*}
             \centering
-            \includegraphics[width=0.5\textwidth]{../images0.01/1d/props4.png}
+            \includegraphics[width=\textwidth]{../images0.01/1d/props4.png}
             \caption{Comparing the median of four propertied of galaxies in each nod in $1\times2$, $1\times4$, and $1\times8$ networks.}
             \label{fig: props}
-        \end{figure}
+        \end{figure*}
        
-        Fig.~\ref{fig: props} shows the results of median of stellar mass, age, specific star formation rate (SSFR; star formation rate per stellar mass), and $f_\mathrm{burst}$ of the galaxies in each nodes in the upper maps of the Figs.~\ref{fig: 1by2V} to ~\ref{fig: 1by22V}.
+        Fig.~\ref{fig: props} shows the results of median of stellar mass, age, specific star formation rate (SSFR; star formation rate per stellar mass), and $f_\mathrm{burst}$ of the galaxies in each neurons in the upper maps of the Figs.~\ref{fig: 1by2V} to ~\ref{fig: 1by22V}.
         In all the plots $x$-axis shows the normalized number of the neurons from left to right, and $y$-axis shows one of the mentioned properties.
         
-                \begin{figure*}
-        \begin{subfigure}[b]{\textwidth}
-            \centering
-            \includegraphics[width=\textwidth,height=6cm]{../images0.01/1d/age_vs_ssfr.png}
+       \begin{figure*}
+        \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth]{../images0.01/1d/f1.png}
         \end{subfigure}
         \hfill
-        \begin{subfigure}[b]{\textwidth}
-            \includegraphics[width=\textwidth,height=6cm]{../images0.01/1d/ssfr_vs_stellar_mass.png}
+        \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth]{../images0.01/1d/f2.png}
         \end{subfigure}
         \hfill
-        \begin{subfigure}[b]{\textwidth}
-            \includegraphics[width=\textwidth,height=6cm]{../images0.01/1d/age_vs_stellar_mass.png}
+        \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth]{../images0.01/1d/f3.png}
         \end{subfigure}
-        \caption{From up to down: Correlation between age ($^tD4000$) and SSFR, SSFR and stellar mass, and  age ($^tD4000$) and stellar mass. Points show the mean values of these properties from galaxies in $1\times22$ network. colours shows the type of the galaxies in the new classification. The most pure red colour shows E type galaxies and the most blue one indicates the SB1 galaxies. The other colours depends on how much they are close to red or blue show that the galaxies are early type or star burst.}
+        \hfill
+        \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth]{../images0.01/1d/f4.png}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth]{../images0.01/1d/f5.png}
+        \end{subfigure}
+       \hfill
+        \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth]{../images0.01/1d/f6.png}
+        \end{subfigure}
+        \caption{From up to down: Correlation between age (t$_{\rm {D4000}}$) and SSFR, SSFR and stellar mass, age (t$_{\rm {D4000}}$) and stellar mass, and A$_{\rm {FUV}}$ with SSFR, age (t$_{\rm {D4000}}$) and stellar mass. Points show the mean values of these properties from galaxies in $1\times22$ network. colours shows the type of the galaxies in the new classification. The most pure red colour shows E type galaxies and the most blue one indicates the SB1 galaxies. The other colours depends on how much they are close to red or blue show that the galaxies are early type or star burst.}
         \label{fig: props_vs_props}
     \end{figure*}
 
         In Fig.~\ref{fig: props}, from early type galaxies to star burst ones, stellar mass and age decreases while SSFR and $f_\mathrm{burst}$ increases, in all three lines. 
         These trends are another evidence that this method is working properly and can be used to categorized galaxies based on their SEDs or even their physical properties.
         
-        In order to compare our classifications with other works, we ploted some properties of the galaxies against each other for each network.%reproduced figure 16 in T12 using properties of galaxies in each networks.
-        All the plots shows the similar trend as plots in the Fig.~\ref{fig: props_vs_props} which shows the plots from $1\times22$ network. 
-        Points are mean values of the properties of the galaxies from T12 sample, with the standard deviation of those properties.
+        %maybe rephrase this part later
+        N09 used various models to derive galaxies properties.
+        Through these models, some of the properties are already known to be correlated with each others, i.e. stellar mass and star formation rate.
+        They, however, studied other relations between properties of sample of SINGS galaxies which didn't have a direct correlation in the models.
+        They found a tight correlation between SSFR and t$_{\rm {D4000}}$, which suggested that younger stellar population correlate with high SFR.
+        They also found correlation between stellar mass and SFR, and stellar mass and t$_{\rm {D4000}}$.
+        Since in {\em CIGALE} code, stellar mass is a free parameter, N09 argued that any stellar mass related correlation must be astrophysically meaningful. 
+        They also studied relation between the attenuation at 1500 \AA~(A$_{\rm {FUV}}$) and SSFR, age, and stellar mass and did not find any correlation.
+        T12 replicated the same plots and found tighter correlation than N09 results.  
+        
+        In order to compare our classifications with previous works, we produced the similar plots as the ones in both N09 and T12 (Fig.~\ref{fig: props_vs_props}).
+        In Fig.~\ref{fig: props_vs_props}, points are mean values of the properties of the galaxies in the Fig.~\ref{fig: 1by22V},and error bars show the standard deviation of those properties.
         colours show the galaxy types where B type galaxies are shown with red and SB1 ones are shown with blue colours.
         The spectrum from the red to blue shows the type of the galaxies in the new classifications. 
         The redder the colour the more similarity with early type galaxies, while the purple to blue colours show more similarity to star burst galaxies.
         Since in this method we allow galaxies to stay in the classes between the original 12 types of the galaxies, we have more than 12 colours in the Fig.~\ref{fig: props_vs_props}.
-        
-        Both N09 and T12 have the similar plots with the same properties.
-        However, since in both of these papers they considered only 12 types for the galaxies, those plots have a different colours than ours.
-        Our results shows the same relation between parameters with tighter correlation in all three plots.
-        galaxies with SED similar to type Sc having bright purple colour but as expected from the shape of the SED they are young galaxies with high SSFR.
+        Galaxies with SED similar to type Sc having bright purple colour but as expected from the shape of the SED they are old galaxies with high SSFR.
         Therefore, in all three plots of the Fig.~\ref{fig: props_vs_props}, there is a purple point in the middle of the blue points.
         
+        The upper plots in the Fig..~\ref{fig: props_vs_props} show the same relation between parameters with tighter correlation in all three plots.
+        As mentioned in both N09 and T12, galaxies with smaller mass tend to be more younger and more active galaxies.
+        In Fig.~\ref{fig: props}, we saw the same results, younger and more active galaxies have less stellar mass and more f$_{\rm {burst}}$.
+        It is clearly noticeable that from older galaxies to younger galaxies, colour of the points changes from red to blue  which shows a good correlation with the morphological type.
+        %for more details discussion on these correlations, we encourage readers to read N09 and T12.
         
+        The lower plots in the Fig.~\ref{fig: props_vs_props} show the relations between A$_{\rm {FUV}}$ and SSFR, age, and stellar mass.
+        Unless N09, we found a correlation between A$_{\rm {FUV}}$ and these three parameters.
+        N09 used SINGS galaxies as their test sample and concluded that the attenuation is independent of the star formation, age or stellar mass.
+        They found a very weak correlation between A$_{\rm {FUV}}$ and morphological types of galaxies, which was much weaker than previous studies~\citep[e.g.][]{Dale07}.
+        In the Fig.~\ref{fig: props_vs_props}, there is a more clear and stanger correlation between the A$_{\rm {FUV}}$ and the other parameters.
+        Considering the morphology of the galaxies, early type galaxies have more A$_{\rm {FUV}}$.
+        Therefore, we could conclude that the classification of the SED of galaxies using SOM, separates galaxies based on their morphological type and the characteristic of each of these groups are in agreement with general picture of the galaxy evolution.%%%%%I should find better wording for the last sentence%%%%%
 
-    
-    
     \subsection{2D SOMs}
     \label{sec: 2D}
     Although the 1D networks are great tools to categorize the SEDs and monitor the changes of properties of galaxies in each category, each neurons in these networks is limited to be connected to on other neurons in each direction.
@@ -357,10 +383,10 @@
     In this case, all the outlier or specific cases would be identified and removed from the sample. 
 
     
-    \subsection{Caveat}
-    There is no established method to find the best SOM initial values. 
-    Size of the maps, number of neighbours in each steps, number of iterations could vary and each one give us a new results.
-    Also, since at the beginning the weights are generated randomly, in each run the results could have small differences.
+    % \subsection{Caveat}
+    % There is no established method to find the best SOM initial values. 
+    % Size of the maps, number of neighbours in each steps, number of iterations could vary and each one give us a new results.
+    % Also, since at the beginning the weights are generated randomly, in each run the results could have small differences.
     %no quantitative way to analyse the data?!
     
     
