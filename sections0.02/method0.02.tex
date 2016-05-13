@@ -16,7 +16,6 @@
  
  Each node may contain one or more samples from input data and distance between nodes represents similarity or dissimilarity of underlying samples. 
  In the way that similar data are closer together in the array and the further nodes go from each other, the more dissimilarity appears between their samples.
- %Sahar_self_notes: maybe "some" is better instead of one or more
  A weight vector ``\boldit{W}" with same dimension of the input data associates with each node which will be changed during the process and has a key factor in a position of nodes in the map.
  
  \cite{Geach12} presented the application of the SOM and demonstrate the algorithm of the SOM in detail. In this section we are going to talk briefly about the algorithm of the SOM, how we create our maps and a test model which will help to interpret our results. 
@@ -40,7 +39,7 @@
             r^t_{BMU} = r^0_{BMU}e^{(-t/\tau)}
         \end{equation}
         where $\tau$ is a decay constant and usually set to be the same as the number of iterations, $N$. $r^0_{BMU}$ and $r^t_{BMU}$ is the radius of the neighbourhood at 0th and $t$th iteration, respectively. 
-        \item Changes the weight vectors of the BMU, and all the nodes within r(t) as: %PB160509: what are r(t) and v(t)?
+        \item Changes the weight vectors of the BMU, and all the nodes within $r^t_{BMU}$ as:
         \begin{equation}
             \label{equ: weight adj}
             w(t+1)=w(t)+L(t) \times R(t) \times(v(t)-w(t))
@@ -51,9 +50,11 @@
      
 \subsection{Creating SOM}
 \label{sec: create_som}
-     In order to create SOM, we used {\tiny MATLAB} neural network %PB160509: I think you want {\sc matlab} not {\tiny MATLAB}.
+     In order to create SOM, we used {\tiny MATLAB} neural network 
      toolbox~\citep[NNT,][]{matlabtolbox}.
-     SOM in {\tiny NNT} can be created by {\tiny newsom} or {\tiny selforgmap} library which both work in two phases. 
+     %%Sr160611: Last time I got the following note from the MNRAS editor:
+     %"Please note that computer software/programming lan- guages must be styled in SMALL CAPITAL LETTERS, according to journal style. Please check and correct this paper accordingly."
+     SOM in {\tiny NNT} can be created by {\tiny NEWSOM} or {\tiny SELFORGMAP} library which both work in two phases. 
      Phase one is the ``ordering phase". 
      This phase starts with maximum neighbourhood distance, and initial high learning factor usually 0.9 which is provided by the user. 
      The ordering phase continues for the requested number of iterations.
@@ -66,7 +67,8 @@
      The number of iterations in this tuning phase most be much more than the number iterations in ordering phase, to allow the tuning to happen slowly. %cite kohenen book?!
      We chose the number of epochs the tuning phase to be 3 times more than the number of epochs in the ordering phase.
      
-     To show our results, we used two of the {\tiny NNT}'s built-in plots. 
+     To show our results, we used two of the {\tiny NNT}'s built-in plots.
+     These plots, which are evolved version of old SOM plots, are designed to show distance between each clusters more clear.
      A Hits map, which shows the number of the times each neuron become the winner (hits), and a distance map, which shows the same neurons as the hits map and the distance between them.
      In the maps, the purple hexagonal shape areas represent the neurons.
      The distances in a distance map are shown by the grey cycle colours.
@@ -120,7 +122,6 @@ This network is considered as a train network, and if there are any data set wit
 As we show in the following sections, in the real world with the real data, we never have two galaxies with exactly the same information, we have more than 2 dimensions, and more galaxy types. 
 Therefore, if the network has high enough neurons, the input data would eventually separate from each other and cluster into smaller and smaller groups. 
 However, if the information of the input data is very similar to each other, the number of neurons is going to be much higher than the number of input samples, to be able to separate the groups from each other. 
-In those cases, one can decide that the amount of similarity or dissimilarity between the input samples. %PB20160509: I don't understand the previous sentence - is something missing?
-
+Therefore, it is up to the users that decide the similarity or dissimilarity between the input data based on number of neurons. 
 
 

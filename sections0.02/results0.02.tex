@@ -12,12 +12,11 @@
     Training networks with K96 templates, provides us networks that have regions with known morphological types. The trained networks can be used to categorize other galaxies.
     %In following we show how we trained data and used galaxies from T12 to show how the clustering using trained networks works.
     
-    %%% should I move this paragraph to method section?! %%PB20160510: I think it's OK here.
     In order to find sufficient size for the trained networks, we created maps with sizes from $1\times2$ to $50\times50$.
     Varying grid of the maps helps us to monitor whether grouping galaxies in smaller maps is based on their similar SEDs or its for the shortage of the neurons.
     Based on size the data and SOM results, we chose maximum of the grid size to be $1\times22$ and $12\times12$ in 1D and 2D maps, respectively. 
     For each grid we created different SOMs with different learning factors, neighbourhood distances, and iteration numbers to find the optimum result for our sample.
-    We created the final SOMs with following initial values: number of iterations in ordering phase = 1000; ordering phase learning factor = 0.9; tuning phase learning factor= 0.02; and tuning phase neighbourhood distance to be 1. %PB20160510: if you're going to use "=" here, put the symbol too, ie $N=1000$ iterations for the ordering phase, ordering phase learning factor $L_0=0.9$, etc
+    We created the final SOMs with following initial values: number of iterations in ordering phase, ordering phase learning factor, tuning phase learning factor, and tuning phase neighbourhood distance to be 1000, 0.9, 0.02, and 1, respectively.
    
     We started our analysis by creating 1D SOMs. 
     First, we created SOMs with only two neurons ($1\times2$ map), and then we increased number of neurons one at a time in the 1D case (Sec.~\ref{sec: 1D}).
@@ -34,8 +33,8 @@
             We increased the size of the map gradually till we separated the input 12 sample galaxies into the 12 neurons. 
         
             Figs.~\ref{fig: 1by2T} -~\ref{fig: 1by22T} show results of training networks.
-            Similar to Fig.~\ref{fig: sample}, the upper part of the figures shows neurons and their relative distances ($D_j$) from each other.
-            As it was mentioned in the Sec.~\ref{sec: method}, the colours between neurons represents the relative distance, $D_j$, between the neurons and the darker is the colour the more $D_j$ is between them. %PB20160510: I think I would use "relaive distance" rather than the second $D_j$
+            Similar to Fig.~\ref{fig: sample}, the upper part of the figures shows neurons and their relative distances, $D_j$, from each other.
+            As it was mentioned in the Sec.~\ref{sec: method}, the colours between neurons represents the relative distance between the neurons and the darker is the colour the more relative distance is between them.
             The lower part shows how many galaxies from K96 template places in each neuron. 
             \begin{figure}
                 \begin{subfigure}[b]{0.5\textwidth}
@@ -51,7 +50,7 @@
             \end{figure}
         
         
-            In the upper map in Fig.~\ref{fig: 1by2T}, the dark colour between two neurons indicates that the $D_j$ between these two groups are relatively high, and these two groups are distinguishable groups. %PB20160510: same here, use "relative distance" rather than $D_j$.
+            In the upper map in Fig.~\ref{fig: 1by2T}, the dark colour between two neurons indicates that the relative distance between these two groups are relatively high, and these two groups are distinguishable groups.
             In the lower part of Fig.~\ref{fig: 1by2T}, we see galaxies divided to two groups of 5 and 7.
             Although we know from K96 and T12 that 6 of the galaxies are quiescent and the other 6 are starbursts, the SOM results show 5 of the galaxies in one group and the other 7 in the second group.
             In this method, the Sc galaxies have been categorized as starburst galaxy due to the relatively higher amount of the disk stellar population relative to the bulge ones. 
@@ -65,12 +64,12 @@
             These two galaxies, which are separated from group of starburst galaxies in the lower part of Fig.~\ref{fig: 1by2T}, belong to SB5 and SB6 types.
             In the upper plot of Fig.~\ref{fig: 1by3T}, the colour between two right neurons is black and the colour between two left neurons is white. 
             The black colour indicates that the left neuron is completely different from the other two groups.
-            While the white colour shows the two neurons are very similar to one another. %PB20160510: the two *right* neurons (?)
+            While the white colour shows the two right neurons are very similar to one another. 
             
             Comparing Fig.~\ref{fig: 1by2T} with Fig.~\ref{fig: 1by3T} shows us that the starburst galaxies are divided into two groups. 
             Based on the colours between these two groups, we conclude that they are very similar groups; both groups are starburst galaxies and have strong emission lines.
             However, SB5 and SB6 types have the most internal extinctions.
-            The high amount of extinction causes SED become more flat in the lower wavelength regions. %PB20160510: I would say "at shorter wavelengths" rather than "in the lower wavelength region"
+            The high amount of extinction causes SED become more flat at shorter wavelength regions.
             The flatness in the UV part of the SED eventually makes these two types of galaxies become more similar to quiescent galaxies than other starburst ones.
             So in the networks, SB5 and SB6 types intend to move more towards the early type galaxies.
                 
@@ -91,7 +90,7 @@
             Since there are more nodes in higher grid SOMs, the program pays more attention to small differences between each group.
             Higher the size of the maps means that even considering the smallest differences between galaxies.
             If the galaxies from K96 had completely different and distinct SED, SOM with size of $1\times12$ were expected to show 12 different groups of galaxies (1 at each node).
-            However, in Fig.~\ref{fig: 1by12T}, we see that three of neurons contains two galaxies and  three of them are empty. 
+            However, in Fig.~\ref{fig: 1by12T}, we see that three of neurons contains two galaxies and three of them are empty, which shows there were no galaxy in K96 sample that can fill those neurons.
             In Fig.~\ref{fig: 1by12T} from left to right galaxies with types of B and E, SB3 and SB4, and SB1 and SB2, are the ones groups together. 
             The SB3 and SB4 grouping breaks when we increased the size of the network to $1\times15$~(Fig.~\ref{fig: 1by15T}).
             The SB1 and SB2 galaxies remained in the same neurons till we increased the size of map to $1\times20$~(Fig.~\ref{fig: 1by20T}), and the separation between galaxies B and E had not happened before the size of the SOM reached to $1\times22$~(Fig.~\ref{fig: 1by22T}).
@@ -121,9 +120,7 @@
             The fact that the galaxies had to have 22 different neurons till be divided into 12 groups, shows that the difference between SB1 and SB2, and B and E galaxies are very small.
             These small differences might be very small.
             Therefore, they intend to stay in the same group till the network become big enough to make attention to the smallest particularity.
-           % For using SOM method, one should be careful about these small differences and consider that how much details do we need to pay attention to, to consider two groups are separate from each other.
-           %%%% (I'm not sure if it is good to be here or not)
-           %PB20160510: I think the above is a general observation about clustering, not just SOM. I suggest pointing it out at the end, not here.
+           
         \subsubsection{ CLASSIFYING SAMPLE OF GALAXIES}
          \label{sec: 1Dv}
             We used each network that we trained in Sec.~\ref{sec: 1Dt}, to classifying the sample 142 galaxies from T12.
@@ -158,7 +155,7 @@
              Fig.~\ref{fig: 1by3V} represents the result of the classifying the SED of the galaxies using the $1\times3$~network (from Fig.~\ref{fig: 1by2T}). 
              In the upper plot of this figure we can see 66 of the galaxies belongs to the early type group, and 47 belong to starburst galaxies. 
              29 of the galaxies are more similar to starburst ones, but not with all of their features. 
-             These groups of galaxies have strong emission lines and the ascending slope towards the lower wavelengths, but they also have a strong 4000\AA~break, which makes them to move towards the early type galaxies (middle plot in the lower part of Fig.~\ref{fig: 1by2V}). %PB20160510: "rising flux towards the ultraviolet" rather than "the ascending slope towards the lower wavelengths"
+             These groups of galaxies have strong emission lines and rising flux towards the ultraviolet, but they also have a strong 4000\AA~break, which makes them to move towards the early type galaxies (middle plot in the lower part of Fig.~\ref{fig: 1by2V}).
 
             \begin{figure}
                 \begin{subfigure}[b]{0.5\textwidth}
@@ -231,23 +228,24 @@
         
         In order to check whether our conclusions in Sec.~\ref{sec: 1Dv}~is meaningful and correct, in this section we are going to show the relations between properties of the galaxies in each neuron.
         
-        \begin{figure*}
+        \begin{figure}
             \centering
-            \includegraphics[width=\textwidth]{../images0.01/1d/props5.png}
-            \caption{Comparing the median of four propertied of galaxies in each nod in $1\times2$, $1\times4$, and $1\times8$ networks.}
+            \includegraphics[width=0.5\textwidth]{../images0.01/1d/props5.png}
+            \caption{Comparing the median of four propertied of galaxies in each nod in $1\times2$ (balck circles), $1\times4$ (blue diamond), and $1\times8$ (red triangles) networks.}
             \label{fig: props}
-        \end{figure*}
+        \end{figure}
        
         Fig.~\ref{fig: props} shows the results of the median of stellar mass, age, specific star formation rate (sSFR; star formation rate per stellar mass), and $f_\mathrm{burst}$ of the galaxies in each neuron in $1\times2$, $1\times4$, and $1\times8$ networks.
-        In all the plots $x$-axis shows the number of the neurons divided by the size of the network, and $y$-axis shows one of the mentioned properties. %PB20160510:  use horizontal and vertical rather than $x$ and $y$.
+        In all the plots horizontal axis shows the number of the neurons divided by the size of the network, and vertical axis shows one of the mentioned properties.
         
         In Fig.~\ref{fig: props}, from early type galaxies to starburst ones, stellar mass and age decreases while sSFR and $f_\mathrm{burst}$ increases, in all three lines. 
-        These trends are another evidence that this method is working and can be used to categorize galaxies based on their SEDs or even their physical properties. %PB20160510: I would say something more like "the SED categories represent a continuum of physical properties". Of course the physical properties were derived from the SEDs, so maybe this isn't so surprising and you could mention that as well.
-        
+       % These trends are another evidence that this method is working and can be used to categorize galaxies based on their SEDs or even their physical properties. %PB20160510: I would say something more like "the SED categories represent a continuum of physical properties". Of course the physical properties were derived from the SEDs, so maybe this isn't so surprising and you could mention that as well.
+        %%%SR20160611: Sorry I am not sure that I understand this comment?
+        Considering results from Fig.~\ref{fig: props}, we can clearly see that separating galaxies based on SED types also leads to a separation in properties derived (via {\em CIGALE}) from the SEDs.
     
         N09 used various models to derive galaxies' properties.
         Through these models, some of the properties are already known to be correlated with each others, i.e. stellar mass and star formation rate.
-        They, however, studied other relations between properties of a sample of SINGS galaxies which didn't have a direct correlation in the models. %PB20160510: you that mean the properties didn't have a direct correlation in the models, not that the galaxies didn't have a direct correlation, right? 
+        They, however, studied other relations between properties, that didn't have any direct correlation in the models, in a sample of SINGS galaxies. %%eHMM I will change the previous sentence! It doesn't read well
         They found a tight correlation between sSFR and t$_{\rm {D4000}}$, which suggested that younger stellar population correlate with high SFR.
         They also found the correlation between stellar mass and SFR, and stellar mass and t$_{\rm {D4000}}$.
         Since in {\em CIGALE} code, stellar mass is a free parameter, N09 argued that any stellar mass related correlation must be astrophysically meaningful. 
@@ -296,23 +294,25 @@
         It is clearly noticeable that from older to younger galaxies, the colour of the points changes from red to blue, which shows a good correlation with their SED type.
         %for more details discussion on these correlations, we encourage readers to read N09 and T12.
         
-        The lower plots in Fig.~\ref{fig: props_vs_props} show the relations between A$_{\rm {FUV}}$ and sSFR, age, and stellar mass.
-        Unlike N09, we found a correlation between A$_{\rm {FUV}}$ and these three parameters.
-        N09 used SINGS galaxies as their test sample and concluded that the attenuation is independent of the star formation, age or stellar mass.
-        They found a very weak correlation between A$_{\rm {FUV}}$ and morphological types of galaxies, which was much weaker than previous studies~\citep[e.g.][]{Dale07}.
-        In Fig.~\ref{fig: props_vs_props}, there is a more clear and stronger correlation between the A$_{\rm {FUV}}$ and the other parameters.
-        The only exception is data from S0 type galaxies.
-        They tend to have a very low A$_{\rm {FUV}}$, which is out of the general trend in all three lower plots of Fig.~\ref{fig: props_vs_props}. 
-        However, this value and position is very similar to N09 results. %PB20160510: I think you need to talk about this a bit more. Why are the S0s out of line with everything else?
-        Otherwise, considering the morphology of the galaxies, early type galaxies have more A$_{\rm {FUV}}$.
-        Therefore, we could conclude that the classification of the SED of galaxies using SOM, separates galaxies based on their morphological type and the characteristic of each of these groups are in agreement with the general picture of the galaxy evolution. %PB20160510: but you don't have morphological types for your galaxies (or do you?) I think what you are concluding is that separating galaxies based on SED types also leads to a separation in properties derived (via CIGALE) from the SEDs, which you'd expect.
-
+        N09 studied a correlation between A$_{\rm {FUV}}$ and the other properties of galaxies and showed that the attenuation has no dependency to the specific star formation, and age.
+        In contrast to N09, we found a correlation between A$_{\rm {FUV}}$ and these two parameters, which are shown in lower plots in Fig.~\ref{fig: props_vs_props}.
+        The general trend of the correlation, that we see in Fig.~\ref{fig: props_vs_props}, between A$_{\rm {FUV}}$ and sSFR is similar to the trend that have been found by \cite{Dale07}.
+        They used IR luminosity to UV luminosity ratio (L$_{IR}$/L$_{FUV}$) as a measurement of A$_{\rm {FUV}}$ and compared it with sSFR for all 75 galaxies in the SINGS survey.
+        They found that for early type galaxies L$_{IR}$/L$_{FUV}$ (or A$_{\rm {FUV}}$ ) correlates with sSFR, and in case of spiral galaxies, there is an anticorrelation between  L$_{IR}$/L$_{FUV}$ and sSFR.
+        It should be noted that, by early type galaxies they mostly meant E and S0 and S0/a types of galaxies.
+        Since in our sample we do not have E type galaxies, we cannot show confidently that we see the same correlation between A$_{\rm {FUV}}$ and sSFR in early type galaxies. 
+        However, it is clear in Fig.~\ref{fig: props_vs_props} that A$_{\rm {FUV}}$ increases with increasing the sSFR in the S0 and Sa types.
+        The correlation in the other types of galaxies is very similar to the one that had been shown in \cite{Dale07}.
+        Both \cite{Dale07} and N09 have argued that these apparent trends can be a result of the dependence of star formation history to L$_{IR}$/L$_{FUV}$.
+        Whether these dependency is real or not, in this paper we showed that using SOM we can separate SEDs of galaxies on the way that the characteristic of each of these groups are in agreement with the general picture of the galaxy evolution.
+        
+        
     \subsection{2D SOMs}
     \label{sec: 2D}
     The 1D networks are great tools to categorize the SEDs and monitor the changes of properties of galaxies in each category.
     However, each neuron in these networks is limited to be connected to one another neuron in each direction.
     In 2D network, each neuron can have more than two immediate neighbours, therefore, they provide more complete pictures of relations between each SED type.
-    As described in the Sec.~\ref{sec: method}, one of the main advantages of the SOM is that when the weight of one neuron is adjusted after finding the BMU, the weight of the whole map will be changed. %PB20160510: spell out BMU - reader has probably forgotten by now.
+    As described in the Sec.~\ref{sec: method}, one of the main advantages of the SOM is that when the weight of one neuron is adjusted after finding the best matching unit, the weight of the whole map will be changed.
     This quality of the SOMs provides a unique opportunity to analyse 2D networks in two approaches. 
     At first, as we had in the 1D SOMs, we assumed that all the galaxies must have SEDs similar to any of the 12 templates in Fig.~\ref{fig: k96}.
     In this case, we can categorize SEDs of other galaxies based on those 12 types.
@@ -357,7 +357,9 @@
     Using this network to categorize any set of SEDs, forced the SEDs to be in the same neurons as the K96 ones or the neurons between them.
     However, all the K96 galaxies are in small side of the map in the upper right map in Fig.~\ref{fig: 12by12}, which provide enough freedom for SED of the galaxies to take place everywhere in the map even it is way far away from the K96 templates.
     
-    In the upper left part of the map in Fig.~\ref{fig: 12by12}, there is a strip of the grey, dark grey and in some cases black colour is distinguishable. %PB20160510: not really the right sentence to start a paragraph with. Same for next paragraph.
+    
+    In the upper left part of the map in Fig.~\ref{fig: 12by12}, although galaxies have more space to move on and more can be separated in any way, they were separated in two main groups.
+    There is a distinguishable strip of the grey, dark grey and in some cases black colour in the map.
     This strip is separating early type galaxies with starburst ones.
     The lower map shows that 5 of the neurons on the left side of the strip are full. 
     These five neurons are the same ones on the left hand side of Fig.~\ref{fig: 1by2T} (early type galaxies).
@@ -365,19 +367,23 @@
     When we use this network to categorize the SED of galaxies, any galaxy places on the left hand side of the strip is an early type galaxy and anyone placed on the right side of the strip is a starburst one.
     The decision about what type of early type or starburst galaxy, is based upon its relative position to each type in the SOM.
     
-    The border between the early type galaxies and the starburst ones, in the upper right map in Fig.~\ref{fig: 12by12}, is the black strips in the middle of the upper map, which end up with bright grey colour at the bottom of the map in the fifth neuron.
+    Same as other map, in the upper right map in Fig.~\ref{fig: 12by12}, galaxies generally are divided into two main groups.
+    The border between the early type galaxies and the starburst ones is the black strips in the middle of the upper map, which end up with bright grey colour at the bottom of the map in the fifth neuron.
     In this network, neurons in the right side of the strip represent the early type galaxies and the neurons in the left side represent the starburst ones. 
-    In case of the categorizing a new set of SEDs, if the new SEDs are similar to K96 sample all of them will place in the bottom of the map, but if there are different type of the galaxies, they would sit in any other neurons in the map.
+    When categorizing a new set of SEDs, if the new SEDs are similar to K96 sample all of them will place in the bottom of the map, but if there are different type of the galaxies, they would sit in any other neurons in the map.
+    In large data sets, one can easily used this network to figure out whether there is any new type of SEDs (or any outliers) are in the data sets or not. 
+    Since, the networks are already available, this procedure should be really fast and easy for big data sets.
     
     We used the both 2D networks to categorize the T12 galaxies and showed the results in lower maps in Fig.~\ref{fig: 12by12}.
     Since in the lower right map in Fig.~\ref{fig: 12by12} all the galaxies placed in the bottom part of the map, we can conclude that there is no outlier or very different type of the SED from K96 templates in T12 samples.
     The lower left map of Fig.~\ref{fig: 12by12} represents the T12 galaxies categorization based on the network in the upper left of Fig.~\ref{fig: 12by12}. 
     Comparing this categorization with the 1D one from Fig.~\ref{fig: 1by22V}, we can see here, only 23 galaxies correspond exactly to K96 types.
     Using 2D maps, we categorized galaxies in more intermediate type than 1D ones.
-    In both lower maps in Fig.~\ref{fig: 12by12}, most the galaxies are in the early type side of the SOM, which was predictable from the results in the Sec.\ref{sec: 1Dv}. %PB20160510: could also talk about this as it relates to the method used to select the galaxies in the first place (once you find out what that was!)
+    In both lower maps in Fig.~\ref{fig: 12by12}, most the galaxies are in the early type side of the SOM, which was predictable from the results in the Sec.\ref{sec: 1Dv}.
+    Note that, from this sample we do not conclude that there are more early type galaxies in higher red-shifts.
+    We simply indicate that in this sample, we have more early type galaxies, and the reason is the selection effect from the fact that those galaxies had more reliable redshift estimation. %PB20160510: could also talk about this as it relates to the method used to select the galaxies in the first place (once you find out what that was!)
+    %SR20160512 I need to talk about it.
     
-
-
     Although because of the fluency of the paper, we first talked about 1D networks and continued to 2D networks we suggest that in case of using the SOMs to categorize the SED of the galaxies or to explore any related data, first step to be checking data using networks similar to the upper left map in Fig.~\ref{fig: 12by12}.
     In this case, all the outlier or specific cases would be identified and removed from the sample. 
 

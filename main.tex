@@ -82,21 +82,27 @@ $^{2}$Department of Physics $\&$ Astronomy, University of Victoria, Finnerty Roa
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
 
-\begin{abstract} %Most of this abstract is just a filler % PB160426: OK, no comments on it for now.
-In this paper we introduce a new method of clustering high red shift galaxies, based on their SED.
-We use unsupervised self organizing map to train and validate an artificial neural network which can categorize the spectral energy distribution (SED) of galaxies. 
-We utilize the spectral model introduced by Kinney et al. as a training set and a sample of 142 galaxies with 0.5 < $z$ < 1 a validation set.
-We used physical properties of the sample galaxies measured using {\em CIGALE} code to study and compare the properties of each cluster.
-In this paper we used an unsupervised self organizing map (SOM)method, to create a network based in SED models of galaxies and used sample of galaxies to test the networks. 
-We classify galaxies in different groups and studied the correlation between properties of the galaxies.
-we conclude that the SOM is a very useful and accurate method to be used in classifying galaxies base on their morphology.
+\begin{abstract}%% (Must be 250 Words)
+% In this paper, we introduce a new method of clustering of high red-shift galaxies, based on their spectral energy distributions (SED)s. We use unsupervised self organizing map(SOM) to train an artificial neural network to categorize SEDs of galaxies. We utilize as spectral template as a training set, and trained networks to be able to clustered galaxies based on the template. We cluster a sample of 142 galaxies with 0.5< z <1 using the trained network. We train networks with various sizes and properties to investigate the nature of the 142 sample galaxies. For each network, we cluster the sample of 142 galaxies and visualise their properties. In order to test new classifications,we compare physical properties of the galaxies in each cluster. We compare our results with  clustering  results  from  other  artificial  neural  networks,  and  with  the  original template classification. We conclude that SOM is a very useful method to be used in classifying galaxies based on their SEDs. It can be used to find morphology of the high red-shift galaxies, and find a new class of SEDs.
+In this paper, we introduce a new method of clustering high red-shift galaxies, based on their spectral energy distributions (SED)s.
+Artificial neural networks provide us a reliable method to cluster SEDs of galaxies.
+We use an unsupervised self organizing map(SOM) as a training method to train networks with a sample of galaxies with SEDs between FUV to NIR wavelengths, which their morphological types are known.
+Since information that can be extracted from each network depends on the size and dimension of the trained networks, in this project we train networks with different grids in 1D or 2D.
+We visualise each trained network using a new version of SOM plots.
+To test trained networks, we cluster a sample of 142 galaxies with 0.5 < $z$ < 1 using each of the trained networks.
+We plot average SED of SEDs of galaxies in each neurons in 1D networks, to investigate the nature galaxies in new clusters.
+For each network, we visualise the properties of galaxies in each neurons. 
+We compare mean physical properties of the galaxies such as age, specific star formation rate, stellar mass, and FUV extinction, with each other and found a tight correlations between them.
+Comparing our results with clustering results from supervised artificial neural networks, show us using SOM we can classify galaxies in between types of original spectral types.
+As a result we have a power tool to classify morphological type of galaxies based on their SEDs which also can  identify galaxies with a new shape of SEDs.
 
-%%%%%%From this point it is just repeated%%%%%%%%%
+%%%% SR20160512: I do not like it! But I do not know how to fix it. I already wrote at least 4 version of it. I need help with this one:((
+
 
 
 \end{abstract}
 \begin{keywords} 
- galaxies: star formation, galaxies: stellar content, galaxies: ISM, methods: observational, methods: statistical, data mining, methods:data analysis
+ galaxies: high red shifts, galaxies: spectral energy distribution, methods: observational, methods: statistical, data mining, methods:data analysis
 \end{keywords}
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
@@ -106,7 +112,7 @@ we conclude that the SOM is a very useful and accurate method to be used in clas
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
 
-\import{sections0.01/}{intro0.01.tex}
+\import{sections0.02/}{intro0.02.tex}
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
@@ -115,7 +121,7 @@ we conclude that the SOM is a very useful and accurate method to be used in clas
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
 
-\import{sections0.01/}{data0.01.tex}
+\import{sections0.02/}{data0.02.tex}
 
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
@@ -125,7 +131,7 @@ we conclude that the SOM is a very useful and accurate method to be used in clas
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
 
-\import{sections0.01/}{method0.01.tex}
+\import{sections0.02/}{method0.02.tex}
 
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
@@ -134,7 +140,7 @@ we conclude that the SOM is a very useful and accurate method to be used in clas
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
-\import{sections0.01/}{results0.01.tex}
+\import{sections0.02/}{results0.02.tex}
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
@@ -152,28 +158,37 @@ we conclude that the SOM is a very useful and accurate method to be used in clas
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
-\section{SUMMARY}
-\label{sec: summary} %PB160427: not so sure I like the numbering of every sentence, or starting almost all of them with "We". But this is a style thing that we can discuss later.
-1) We introduced the self organizing maps to be used to categorizing the SED of galaxies.
-\newline
-2) Using this method we not only can categorized the galaxies with more precision but also we can see the relative similarity or dissimilarity between each type of galaxies.  
-\newline
-3) We show that using SOM, we could recognize the galaxies have similarity to two or more morphological types of galaxies.
-\newline
-4) We trained networks using sample of SEDs and test them with sample of galaxies with SEDs in the similar badpasses.
-\newline
-5) We plot the properties of the galaxies using new classification and see the correlation between age and SSFR and stellar mass of the galaxies.
-\newline
-6) We show that the properties of the galaxies in each groups is in good agreement between their morphological types.
-\newline
-7) We show that SOM can help us to easily identified new type of the galaxies, in large surveys very easy. 
-\newline
-8) This method can be used to find outliers very fast.
-\newline
-%PB160427: Um, I'm not so sure you really demonstrated numbers 7 and 8. Those are interesting and it could be that a little more work on this and addition to the results section would be a good idea.
+\section{SUMMARY AND FUTURE APPLICATIONS}
+\label{sec: summary}
+
+Self organizing maps can be used to classify celestial objects (i.e. stars, quasars, spectra of galaxies, light curves, etc.).
+We showed that we can create various networks with different sizes/dimensions based on information we need from the data. 
+If a broad and general classification is required, networks can have one dimension with few number of neurons.
+While if we need classifications based on differences in more details, we can use a higher number of neurons.
+Since the SOM codes does not work with uncertainty of input parameter, sometimes too much attention to details can cause problems in classifications. 
+Some small differences could easily be the result of atmosphere fluctuation or other instrumental or observational problems. 
+for using SOM method, one should be careful about these small differences and consider in order to separate two groups from each other, how much details do they need to pay attention to.
+
+We used SOMs to classify SEDs of the galaxies with known morphological type from K96, and created networks with different usages.
+By varying size of networks, we found the relative similarity or dissimilarity between each type of galaxies.
+since we needed a 1D network with 22 neurons to be able to separate all the 12 types of galaxies from K96 for the first time, we concluded that types B and E, and types SB1 and SB2 galaxies are really similar to each other.
+We also showed that networks generated with SOM method can be used to easily identified new type of the galaxies or outlier, in large surveys.
+
+The sample of 142 high red-shift galaxies from T12 was used to test the trained networks.
+One of the main criteria to chose a test sample is that the test sample must have fluxes in exactly the same wavelengths of the training sample.
+The test results showed that using SOMs can lead us to identify galaxies with SEDs similar to two or more morphological types but not exactly the same as one of them.
+A freedom of having in between types is one of the main differences between supervised and unsupervised ANNs.
+T12  have used a supervised training method, and trained networks with K96 SED template.
+Same as this project, they tried to classify the sample of 142 galaxies using the trained networks.
+However, they could not classify 37 out of 142 galaxies in the sample.
+The unsupervised method that we used in this project, gave us the ability to classify galaxies either as one of the morphological types that have been introduced by K96 or between those types. 
+Therefore, we classified all 142 galaxies of our test sample.
+We plotted the properties of the galaxies in test sample using new classification and found a tighter correlations between mean values of age, sSFR, stellar mass, and extinction in FUV band of the galaxies in new classifications than previous studies.
+We also showed he properties of the galaxies in each groups is in good agreement between their morphological types.
+
 
 \section*{ACKNOWLEDGMENTS}
-S.R. and P.B. acknowledge research support from the Natural Sciences and Engineering Research Council of Canada. This research has made use of the NASA/IPAC Extragalactic Database (NED), which is operated by the Jet Propulsion Laboratory, California Institute of Technology, under contract with the National Aeronautics and Space Administration.
+S.R. and P.B. acknowledge research support from the Natural Sciences and Engineering Research Council of Canada. 
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
