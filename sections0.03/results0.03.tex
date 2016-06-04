@@ -228,30 +228,32 @@
                         
         
         
-        \subsubsection{RESULTS PROPERTIES OF CLUSTERED GALAXIES}
+        \subsubsection{PROPERTIES OF CLUSTERED GALAXIES}
         
-        In order to check whether our conclusions in Sec.~\ref{sec: 1Dv}~is correct, in this section we test the relations between properties of the galaxies in each neuron.
+        In order to check whether our conclusions in Sec.~\ref{sec: 1Dv}~are correct, in this section we test the relations between median properties of the galaxies in each neuron.
         
         \begin{figure}
             \centering
             \includegraphics[width=0.5\textwidth]{images0.01/1d/props5.png}
-            \caption{Comparing the median of four propertied of galaxies in each nod in $1\times2$ (balck circles), $1\times4$ (blue diamond), and $1\times8$ (red triangles) networks.}
+            \caption{Comparing the median of four properties of galaxies in each node in $1\times2$ (black circles), $1\times4$ (blue diamonds), and $1\times8$ (red triangles) networks.}
             \label{fig: props}
         \end{figure}
        
-        Fig.~\ref{fig: props} shows the results of the median of stellar mass, age, specific star formation rate (sSFR; star formation rate per stellar mass), and $f_\mathrm{burst}$ of the galaxies in each neuron in $1\times2$, $1\times4$, and $1\times8$ networks.
-        In all plots, the horizontal axis is the number of the neurons divided by the size of the network, and vertical axis is one of the aforementioned properties.
-        
-        As shown in Fig.~\ref{fig: props}, in all three lines, stellar mass and age decrease while sSFR and $f_\mathrm{burst}$ increase as the type changes from early type galaxies to starburst ones. 
+        Fig.~\ref{fig: props} shows the median of stellar mass, age, specific star formation rate (sSFR; star formation rate per stellar mass), and $f_\mathrm{burst}$ of the galaxies in each neuron in the $1\times2$, $1\times4$, and $1\times8$ networks.
+        In all plots, the horizontal axis is the number of the neurons divided by the size of the network.%, and vertical axis is one of the aforementioned properties.
+%        
+        As shown in Fig.~\ref{fig: props}, in all three networks, stellar mass and age decrease while sSFR and $f_\mathrm{burst}$ increase as the type changes from early type galaxies to starburst. 
        % These trends are another evidence that this method is working and can be used to categorize galaxies based on their SEDs or even their physical properties. 
-        Considering the results from Fig.~\ref{fig: props}, we can clearly see that separating galaxies based on SED types also leads to a separation in properties that derived (via {\em CIGALE}) from the SEDs.
+        %Considering the results from Fig.~\ref{fig: props}, we can clearly see that s
+Separating galaxies based on SED types also leads to a separation in properties that derived (via {\sc CIGALE}) from the SEDs, as expected since the SED types are also based on {\sc CIGALE} fitting. 
     
-        N09 used various models to derive the properties galaxies.
-        Through these models, some of the properties are already known to be correlated with each others, e.g., stellar mass and star formation rate.
-        They also studied other relations between properties that didn't have any direct correlation in the models in a sample of SINGS galaxies. %%eHMM I will change the previous sentence! It doesn't read well
-        They found a tight correlation between sSFR and t$_{\rm {D4000}}$, which suggests that younger stellar population correlate with high SFR.
+%PB20160604: this paragraph needs a topic sentence.
+        N09 used various models to derive the properties of galaxies.
+        Through these models, some of the properties are already known to be correlated with each other, e.g., stellar mass and star formation rate.
+        They also studied other relations between properties with no direct correlation in the models in a sample of SINGS galaxies. %%eHMM I will change the previous sentence! It doesn't read well
+        They found a tight correlation between sSFR and t$_{\rm {D4000}}$, which suggests that younger stellar population correlates with higher SFR.
         They also found correlations between stellar mass and SFR, and stellar mass and t$_{\rm {D4000}}$.
-        Since in {\em CIGALE} code, stellar mass is a free parameter, N09 argued that any stellar-mass-related correlation must be astrophysically meaningful. 
+        Since in the {\sc CIGALE} code, stellar mass is a free parameter, N09 argued that any stellar-mass-related correlation must be astrophysically meaningful. 
         They also studied relations between the attenuation at 1500 \AA~(A$_{\rm {FUV}}$) and sSFR, age, and stellar mass and did not find any correlation.
         T12 replicated the upper plots in Fig.~\ref{fig: props_vs_props}, and found a tighter correlation than N09 results. 
         
@@ -279,35 +281,33 @@
         \begin{subfigure}[b]{0.3\textwidth}
             \includegraphics[width=\textwidth]{images0.01/1d/f6.png}
         \end{subfigure}
-        \caption{From up to down: Correlation between age (t$_{\rm {D4000}}$) and sSFR ($\phi$), sSFR and stellar mass, age (t$_{\rm {D4000}}$) and stellar mass, and A$_{\rm {FUV}}$ with sSFR, age (t$_{\rm {D4000}}$) and stellar mass. Points show the mean values of these properties of galaxies in $1\times22$ network and error bars are the standard deviation of the mean values. colours shows the type of the galaxies in the new classification. The most pure red colour shows E type galaxies and the most blue one indicates the SB1 galaxies. The other colours depend on how much they are close to red or blue show that the galaxies are early type or starburst.}
+        \caption{From top to bottom: Correlation between age (t$_{\rm {D4000}}$) and sSFR ($\phi$), sSFR and stellar mass, age (t$_{\rm {D4000}}$) and stellar mass, and A$_{\rm {FUV}}$ with sSFR, age (t$_{\rm {D4000}}$) and stellar mass. Points show the mean values of these properties of galaxies in $1\times22$ network and error bars are the standard deviation of the mean values. colours shows the type of the galaxies in the new classification. The most pure red colour shows E type galaxies and the most blue one indicates the SB1 galaxies. The other colours depend on how much they are close to red or blue show that the galaxies are early type or starburst.}
         \label{fig: props_vs_props}
     \end{figure*}
         
-        In order to compare our classifications with previous works, we produced similar plots to the ones in both N09 and T12 (Fig.~\ref{fig: props_vs_props}).
-        In Fig.~\ref{fig: props_vs_props}, data points are mean values of the properties of the galaxies in each neuron in Fig.~\ref{fig: 1by22V}, and error bars show the standard deviation of those properties. 
-        The colours show the galaxy types, where B type galaxies are shown with red and SB1 ones are shown with blue colours.
+        In order to compare our classifications with previous work, we produced similar plots to the ones in both N09 and T12 (Fig.~\ref{fig: props_vs_props}).
+        In Fig.~\ref{fig: props_vs_props}, the data points are mean values of the properties of the galaxies in each neuron in Fig.~\ref{fig: 1by22V}, and error bars show the standard deviation of those properties.  % PB20160604: why mean here but median in previous plot?
+        The colours show the galaxy types, where B type galaxies are shown with red and SB1 types are shown with blue.
         The redder the colour, the more similarity with early type galaxies, while the purple to blue colours show more similarity to starburst galaxies.
-        Since in this method we allow galaxies to occupy classes in between the original 12 types of the galaxies, we have more than 12 colours in Fig.~\ref{fig: props_vs_props}.
-        Galaxies with SEDs more similar to type Sc having bright purple colour, but, as expected from the shape of the SED, they are old galaxies with high sSFR.
-        Therefore, in all three plots of Fig.~\ref{fig: props_vs_props}, there is a purple point in the middle of the blue points.
+        Since in this method we allow galaxies to occupy classes in between the original K96 templates, we have more than 12 colours in Fig.~\ref{fig: props_vs_props}.
+        The purple point in the middle of the blue points in  Fig.~\ref{fig: props_vs_props} corresponds to galaxies with SEDs similar to type Sc: the shape of their SED indicates that they are old galaxies with high sSFR.
         
-        The upper plots in Fig.~\ref{fig: props_vs_props} show the same relations as N09 and T12, but with tighter correlation than those two, in all three plots.
+        The upper panels in Fig.~\ref{fig: props_vs_props} show the same relations as N09 and T12, but with tighter correlation than those two, in all three plots.
         As mentioned in both N09 and T12, galaxies with smaller mass tend to be younger and more active.
-        In Fig.~\ref{fig: props}, we see the same results: younger and more active galaxies have less stellar mass and more f$_{\rm {burst}}$.
-        It is clearly noticeable that from older to younger galaxies, the colour of the points changes from red to blue, which shows a good correlation with their SED type.
+        Fig.~\ref{fig: props} shows similar results: younger and more active galaxies have less stellar mass and more f$_{\rm {burst}}$.
+        From older to younger galaxies, the colour of the points changes from red to blue, which shows a good correlation with their SED type.
         %for more details discussion on these correlations, we encourage readers to read N09 and T12.
         
-        N09 studied a correlation between A$_{\rm {FUV}}$ and other properties of galaxies and showed that the attenuation has no dependency to the specific star formation, and age.
-        In contrast to N09, we find a correlation between A$_{\rm {FUV}}$ and these two parameters, which are shown in lower plots in Fig.~\ref{fig: props_vs_props}.
-        The general trend of the correlation that we see between A$_{\rm {FUV}}$ and sSFR in Fig.~\ref{fig: props_vs_props} is similar to the trend that have been found by \cite{Dale07}.
-        They used IR luminosity to UV luminosity ratio (L$_{IR}$/L$_{FUV}$) as a measurement of A$_{\rm {FUV}}$ and compared it with sSFR for all 75 galaxies in the SINGS survey.
-        They found that for early type galaxies L$_{IR}$/L$_{FUV}$ (or A$_{\rm {FUV}}$ ) correlates with sSFR, and in case of spiral galaxies, there is an anticorrelation between L$_{IR}$/L$_{FUV}$ and sSFR.
-        It should be noted that, by early type galaxies they mostly meant E and S0 and S0/a types of galaxies.
-        Since in our sample we do not have E type galaxies, we cannot show confidently that we see the same correlation between A$_{\rm {FUV}}$ and sSFR in early type galaxies. 
-        However, it is clear in Fig.~\ref{fig: props_vs_props} that A$_{\rm {FUV}}$ increases with increasing the sSFR in the S0 and Sa types.
-        The correlation in the other types of galaxies is very similar to the one that had been shown in \cite{Dale07}.
-        Both \cite{Dale07} and N09 have argued that these apparent trends can be a result of the dependence of star formation history to L$_{IR}$/L$_{FUV}$.
-        Whether these dependency is real or not, in this paper we showed that using SOM we can separate SEDs of galaxies on the way that the characteristic of each of these groups are in agreement with the general picture of the galaxy evolution.
+        N09 studied a correlation between A$_{\rm {FUV}}$ and other properties of galaxies and showed that the attenuation has no dependence on the specific star formation or age.
+        In contrast to N09, we find a correlation between A$_{\rm {FUV}}$ and these two parameters, shown in the lower panels of Fig.~\ref{fig: props_vs_props}.
+        The general trend of the correlation between A$_{\rm {FUV}}$ and sSFR in Fig.~\ref{fig: props_vs_props} is similar to the trend found by \cite{Dale07}.
+        They used IR luminosity to UV luminosity ratio (L$_{IR}$/L$_{FUV}$) as a measure of A$_{\rm {FUV}}$ and compared it with sSFR for all 75 galaxies in the SINGS survey.
+        They found that for early type galaxies (E, S0 and S0/a ), L$_{IR}$/L$_{FUV}$ (or A$_{\rm {FUV}}$ ) correlates with sSFR, and for spiral galaxies, there is an anticorrelation between L$_{IR}$/L$_{FUV}$ and sSFR.
+       Since our sample has no E-type galaxies, we cannot confidently show the same correlation between A$_{\rm {FUV}}$ and sSFR. 
+        However, it is clear in Fig.~\ref{fig: props_vs_props} that A$_{\rm {FUV}}$ increases with increasing sSFR in the S0 and Sa types.
+        The correlation in the other types of galaxies is very similar to the one shown by \cite{Dale07}.
+        Both \cite{Dale07} and N09 argued that these apparent trends can be a result of the dependence of star formation history on L$_{IR}$/L$_{FUV}$.
+        Whether this dependence is real or not, our results here show that using self-organizing maps can separate SEDs of galaxies in such a way that the characteristics of each of these groups are in agreement with the general picture of the galaxy evolution.
         
         
     \subsection{2D SOMs}
