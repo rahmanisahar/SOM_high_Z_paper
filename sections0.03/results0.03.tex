@@ -13,30 +13,30 @@
     The trained networks can then be used to categorize other galaxies.
     %In following we show how we trained data and used galaxies from T12 to show how the clustering using trained networks works.
     
-    In order to find sufficient size for the trained networks, we create maps with sizes ranging from $1\times2$ to $50\times50$.
-    Varying grid size of the maps helps us to monitor whether grouping galaxies in smaller maps is because of their similarities in their SEDs or not having enough space to be separated. %(this sentence is definitely wrong and I don't understand what you are trying to say to fix it.).
-    Based on size the data and SOM results, we found the optimum grid size to be $1\times22$ and $12\times12$ in 1D and 2D maps, respectively. 
+    In order to find a sufficient size for the trained networks, we created maps with sizes ranging from $1\times2$ to $50\times50$.
+    Varying the grid size of the maps helps us to monitor whether tighter grouping of galaxies is due to their similar properties or a lack of map space to separate them.
+   Based on the size of the data and SOM results, we found the optimum grid size to be $1\times22$ and $12\times12$ in 1D and 2D maps, respectively. 
     For each grid we created different SOMs with different learning factors, neighbourhood distances, and number of iterations to find the optimum.
     We create the final SOMs with initial values for number of iterations in ordering phase, ordering phase learning factor, tuning phase learning factor, and tuning phase neighbourhood distance of 1000, 0.9, 0.02, and 1, respectively.
    
-    We start our analysis by creating 1D SOMs. 
+    We started our analysis by creating 1D SOMs. 
     First, we created SOMs with only two neurons ($1\times2$ map), and then we increase the number of neurons one at a time in the 1D case (Sec.~\ref{sec: 1D}).
-    We generate 2D networks (Sec.~\ref{sec: 2D}), and once again we start with the smallest number of neuron possible (4 neurons in $2\times2$ map), and then increase them to 144 in a $12\times12$ map.
-    
+    We generate 2D networks (Sec.~\ref{sec: 2D}), and once again we start with the smallest number of neurons possible (4 neurons in $2\times2$ map), and then increase them to 144 in a $12\times12$ map.    
     For each generated network, we compare the results with K96 categorization.
-    We also use these networks to classify the T12 galaxy samples, and compare them with classifications from supervised networks in T12.
-    \subsection{1D SOMs}
+    We also use these networks to classify the T12 galaxy sample, and compare this classification with that from the supervised networks in T12.
+
+    \subsection{One-dimensional self-organized maps}
     \label{sec: 1D}
-        \subsubsection{TRAINING THE NETWORKS}
+        \subsubsection{TRAINING THE NETWORKS} %PB note: I've changed 'galaxy' to 'template' pretty much everywhere.
         \label{sec: 1Dt}
-            To start our clustering, we assume that galaxies can be divided into only two general types; quiescent and starburst.
-            In this case, we generate a network with only two neurons.
-            We increased the size of the map gradually until the 12 input sample galaxies divide into the 12 neurons. 
+            To start our clustering, we assumed that galaxies can be divided into only two general types; quiescent and starburst.
+            This corresponds to a network with only two neurons.
+            We increased the size of the map gradually until the 12 input samples divide into the 12 neurons. 
         
-            Figs.~\ref{fig: 1by2T} -~\ref{fig: 1by22T} show results of the training networks.
-            Similar to Fig.~\ref{fig: sample}, the upper part of the figures shows neurons and their relative distances, $D_j$.
-            As it was mentioned in the Sec.~\ref{sec: method}, increase in the darkness of colours between neurons represents the the increase in relative distance between the neurons.
-            The lower parts of figurs show the number galaxies from K96 template that are placed in each neuron. 
+            Figs.~\ref{fig: 1by2T} --\ref{fig: 1by22T} show the results of the training networks.
+            As in to Fig.~\ref{fig: sample}, the upper part of the figures shows the neurons and their relative distances, $D_j$.
+            As mentioned in Sec.~\ref{sec: method}, an increase in the darkness of colours between neurons represents an increase in relative distance between the neurons.
+            The lower panels of the figures show the number of K96 templates that are placed in each neuron. 
             \begin{figure}
                 \begin{subfigure}[b]{0.5\textwidth}
                     \centering
@@ -46,34 +46,34 @@
                 \begin{subfigure}[b]{0.5\textwidth}
                      \includegraphics[width=\textwidth]{images0.01/1d/hit_t_1_by_2.png}
                 \end{subfigure}
-                \caption{Results of training network in $1\times2$~grid. Similar to Fig.~\ref{fig: sample} the upper plot is a distance map and the lower plot is a hit map. In this network, 5 of galaxies from K96 model, categorized as quiescent galaxies and the rest are starbursts. Because of their high emission lines, Sc galaxies moved towards the starburst ones.}
+                \caption{Results of training network in $1\times2$~grid. As in Fig.~\ref{fig: sample}, the upper panel is a distance map and the lower panel is a hit map. In this network, 5 of the templates from K96 are categorized as quiescent galaxies and the rest are starbursts. Because of their strong emission lines, Sc galaxies are moved towards the starburst ones.}
                  \label{fig: 1by2T}
             \end{figure}
         
         
             In the upper map in Fig.~\ref{fig: 1by2T}, the dark colour between two neurons indicates that the relative distance between these two groups are relatively high, and these two groups are distinguishable groups.%(why do you keep reaping that?)
-            In the lower part of Fig.~\ref{fig: 1by2T}, we see that galaxies are divided into two groups of 5 and 7.
-            Although we know from K96 and T12 that 6 of the galaxies are quiescent and the other 6 are starbursts, the SOM results show 5 of the galaxies in one group and the other 7 in the second group.
-            In this method, the Sc galaxies have been categorized as starburst galaxy due to the relatively higher amounts of disk stellar population relative to that of the bulge. 
-            According to K96, Sc galaxies are considered as late Hubble type galaxies which have more flat SED compare to other quiescent galaxies. 
+            In the lower part of Fig.~\ref{fig: 1by2T}, we see that the templates are divided into two groups of 5 and 7.
+            Although we know from K96 and T12 that 6 of the templates are quiescent and the other 6 are starbursts, the SOM results show 5 of the galaxies in one group and the other 7 in the second group.
+            In this method, the Sc template has been categorized as starburst due to the relatively higher disk stellar population relative to that of the bulge. 
+            According to K96, Sc galaxies are considered to be late Hubble type galaxies which have a flattter SED compare to other quiescent galaxies. 
             
 
             Fig.~\ref{fig: 1by3T} shows the results of the training in a 1$\times$3 network.
             In these plots we force the galaxies to be categorize in a maximum 3 groups. 
             %If the galaxies in Fig.~\ref{fig: 1by2T} were very similar to each other or were exactly the same, they still wanted to be divided into two groups and left the middle node empty(this sentence does not make much sense. I kind of think I know what you're trying to say (because once I translate this sentence to farsi word by word, it kind of comes together) but please phrase it more carefully.).
             %[suggested sentence: 
-            If the galaxies in Fig.~\ref{fig: 1by2T} were truly belong in two groups, they would be grouped into two groups yet again, even when we try to cluster them into three. 
-            However, in the lower part of Fig.~\ref{fig: 1by3T}, we can see that the middle node contains two galaxies.
-            These two galaxies, which are separated from group of starburst galaxies in the lower part of Fig.~\ref{fig: 1by2T}, belong to SB5 and SB6 types.
+            If the templates in Fig.~\ref{fig: 1by2T} truly belonged in two groups, they would be grouped into two groups in this network, even when we try to cluster them into three. 
+            However, in the lower panel of Fig.~\ref{fig: 1by3T}, we can see that the middle node contains two templates.
+            These two templates, which are separated from the group of starburst templates in the lower part of Fig.~\ref{fig: 1by2T},  are the SB5 and SB6 types.
             In the upper plot of Fig.~\ref{fig: 1by3T}, the colour between two right neurons is black and the colour between two left neurons is white. 
-            The black colour indicates that the left neuron is completely different from the other two groups.
-            While the white colour shows the two right neurons are very similar to one another. 
+            The black colour indicates that the left neuron is completely different from the other two groups,
+            while the white colour shows that the two right neurons are very similar to one another. 
             
-            Comparing Fig.~\ref{fig: 1by2T} to Fig.~\ref{fig: 1by3T} shows that the starburst galaxies are divided into two groups. 
-            Based on the colours between these two groups, we conclude that they are very similar groups; both groups are starburst galaxies and have strong emission lines.
-            On the other hand, SB5 and SB6 types have the highest internal extinctions; this causes the SED to become more flat at shorter wavelength regions. 
-            The flatness in the UV part of the SED eventually makes these two types of galaxies become more similar to quiescent galaxies rather than other starbursts.
-            Therefore, in the networks, SB5 and SB6 types intend to be grouped close to the early type galaxies.
+            Comparing Fig.~\ref{fig: 1by2T} to Fig.~\ref{fig: 1by3T} shows that the starburst templates are divided into two groups. 
+            Based on the colours between these two groups, we conclude that they are very similar; both groups are starbursting and have strong emission lines.
+            On the other hand, the SB5 and SB6 templates have the highest internal extinctions; this causes the SED to become flatter at shorter wavelengths. 
+            The flatter UV SED makes these two templates more similar to quiescent galaxies than to other starbursts.
+            Therefore, in the networks, SB5 and SB6 types are to be grouped close to the early type galaxy templates.
                 
             \begin{figure}
                 \begin{subfigure}[b]{0.5\textwidth}
@@ -84,21 +84,21 @@
                 \begin{subfigure}[b]{0.5\textwidth}
                      \includegraphics[width=\textwidth]{images0.01/1d/hit_t_1_by_3.png}
                 \end{subfigure}
-                \caption{The same as Fig.~\ref{fig: 1by2T} but this time the figure shows results of training network in $1\times3$~grid. In this network again, 5 of galaxies from K96 model, categorized as quiescent galaxies, and 7 as starbursts. However, this time 2 of galaxies (SB5, and SB6) are separated starbursts groups.}
+                \caption{The same as Fig.~\ref{fig: 1by2T} but showing the results of training network in $1\times3$~grid. In this network again, 5 of the K96 templates are categorized as quiescent and 7 as starbursts. However, this time 2  templates (SB5 and SB6) are separated from the starburst groups.}
                  \label{fig: 1by3T}
             \end{figure}
            
-            We increase the size of the maps gradually until the galaxies are divided into twelve groups (Figs.~\ref{fig: 1by4T} to ~\ref{fig: 1by20T} and ~\ref{fig: 1by22T}).
-            Since there are more nodes in higher grid SOMs, the program%(program? definitely use something else; like the algorithm?) 
-            pays more attention to small differences between each group.
-            Increasing the size of maps means that even the smallest differences between galaxies have to be considered.
-            If the galaxies from K96 have completely distinct SEDs, then a $1\times12$ sized SOM is expected to show 12 different groups each containing a single galaxy.
-            However, in Fig.~\ref{fig: 1by12T}, we see that three of the neurons contain two galaxies and three of them are empty.
-            It is evident that there were no galaxy in K96 sample that can fill those empty neurons.
-            In Fig.~\ref{fig: 1by12T} from left to right galaxies with types B and E, SB3 and SB4, and SB1 and SB2 are the ones groups together. 
+            We increased the size of the maps gradually until the galaxies are divided into twelve groups (Figs.~\ref{fig: 1by4T} to ~\ref{fig: 1by20T} and ~\ref{fig: 1by22T}).
+            Since there are more nodes in higher grid SOMs, the  algorithm %program%(program? definitely use something else; like the algorithm?)  - algorithm is better - PB.
+            pays more attention to small differences between groups.
+ %           Increasing the size of maps means that even the smallest differences between galaxies have to be considered.
+            If the templates from K96 had completely distinct SEDs, then a $1\times12$-sized SOM would be expected to show 12 different groups each containing a single template.
+            However, in Fig.~\ref{fig: 1by12T}, we see that three of the neurons contain two templates and three of them are empty.
+            It is evident that there was no template in the K96 sample that can fill those empty neurons.
+            In Fig.~\ref{fig: 1by12T}, from left to right, templates with types B and E, SB3 and SB4, and SB1 and SB2 are the ones grouped together. 
             The SB3 and SB4 grouping breaks when we increase the size of the network to $1\times15$~(Fig.~\ref{fig: 1by15T}).
-            The SB1 and SB2 galaxies, however, remain in the same neuron until the size of map is increased to $1\times20$~(Fig.~\ref{fig: 1by20T}).
-            The separation between galaxies B and E only happens when the size of the SOM exceeds $1\times22$~(Fig.~\ref{fig: 1by22T}).
+            The SB1 and SB2 templates, however, remain in the same neuron until the size of the map is increased to $1\times20$~(Fig.~\ref{fig: 1by20T}).
+            The separation between templates B and E only happens when the size of the SOM exceeds $1\times22$~(Fig.~\ref{fig: 1by22T}).
         \begin{figure*}
             \begin{subfigure}[b]{\textwidth}
                 \centering
