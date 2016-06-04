@@ -25,7 +25,7 @@
     For each generated network, we compare the results with the K96 categorization.
     We also use these networks to classify the T12 galaxy sample, and compare this classification with that from the supervised networks in T12.
 
-    \subsection{One-dimensional self-organized maps}
+    \subsection{One-dimensional self-organizing maps}
     \label{sec: 1D}
         \subsubsection{TRAINING THE NETWORKS} %PB note: I've changed 'galaxy' to 'template' pretty much everywhere.
         \label{sec: 1Dt}
@@ -310,28 +310,26 @@ Separating galaxies based on SED types also leads to a separation in properties 
         Whether this dependence is real or not, our results here show that using self-organizing maps can separate SEDs of galaxies in such a way that the characteristics of each of these groups are in agreement with the general picture of the galaxy evolution.
         
         
-    \subsection{2D SOMs}
+    \subsection{Two-dimensional self-organizing maps}
     \label{sec: 2D}
-    The 1D networks are great tools to categorize the SEDs and monitor the changes of properties of galaxies in each category.
+    The one-dimensional networks are great tools to categorize the SEDs and monitor the changes of properties of galaxies with category.
     However, each neuron in these networks is limited to be connected to one other neuron in each direction.
-    In 2D network, each neuron can have more than two immediate neighbours, therefore, they provide more complete pictures of relations between each SED type.
-    As described in the Sec.~\ref{sec: method}, one of the main advantages of the SOM is that when the weight of one neuron is adjusted after finding the best matching unit, the weight of the whole map will be changed.
+    In a 2D network, each neuron can have more than two immediate neighbours, providing a more complete pictures of relations between each SED type.
+    As described in Sec.~\ref{sec: method}, one of the main advantages of the SOM is that when the weight of one neuron is adjusted after finding the best matching unit, the weight of the whole map will be changed.
     This quality of the SOMs provides a unique opportunity to analyse 2D networks in two approaches. 
-    At first, as we had in the 1D SOMs, we assumed that all the galaxies must have SEDs similar to any of the 12 templates in Fig.~\ref{fig: k96}.
+    At first, as in the 1D SOMs, we assumed that all the galaxies must have SEDs similar to any of the 12 templates in Fig.~\ref{fig: k96}.
     In this case, we can categorize SEDs of other galaxies based on those 12 types.
-    
-    In the second approach, we trained networks with an assumption of there might be some completely different types of galaxies that we never encountered before.
+   In the second approach, we trained networks with the assumption that there might be completely different types of galaxies not encountered before.
     This approach can be used to trace and recognize the outliers.
-    To be able to execute the second approach, we used {\tiny selforgmap} library in {\tiny MATLAB}.
-    Using {\tiny selforgmap} code, based on the size of a map and the ordering step neighbourhood distance, we can arrange that the data spread all over the SOM or sit close together.
-    The latter case, can be used to identify outliers. 
+    To execute the second approach, we used the {\tiny selforgmap} library in {\tiny MATLAB}.
+    Using the {\tiny selforgmap} code, based on the size of a map and the ordering step neighbourhood distance, we can arrange that the data spread all over the SOM or sit close together, allowing room for outliers.
+%    The latter case, can be used to identify outliers. 
 
-    For getting the best result from both of these ways, we should have SOMs with ``high enough"  neurons to give any new sets of galaxies a chance to find their place in the map.
-    The  ``high enough  neurons" is a vague statement, but as mentioned in the Sec.~\ref{sec: method} the size of SOMs is arbitrary and depends on the size of the input data and the kind of information you need from the SOMs. %PB160427: this is a feature of clustering methods in general. Maybe in the methods section where you talk about the size of maps, you could give some examples of what "what kind of information" might mean.
-    Since the training data (K96 ones) have 12 galaxies, we assumed a SOM with size of $8\times8$~would be a good start.
+    To get the best result from both methods, we should have SOMs with ``enough"  neurons to give any new types of galaxies a chance to find their places in the map.
+    ``Enough  neurons" is a vague statement, but as mentioned in the Sec.~\ref{sec: method} the size of SOMs is arbitrary and depends on the size of the input data and the kind of information needed from the SOMs. %PB160427: this is a feature of clustering methods in general. Maybe in the methods section where you talk about the size of maps, you could give some examples of what "what kind of information" might mean.
+    Since the training dataset (the K96 templates) has 12 members, we assumed a SOM with size of $8\times8$~would be a good start.
     We then increased the size of the SOM to find the highest size suitable for the training sample.
-    We noticed that SOMs with size of $12\times12$~are the maximum possible choice.
-    That is increasing from $12\times12$~neurons, would not change the SOMs by much.
+    We noticed that very few changes occurred after the SOMs were grown to a size greater than $12\times12$, so we used this as the maximum size.
     
     \begin{figure*}
         \begin{subfigure}[b]{0.45\textwidth}
@@ -351,43 +349,41 @@ Separating galaxies based on SED types also leads to a separation in properties 
         \begin{subfigure}[b]{0.45\textwidth}
             \includegraphics[width=\textwidth]{images0.01/2d/hit_v_12_by_self_org_res12.png}
         \end{subfigure}
-        \caption{$12\times12$~2D SOM results. Up: Trained SOMs using K96. For training 2D SOMs two different approaches were considered; Either only 12 types of galaxies are existed (left) or not (right). Down: classifying the galaxies from T12, using the trained networks above them. From the right side one, we can see that there is no outlier in the galaxies from T12, and we can use the left side map as a final clustering results for the T12 galaxies.}
+        \caption{$12\times12$~2D SOM results. Upper pabel: SOMs trained using the K96 templates. For training 2D SOMs two different approaches were considered: either only 12 types of galaxies exist (left) or not (right). Lower panel: classifying the galaxies from T12, using the trained networks shown in the upper panels. From the lower right panel, we can see that there are no outliers in the galaxies from T12, and we can use the map in the lower left panel as a final clustering result for the T12 galaxies.}
         \label{fig: 12by12}
     \end{figure*}
     
-    The upper left part of Fig.~\ref{fig: 12by12} shows the SOM results from the first approach. 
-    Since we considered that SEDs of all galaxies can be categorized using the K96 model, the galaxies took place all over the map.
-    Using this network to categorize any set of SEDs forced the SEDs to be in the same neurons as the K96 ones or the neurons between them.
-    However, all K96 galaxies are in a small side in the upper right map in Fig.~\ref{fig: 12by12}, which provide enough freedom for SED of the galaxies to take place everywhere in the map even if it is way far away from the K96 templates.
+    The upper left panel in Fig.~\ref{fig: 12by12} shows the SOM results from the first approach. 
+    Since we considered that SEDs of all galaxies can be categorized using the K96 templates, the galaxies were placed all over the map.
+    Using this network to categorize any set of SEDs forced the SEDs to be either in the same neurons as the K96 templates or in the neurons between them.
+    In the map shown in the upper right panel in Fig.~\ref{fig: 12by12}, the K96 templates are in a small region. This provides enough freedom for the SEDs of galaxies to be placed everywhere in the map, even far away from the templates.
     
     
     In the upper left part of the map in Fig.~\ref{fig: 12by12}, although galaxies have more ways to be separated, they were separated in two main groups.
-    There is a distinguishable strip of the grey, dark grey and in some cases black colour in the map.
-    This strip is separating early type galaxies with starburst ones.
+    There is a distinguishable strip of grey, dark grey and in some cases black colour in the map:
+    this strip separates early type galaxies from starburst ones.
     The lower map shows that 5 of the neurons on the left side of the strip are full. 
-    These five neurons are the same as the ones on the left hand side of Fig.~\ref{fig: 1by2T} (early type galaxies).
-    The only difference is that here, in this map they have more space to be separated from each other.
-    When we use this network to categorize the SED of galaxies, any galaxy places on the left hand side of the strip is an early type galaxy and any one placed on the right side of the strip is a starburst one.
-    The decision about what type of early type or starburst galaxy, is based upon its relative position to each type in the SOM.
+    These five neurons are the same as the ones on the left hand side of Fig.~\ref{fig: 1by2T} (early type galaxies),
+    the only difference being that in this map they have more space to be separated from each other.
+    When we use this network to categorize the SED of galaxies, any galaxy placed on the left hand side of the strip is an early type galaxy and any one placed on the right side of the strip is a starburst one.
+    The decision about what sub-type of early type or starburst galaxy is based upon its relative position to each type in the SOM.
     
-    Same as ther other map, in the upper right map in Fig.~\ref{fig: 12by12}, galaxies generally are divided into two main groups.
-    The border between the early type galaxies and the starburst ones is black strips in the middle of the upper map, which end up with bright grey colour at the bottom of the map in the fifth neuron.
+    As in the other map, in the upper right panel of Fig.~\ref{fig: 12by12}, galaxies are generally divided into two main groups.
+    The border between the early type galaxies and the starburst ones is the black strips in the middle of the map,  ending with the bright grey colour at the bottom of the map in the fifth neuron.
     In this network, neurons in the right side of the strip represent the early type galaxies and the neurons in the left side represent the starburst ones. 
-    When categorizing a new set of SEDs, if the new SEDs are similar to K96 sample all of them will be placed in the bottom of the map, but if there are different type of the galaxies, they would sit in any other neurons in the map.
-    In large datasets, one can easily used this network to figure out whether there is any of new type of SEDs (or any outliers) in the datasets or not. 
-    Since the networks are already available, this procedure should be really fast and easy for big datasets.
+    When categorizing a new set of SEDs, if the new SEDs are similar to the K96 template all of them will be placed in the bottom of the map, but if there are different type of galaxies, they would sit in any other neurons in the map.
+    In large datasets, one can easily use this network to figure out whether there is any of new type of SEDs (or any outliers) in the datasets. 
+    Since the networks are already available, this procedure should be quick and easy for big datasets.
     
-    We use both 2D networks to categorize the T12 galaxies and the results are shown in lower maps in Fig.~\ref{fig: 12by12}.
-    Since in the lower right map in Fig.~\ref{fig: 12by12} all galaxies are placed in the bottom part of the map, we can conclude that there are no outliers or very different type of the SEDs from K96 templates in T12 samples.
-    The lower left map of Fig.~\ref{fig: 12by12} represents the T12 galaxies categorization based on the network in the upper left of Fig.~\ref{fig: 12by12}. 
+    We used both 2D networks to categorize the T12 galaxies and the results are shown in the lower panels of Fig.~\ref{fig: 12by12}.
+    In the lower right map in Fig.~\ref{fig: 12by12}, all galaxies are placed in the bottom part of the map and we can conclude that in the T12 sample there are no outliers or SEDs very different from  the K96 templates.
+    The lower left map of Fig.~\ref{fig: 12by12} shows the T12 galaxies categorized based on the network in the upper left of Fig.~\ref{fig: 12by12}. 
     Comparing this categorization with the 1D one from Fig.~\ref{fig: 1by22V}, we can see that only 23 galaxies correspond exactly to K96 types.
-    Using 2D maps, we categorized galaxies in more intermediate type than 1D ones.
-    In both lower maps in Fig.~\ref{fig: 12by12}, most galaxies are in the early type side of the SOM, which was predictable from the results in the Sec.\ref{sec: 1Dv}.
-    Note that, from this sample we do not conclude that there are more early type galaxies in higher red-shifts.
-    We simply indicate that in this sample, we have more early type galaxies, and the reason is the selection effect from the fact that those galaxies had more reliable redshift estimation.
+    Using 2D maps results in categorizing galaxies into more intermediate type than in 1D maps.
+    In both lower maps in Fig.~\ref{fig: 12by12}, most galaxies are in the early type side of the SOM, which was predictable from the results in Sec.\ref{sec: 1Dv}. This does not imply that in general there are more early type galaxies at higher red-shifts but rather is a selection effect from the fact that those galaxies had more reliable redshift estimates.
     
-    Although for the fluency of the paper, we first talked about 1D networks and continued to 2D networks we suggest, in case of using the SOMs to categorize the SED of the galaxies or to explore any related data, the first step to be checking the data using networks similar to the upper left map in Fig.~\ref{fig: 12by12}.
-    In this case, all the outliers or specific cases would be identified and removed from the sample. 
+    Although for ease of presentation this paper first discusses 1D networks and continues to 2D networks, we suggest that users of SOMs for galaxy SED classification should use 2D networks first. These can be used as a first step with networks similar to the upper left map in Fig.~\ref{fig: 12by12} to identify outliers in the sample.
+%    In this case, all the outliers or specific cases would be identified and removed from the sample. 
 
     
     % \subsection{Caveat}
