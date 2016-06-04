@@ -8,8 +8,8 @@
 \section{RESULTS and DISCUSSION}
 \label{sec: result}
 
-    In this section we show the results of the neural networks that are trained using K96 data.
-    Training with K96 templates results in networks that have regions with known morphological types. 
+    In this section we show the results of the neural networks trained using the K96 template spectra.
+    Training with K96 templates results in networks that have regions corresponding to galaxies of known morphological type. 
     The trained networks can then be used to categorize other galaxies.
     %In following we show how we trained data and used galaxies from T12 to show how the clustering using trained networks works.
     
@@ -20,9 +20,9 @@
     We create the final SOMs with initial values for number of iterations in ordering phase, ordering phase learning factor, tuning phase learning factor, and tuning phase neighbourhood distance of 1000, 0.9, 0.02, and 1, respectively.
    
     We started our analysis by creating 1D SOMs. 
-    First, we created SOMs with only two neurons ($1\times2$ map), and then we increase the number of neurons one at a time in the 1D case (Sec.~\ref{sec: 1D}).
-    We generate 2D networks (Sec.~\ref{sec: 2D}), and once again we start with the smallest number of neurons possible (4 neurons in $2\times2$ map), and then increase them to 144 in a $12\times12$ map.    
-    For each generated network, we compare the results with K96 categorization.
+    First, we created SOMs with only two neurons ($1\times2$ map), and then increased the number of neurons one at a time in the 1D case (Sec.~\ref{sec: 1D}).
+    We generate 2D networks (Sec.~\ref{sec: 2D}),  again starting with the smallest possible number of neurons (4 neurons in a $2\times2$ map), increasing to 144 in a $12\times12$ map.    
+    For each generated network, we compare the results with the K96 categorization.
     We also use these networks to classify the T12 galaxy sample, and compare this classification with that from the supervised networks in T12.
 
     \subsection{One-dimensional self-organized maps}
@@ -125,17 +125,17 @@
             The fact that the templates need to have at least 22 different neurons to be divided into 12 groups shows that the differences between SB1 and SB2, and B and E, templates are very small.
             Because of their similarities, they tend to stay in the same group until the network becomes big enough to make attention to the smallest particularity.
            
-        \subsubsection{CLASSIFYING SAMPLE OF GALAXIES}
+        \subsubsection{Classifying the galaxy sample}
          \label{sec: 1Dv}
-            Once the networks are trained, as discussed in Sec.~\ref{sec: 1Dt}, we used them to classifying a sample 142 galaxies from T12.
-            Upper plot in Fig.~\ref{fig: 1by2V} shows the result of this classification of the T12 galaxies using the $1\times2$~network from Fig.~\ref{fig: 1by2T}.
-            It shows that 80 of the galaxies have SEDs similar to those of the early type galaxies and the SEDs of the rest are similar to the starburst galaxies.
-            The lower plot shows the average SED of the galaxies in each node. 
-            The left plot shows the average SED of 80 galaxies that were classified as an early type galaxy. 
-            These galaxies are similar to the ones in the left node in the upper plot in Fig.~\ref{fig: 1by2T}.
-            The plots clearly show the 4000\AA~break in the SEDs, which is one of the signatures of early type galaxies.
-            The strong emission lines in the figure could be from galaxies with similar SED to Sa galaxies, but with stronger emission lines.
-            The right plot in the lower part of Fig.~\ref{fig: 1by2V} shows strong emission lines and high emissions in the lower wavelengths, which are indications of high SFR in the galaxies. 
+            After training the networks as discussed in Sec.~\ref{sec: 1Dt}, we used them to classify the fitted SEDs of the sample of 142 galaxies from T12.
+            The upper panel in Fig.~\ref{fig: 1by2V} shows the result of this classification using the $1\times2$~network from Fig.~\ref{fig: 1by2T}.
+            Eighty of the galaxies have SEDs similar to those of the early type galaxies and the SEDs of the rest are similar to the starburst galaxies.
+            %The lower panels show the average SED of the galaxies in each node. 
+            The lower left panel shows the average SED of the 80 galaxies that were classified as early type 
+            These galaxies are similar to the ones in the left node in the upper panel of Fig.~\ref{fig: 1by2T}:
+            the SEDs clearly show the 4000\AA~break, one of the signatures of early type galaxies.
+            The H$\alpha$ emission in the spectrum could be from galaxies with similar SEDs to Sa galaxies, but with stronger emission lines.
+            The average SED in the lower right panel of Fig.~\ref{fig: 1by2V} shows strong emission lines and bright ultraviolet continuum, indications of a high star formation rate.
             \begin{figure}
                 \begin{subfigure}[b]{0.5\textwidth}
                     \centering
@@ -149,18 +149,17 @@
                      %\caption{$1\times2$ hits map}
                      %\label{fig: 1by3Thits}
                 \end{subfigure}
-                \caption{Classifying galaxies from T12, based on their SEDs using $1\times2$~networks that were trained from 12 galaxies in Fig.~\ref{fig: 1by2T}. Up: the same as other hit maps, numbers in each node represents the number of galaxies that belong to that group. In this case 80 means that 80 of the 142 galaxies classify as the early type groups while the 62 of the 142 galaxies categorize to the starburst galaxies. Down: Average SED of the SEDs of the galaxies in each group. The left plot shows the average SED of the 80 galaxies (early type ones), and the right plot shows the average SED of the SEDs of 62 galaxies (the starburst ones).}
+                \caption{Classification of fitted galaxy SEDs from T12 using the $1\times2$~networks trained from the K96 templates (Fig.~\ref{fig: 1by2T}). Upper panel: a hit map with the number in each node representing the number of galaxies belonging to that group. In this case 80 means that 80 of the 142 SEDs are classified into the early type group while the 62 of the 142 SEDs are categorized as starburst galaxies. Lower panel: Average SED of the galaxies in each group, early-type on the left and starburst on the right.}
                 \label{fig: 1by2V}
             \end{figure}          
             
-            Since in this network galaxies were forced to be divided into a maximum of two groups, what predominantly decides which group the galaxy belongs to is the strongest feature in its SED.
-            The galaxies with a weak 4000\AA~break but strong emission lines and increase of the flux in the lower wavelengths categorized as starbursts while galaxies with strong 4000\AA~break, but high emission lines categorized as the early type.
+            Since in this network galaxies were forced to be divided into a maximum of two groups, the strongest feature in a galaxy's SED predominantly decides which group the galaxy belongs to.
+            Galaxies with a weak 4000\AA~break but strong emission lines and ultraviolet upturn are categorized as starbursts while galaxies with a strong 4000\AA~break are categorized as early type.
             Increasing the size of the SOM helps solve the problem of the galaxies which have features that are common in both groups.
             
-            Fig.~\ref{fig: 1by3V} presents the result of classifying the SED of the galaxies using the $1\times3$~network (from Fig.~\ref{fig: 1by2T}). 
-            In the upper plot of this figure we see that 66 of the galaxies belong to the early type group, and 47 belong to starburst galaxies. 
-            29 of the galaxies, however, are similar to starbursts in some, but not all, of their features. 
-            These groups of galaxies have strong emission lines and high flux in shorter wavelengths, but they also have a strong 4000\AA~break, which makes them cluster closer to the early type galaxies (middle plot in the lower part of Fig.~\ref{fig: 1by2V}).
+            Fig.~\ref{fig: 1by3V} presents the result of classifying the SED of the galaxies using the $1\times3$~network (from Fig.~\ref{fig: 1by2T}): 66 of the galaxies belong to the early type group, and 47 belong to the starburst group. 
+            However, 29 of the galaxies are similar to starbursts in some, but not all, of their features. 
+            Galaxies in this group have strong emission lines and are ultraviolet-bright, but they also have a strong 4000\AA~break, which makes them cluster closer to the early type galaxies (middle panel in the lower part of Fig.~\ref{fig: 1by2V}).
 
             \begin{figure}
                 \begin{subfigure}[b]{0.5\textwidth}
@@ -175,13 +174,13 @@
                      %\caption{$1\times2$ hits map}
                      %\label{fig: 1by3Thits}
                 \end{subfigure}
-                \caption{Same as Fig.~\ref{fig: 1by2V}, but in this figure, we used network with size of $1\times3$ (Fig.~\ref{fig: 1by3T}) to classify the sample galaxies.}
+                \caption{Same as Fig.~\ref{fig: 1by2V}, but in this figure, we used a network with size of $1\times3$ (Fig.~\ref{fig: 1by3T}) to classify the sample galaxies.}
                 \label{fig: 1by3V}
             \end{figure}       
             
             In Fig.~\ref{fig: 1by22V}, we use the $1\times22$~network to classify the sample galaxies.
-            As mentioned in the Sec.~\ref{sec: 1Dt}, in this network size we observed the first separation of the K96 galaxies into 12 different neurons.
-            Same as Figs.~\ref{fig: 1by2V} and ~\ref{fig: 1by3V}, upper plot of Fig.~\ref{fig: 1by22V} shows the number of galaxies (out of the 142) belong in each neuron in the $1\times22$ SOM.
+            As mentioned in Sec.~\ref{sec: 1Dt}, in this network size we observed the first separation of the K96 galaxies into 12 different neurons.
+           As in Figs.~\ref{fig: 1by2V} and ~\ref{fig: 1by3V}, the upper panel of Fig.~\ref{fig: 1by22V} shows the number of galaxies (out of the 142) belonging to each neuron in the $1\times22$ SOM.
             \begin{figure*}
                 \begin{subfigure}[b]{0.9\textwidth}
                     \centering
@@ -195,33 +194,34 @@
                      %\caption{$1\times2$ hits map}
                      %\label{fig: 1by3Thits}
                 \end{subfigure}
-                \caption{Same as Fig.~\ref{fig: 1by2V}, but in this figure, we used a network with size of $1\times22$ (Fig.~\ref{fig: 1by22T}) to classify the sample galaxies. In the average SED of each neuron, we can clearly see the changes from early type galaxies in the starburst ones. 4000\AA~ break reduces from left to right and emission lines increase.}
+                \caption{Same as Fig.~\ref{fig: 1by2V}, but in this figure, we used a network with size of $1\times22$ (Fig.~\ref{fig: 1by22T}) to classify the sample galaxies. In the average SED of each neuron, we can clearly see the changes from early type galaxies to the starburst ones. The 4000\AA~ break weakens from left to right and the emission line strengths increase.}
                 \label{fig: 1by22V}
             \end{figure*}
-            The lower plot of the figure presents the average SED of the galaxies in each neuron.
-            However, since galaxies had more space to separate, some of the neurons are left empty.
-            Thus, instead of having 22 average SED plots in the lower part of Fig.~\ref{fig: 1by22V}, we only have 12.
+            The lower panels present the average SED of the galaxies in each neuron.
+            Since galaxies had more space to separate, some of the neurons are left empty.
+            Thus, instead of having 22 average SED plots in the lower part of Fig.~\ref{fig: 1by22V}, there are only 12.
             
-            By comparing the upper part of Fig.~\ref{fig: 1by22V} with the lower part of Fig.~\ref{fig: 1by22T}, we can see that the occupied neurons are not necessarily the same.
-            If a cluster from T12 galaxies fills the same neurons as the K96 galaxies ones, we can conclude that SEDs of galaxies in the cluster are very similar to those of the K96 galaxies.
-            Otherwise, we can conclude that SEDs of galaxies in the cluster are similar to two of those in K96 sample.
-            For the later case, the colours establish that galaxies are more similar to which ones in the K96 sample.
+            Comparing the upper panel of Fig.~\ref{fig: 1by22V} with the lower panel of Fig.~\ref{fig: 1by22T} shows that the occupied neurons are not necessarily the same.
+            If a cluster from the T12 sample fills the same neuron as a K96 template, we can conclude that SEDs of galaxies in the cluster are very similar to those of the template.
+            Otherwise, we can conclude that the SEDs of galaxies in the cluster are similar to two of the K96 templates.
+            For the latter case, the colours establish which template has greater similarity to the T12 cluster.
             
-            It can be seen that the first two neurons in the upper plot in Fig.~\ref{fig: 1by22V} are empty, while these neurons were occupied by galaxies B and E in the trained network.
-            We therefore conclude that there are no galaxies with specifications similar to that of the type B or E in the T12 sample.
-            There are 3 galaxies in the third neuron, which shows these 3 galaxies are similar to the S0 type. 
-            18 of the galaxies are on the fifth neurons and similar to the Sa type, while the 7 galaxies in the fourth neurons have SEDs similar to both S0 and Sa galaxies.
+            The first two neurons in the upper plot in Fig.~\ref{fig: 1by22V} are empty, while these neurons were occupied by galaxies B and E in the trained network.
+            We therefore conclude that there are no galaxies in the T12 sample with SEDs similar to that of type B or E.
+            There are 3 galaxies in the third neuron, similar to the S0 type. 
+            18 of the galaxies are jn the fifth neurons and similar to the Sa type, while the 7 galaxies in the fourth neurons have SEDs similar to both S0 and Sa galaxies.
             There is one Sb type galaxy and 15 galaxies with SEDs similar to both Sa and Sb type galaxies.
             The following two neurons (eighth and ninth neurons from the left) are on the edge of the early type and starburst galaxies.
-            In the upper plot in the  Fig.~\ref{fig: 1by22T}, the colour between these two neurons are black, which shows that these two are very different.
-            Therefore, 24 galaxies in the eighth neurons have similar SEDs to Sb type galaxies, and SEDs of the 14 galaxies in the ninth neurons are similar to the SB6 galaxies.
-            The far right neurons in the network belongs to galaxies with SED comparable to type SB1 and SB2.
+            In the upper panel in Fig.~\ref{fig: 1by22T}, the colour between these two neurons is black, which shows that these two are very different.
+            Therefore, 24 galaxies in the eighth neurons have similar SEDs to Sb type galaxies, and the SEDs of the 14 galaxies in the ninth neuron are similar to the SB6 galaxies.
+            The far right neurons in the network belong to galaxies with SED comparable to types SB1 and SB2.
             
-            In general, 56 galaxies correspond exactly to K96 types and the other 86 are placed between the initial 12 suggestions.
-            As T12 mentioned, part of the reason we could not classify all the galaxies using the K96 model is that the model was constructed from co-adding 12 spectra of the 70 galaxies.
+            In general, 56 galaxies correspond exactly to K96 templates and the other 86 are placed between the initial 12 suggestions.
+            As T12 mentioned, part of the reason we could not classify all the galaxies using the K96 model is that the model was constructed from co-adding spectra of 70 galaxies.
             In this small sample, it is quite possible that the best SEDs do not match any model perfectly and the original classifications have high uncertainties.
             
-            On the other hand, the other methods e.g. $\chi^2$ fitting, trained neural network of fitting SEDs are limited to models, and the results are always reported with uncertainties.
+            %PB20160604: is this paragraph really necessary?
+            With other methods (e.g. $\chi^2$ fitting), trained neural network fitting of SEDs is limited to models and the results are always reported with uncertainties.
             However, with SOM, we have the freedom to categorize galaxies in intermediate groups.
             Therefore, if the SED of galaxies do not match completely with any of the model SEDs in Fig.~\ref{fig: k96}, they can be categorized as a SED with similarity to two or more of the groups.
 
