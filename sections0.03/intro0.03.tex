@@ -14,7 +14,7 @@ Considering the main features of SEDs, galaxies can be categorized into two main
 Each group has its own characteristic features and can in turn be divided into many sub-branches.
 
 %%Creating templates and NIR_UV templates
-Several attempts have been made to create a complete set of templates for categorizing the spectral type of galaxies using data from nearby galaxies~(e.g.\citealt{Kinney93}, \citealt{Kinney96}, hereafter K96, \citealt{Bershady00}, \citealt{Mannucci01}). 
+Several attempts have been made to create a complete set of templates for categorizing the spectral type of galaxies using data from nearby galaxies~(e.g.\citealt{Kinney93}, \citealt{Kinney96}, hereafter \citealias{Kinney96}, \citealt{Bershady00}, \citealt{Mannucci01}). 
 Based on their usage, these templates are restricted to certain wavelengths.
 In near-infrared (NIR) to ultraviolet (UV) wavelengths (the region where energy output of stars peaks), the SED contains information about the main physical properties of galaxies, e.g., age, star formation rate (SFR), stellar mass, metallicity, and interstellar medium.
 
@@ -62,21 +62,21 @@ Later, \citet{Meusinger16} used these SOMs and updated data from SDSS and other 
 The other application of SOMs is to find outliers or errors in the data.
 \citet{Fustes13} produced a package based on SOM to classify spectra from the GAIA survey that were previously classified as ``unknown'' by the SDSS pipeline. This package can recognize an astronomical object from artificial errors, and then classify the object based on its spectrum. %PB20160603: I don't know what you mean by "artificial errors"
 
-%What T12 did
-~\citet[][hereafter T12]{Hossein12} classified SEDs of a sample of 142 galaxies using a supervised neural network method, based on the spectral template presented by K96.
+%What \citealias{Hossein12} did
+~\citet[][hereafter \citealias{Hossein12}]{Hossein12} classified SEDs of a sample of 142 galaxies using a supervised neural network method, based on the spectral template presented by \citealias{Kinney96}.
 With the supervised method, they could only classify SED of 105 out of the 142 galaxies.
-The SED of the 37 galaxies from their samples could not be matched with any of those in the K96 templates. 
-In order to classify the remaining 37 galaxies, they combined spectrum of the K96 templates.
-%This procedure showed that, not a single type of galaxies in K96 template could describe the SED of any of those 37 galaxies. %PB20160603: repeats previous sentence
-T12 also showed that there are tight correlations between physical properties of galaxies, and these correlations might be different for each type of galaxy.
+The SED of the 37 galaxies from their samples could not be matched with any of those in the \citealias{Kinney96} templates. 
+In order to classify the remaining 37 galaxies, they combined spectrum of the \citealias{Kinney96} templates.
+%This procedure showed that, not a single type of galaxies in \citealias{Kinney96} template could describe the SED of any of those 37 galaxies. %PB20160603: repeats previous sentence
+\citealias{Hossein12} also showed that there are tight correlations between physical properties of galaxies, and these correlations might be different for each type of galaxy.
 
 %What we did
-In this paper, we compare supervised and unsupervised methods of galaxy spectral classification directly, using exactly the same data as T12.  
+In this paper, we compare supervised and unsupervised methods of galaxy spectral classification directly, using exactly the same data as \citealias{Hossein12}.  
 Our hypothesis was that since a self-organizing map has the freedom to classify objects in between known classes, it could be applied to this data 
 to find the best SED class for the 37 galaxies that could not be clasified by the supervised method.
-First, we train self-organizing maps using the K96 spectral templates and compare our classification with the K96 classification.
-Then, we use the trained network to classify the SEDs of 142 galaxies with $0.5 < z < 1$ from T12. 
-As in T12, we examine the averaged properties of the new galaxy groups and compare them with previous work.
+First, we train self-organizing maps using the \citealias{Kinney96} spectral templates and compare our classification with the \citealias{Kinney96} classification.
+Then, we use the trained network to classify the SEDs of 142 galaxies with $0.5 < z < 1$ from \citealias{Hossein12}. 
+As in \citealias{Hossein12}, we examine the averaged properties of the new galaxy groups and compare them with previous work.
 In Section $\S$~\ref{sec: data}, we present the data that we use to train and test our networks. 
 We describe the SOM methods in Section $\S$~\ref{sec: method}. 
 The results of the SED classifications and a comparison with previous studies are presented in Section $\S$~\ref{sec: result}. 
