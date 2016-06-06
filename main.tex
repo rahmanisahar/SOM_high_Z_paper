@@ -59,19 +59,22 @@
 \newcommand \aap {APP} %:American Academy of Pediatrics
 \newcommand \apjl {ApJL} %:The Astrophysical Journal Letters
 
-%\defcitealias{Hossein12}{T12}
+%\defcitealias{Hossein12}{\citealias{Hossein12}}
 
 \begin{document}
 % TITLE
 \defcitealias{Hossein12}{T12}
+\defcitealias{Kinney96}{K96}
+\defcitealias{Noll}{K96}
 
 \title[SOM: classifying high $Z$ galaxies]{Clustering galaxies at 0.5 < $z$ < 1: an unsupervised approach} %PB160426: suggest "Clustering galaxy spectra at $0.5<z<1$: an unsupervised approach" -- I think if you say "clustering galaxies" people will think of spatial clustering
 \author{rahmani.sahar }
 \date{\today}
-\author[S.~Rahmani, H.~Teimoorinia and P.~Barmby]{S.~Rahmani$^{1}$\thanks{E-mail:
-srahma49@uwo.ca}, H.~Teimoorinia$^{2}$, P.~Barmby$^{1}$\\
+\author[S.~Rahmani, H.~Teimoorinia and P.~Barmby]{S.~Rahmani$^{1,2}$\thanks{E-mail:
+srahma49@uwo.ca}, H.~Teimoorinia$^{2}$, P.~Barmby$^{1,3}$\\
 $^{1}$Department of Physics $\&$ Astronomy, Western University, London, ON N6A 3K7, Canada\\
-$^{2}$Department of Physics $\&$ Astronomy, University of Victoria, Finnerty Road, Victoria, British Columbia, V8P 1A1, Canada}
+$^{2}$Department of Physics $\&$ Astronomy, University of Victoria, Finnerty Road, Victoria, British Columbia, V8P 1A1, Canada\\
+$^{3}$Center for Planetary Science \& Exploration, Western University}
 \maketitle
 
 %----------------------------------------------------------------------------------------
@@ -83,17 +86,21 @@ $^{2}$Department of Physics $\&$ Astronomy, University of Victoria, Finnerty Roa
 %----------------------------------------------------------------------------------------
 
 \begin{abstract}%% (Must be 250 Words)
-Spectral energy distribution (SED) of a galaxy contains information about the physical properties of it.
-Classifying SEDs using temples helps understand the nature of the source of SEDs.
-However, available SED templates are limited, which makes finding type of SEDs tricky.
-Most of the current classifying methods cannot classify SEDs outside the ones in the template, and will fail in the special cases.
-In this paper, we introduced a new method of clustering high red-shift galaxies, based on their spectral energy distributions (SED)s.
-SOM is a type of the artificial neural networks, which mostly is used to identify subgroups in a sample.
-We utilized an unsupervised self-organizing map (SOM) as a method to train networks using templates of SEDs ranging from far ultraviolet (FUV) to near infrared (NIR) wavelengths.
-Then, we used the trained networks to cluster a sample of 142 galaxies with 0.5 < $z$ < 1.
-Since, some the SEDs of these galaxies are not exactly the same as the ones in the template, the previous attempts to classifying SEDs of this group of galaxies were not completely successful. 
-By using SOM, we classify those special SEDs and show that they have similarities to two more of the template ones.
-We investigated the vapidity of our results, by studying the SEDs, and some physical properties of the galaxies that are averaged over galaxies in each neuron the SOMs.
+%PB20160603: are we really classifying SEDs or spectra? Need to think about this.
+The spectral energy distribution (SED) of a galaxy contains information about its physical properties.
+Classifying SEDs using templates helps elucidate the nature of a galaxy's energy sources.
+However, available templates are limited, which can complicate SED classification.
+Most current classification methods cannot classify SEDs outside the range of templates, and will fail in special cases.
+In this paper, we introduce a new method of classifying the spectral
+energy distributions of high redshift galaxies: the self-organizing map.
+Self-organizing maps are a type of artificial neural network, mostly used to identify subgroups in a sample.
+We trained an unsupervised self-organizing map networks using a set of
+galaxy SED templates covering the wavelength range from far ultraviolet to near infrared.
+The trained networks were used to cluster the SEDs of a sample of 142 galaxies with $0.5 < z < 1$.
+Compared to previous attempts to classify this sample, the
+self-organizing map approach was able to better classify the SEDs with
+similarities to more than one template.
+The averaged SEDs and physical properties of the galaxies in each neuron of the self-organizing maps are consistent with other results on galaxy evolution.
  
 
 
@@ -168,47 +175,49 @@ We investigated the vapidity of our results, by studying the SEDs, and some phys
 % Some small differences could easily be the result of atmosphere fluctuation or other instrumental or observational problems. 
 % for using SOM method, one should be careful about these small differences and consider in order to separate two groups from each other, how much details do they need to pay attention to.
 
-% We used SOMs to classify SEDs of the galaxies with known morphological type from K96, and created networks with different usages.
+% We used SOMs to classify SEDs of the galaxies with known morphological type from \citealias{Kinney96}, and created networks with different usages.
 % By varying size of networks, we found the relative similarity or dissimilarity between each type of galaxies.
-% since we needed a 1D network with 22 neurons to be able to separate all the 12 types of galaxies from K96 for the first time, we concluded that types B and E, and types SB1 and SB2 galaxies are really similar to each other.
+% since we needed a 1D network with 22 neurons to be able to separate all the 12 types of galaxies from \citealias{Kinney96} for the first time, we concluded that types B and E, and types SB1 and SB2 galaxies are really similar to each other.
 % We also showed that networks generated with SOM method can be used to easily identified new type of the galaxies or outlier, in large surveys.
 
-% The sample of 142 high red-shift galaxies from T12 was used to test the trained networks.
+% The sample of 142 high red-shift galaxies from \citealias{Hossein12} was used to test the trained networks.
 % One of the main criteria to chose a test sample is that the test sample must have fluxes in exactly the same wavelengths of the training sample.
 % The test results showed that using SOMs can lead us to identify galaxies with SEDs similar to two or more morphological types but not exactly the same as one of them.
 % A freedom of having in between types is one of the main differences between supervised and unsupervised ANNs.
-% T12  have used a supervised training method, and trained networks with K96 SED template.
+% \citealias{Hossein12}  have used a supervised training method, and trained networks with \citealias{Kinney96} SED template.
 % Same as this project, they tried to classify the sample of 142 galaxies using the trained networks.
 % However, they could not classify 37 out of 142 galaxies in the sample.
-% The unsupervised method that we used in this project, gave us the ability to classify galaxies either as one of the morphological types that have been introduced by K96 or between those types. 
+% The unsupervised method that we used in this project, gave us the ability to classify galaxies either as one of the morphological types that have been introduced by \citealias{Kinney96} or between those types. 
 % Therefore, we classified all 142 galaxies of our test sample.
 % We plotted the properties of the galaxies in test sample using new classification and found a tighter correlations between mean values of age, sSFR, stellar mass, and extinction in FUV band of the galaxies in new classifications than previous studies.
 % We also showed he properties of the galaxies in each groups is in good agreement between their morphological types.
 
-Self-organizing maps can be used to classify celestial objects (e.g. stars, quasars, spectra of galaxies, light curves, etc.).
-We showed that we can create various networks with different sizes/dimensions based on the information we need from the data. 
-If a broad and general classification is required, networks can have one dimension with a few number of neurons.
+Self-organizing maps can be used to classify celestial objects (e.g. stars, quasars, spectra of galaxies, light curves, etc.)
+Galaxy spectra can be classified in various networks with different sizes/dimensions based on the information needed from the data. 
+If a broad and general classification is required, networks can have one dimension with a few neurons.
 If one needs more detailed classifications, a higher number of neurons should be used.
-Since the SOM codes does not include the uncertainty of input parameter, sometimes too much attention to details can cause problems in classifications. 
-Some small differences could easily be the result of atmosphere fluctuation or other instrumental or observational problems. 
-When using SOM method, one should be careful about these small differences and consider them in order to separate two groups from each other.
+Since self-organizing maps do not include the uncertainty of input parameters, sometimes too much attention to detail can cause problems in classifications. 
+%Some small differences could easily be the result of atmosphere fluctuation or other instrumental or observational problems. 
+When using the SOM method, one should consider whether small differences between objects are physically meaningful when separating two groups from each other.
 
-We used SOMs to classify SEDs of the galaxies with known morphological type from K96, and created networks with different usages.
-By varying the size of the networks, we found the relative similarity or dissimilarity between each type of galaxies.
-Since we needed a 1D network with 22 neurons to be able to separate all 12 types of galaxies from K96 for the first time, we concluded that types B and E, and types SB1 and SB2 galaxies are very similar to each other.
-We also showed that networks generated with SOM method can be used to easily identified new type of the galaxies or outliers in large surveys.
+We used SOMs to classify the template spectra of \citealias{Kinney96}, made from galaxies with known morphological type, and created networks with different uses.
+By varying the size of the networks, we found the relative similarity between the \citealias{Kinney96} template classes.
+A one-dimensional network with 22 neurons was needed in order to
+separate all 12 \citealias{Kinney96} spectra; we concluded that \citealias{Kinney96} types B and E, and types SB1 and SB2, are very similar to each other.
+We also showed that networks generated with the SOM method can be used to easily identify new types of spectra in large surveys.
 
-A sample of 142 high red-shift galaxies from T12 was used to test the trained networks.
-One of the main criteria to chose a test sample is that the test sample must have fluxes in exactly the same wavelengths of the training sample.
-The test results showed that using SOMs can lead us to identify galaxies with SEDs similar to two or more morphological types but not exactly the same as one of them.
-The freedom of having in-between types is one of the main differences between supervised and unsupervised ANNs.
-T12 have used a supervised training method, and trained networks with K96 SED template.
-Same as this work, they tried to classify the sample of 142 galaxies using the trained networks.
-However, they could not classify 37 out of 142 galaxies in the sample.
-The unsupervised method, which we have used in this project, gave us the ability to classify galaxies either as one of the morphological types that have been introduced by K96 or in between those types. 
-Therefore, we classified all 142 galaxies of our test sample.
-We plotted the properties of the galaxies in test sample using the new classification and found a tighter correlations between mean values of age, sSFR, stellar mass, and extinction in FUV band of the galaxies in new classifications than previous studies.
-We also showed that the properties of the galaxies in each groups is in good agreement between their morphological types.
+A sample of 142 high red-shift galaxies from \citealias{Hossein12} was used to test the trained networks.
+%One of the main criteria to choose a test sample is that the test sample must have fluxes in exactly the same wavelengths of the training sample.
+The test results showed that using SOMs can allow identification of galaxies with SEDs similar to two or more morphological types.% but not exactly the same as one of them.
+The freedom of having in-between types is one of the main differences between supervised and unsupervised artificial neural networks.
+\citealias{Hossein12} used a supervised training method to train networks with \citealias{Kinney96} SED templates and classify the same sample of 142 galaxy spectra;
+however, they could not classify 37 out of 142 spectra.
+The unsupervised method used in this project was able to classify  all 142 spectra in the sample
+as belonging to one of the morphological types introduced by \citealias{Kinney96} or a class in between those types.
+
+The properties of the galaxies in the test sample using the new
+classification were found to more tightly correlate in mean values of age, specific star formation rate, stellar mass, and far-UV extinction than in previous studies. 
+The properties of the galaxies in each group are in good agreement with their morphological types.
 
 \section*{ACKNOWLEDGMENTS}
 S.R. and P.B. acknowledge research support from the Natural Sciences and Engineering Research Council of Canada. 
