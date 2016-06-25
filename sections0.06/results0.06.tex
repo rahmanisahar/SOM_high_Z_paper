@@ -15,7 +15,7 @@
     In order to find a sufficient size for the trained networks, we created maps with sizes ranging from $1\times2$ to $50\times50$.
     Varying the grid size of the maps helped us to monitor whether tighter grouping of galaxies happens due to their similar properties or a lack of map space to separate them.
     Based on the size of the data and SOM results, we found the optimum grid size to be $1\times22$ and $12\times12$ in 1D and 2D maps, respectively. 
-    For each grid we created different SOMs with different learning factors, neighbourhood distances, and number of iterations to find the most suitable values for our dataset, which are listed in Section~\ref{sec: create_som}. %%%Sr220616: changed the optimum to the most suitable values ... . moved the initial values to section 3.2
+    For each grid we created different SOMs with different learning factors, neighbourhood distances, and number of iterations to find the most suitable values for our dataset, which are listed in Section~\ref{sec: create_som}. 
     
     We started our analysis by creating 1D SOMs. 
     First, we created SOMs with only two neurons ($1\times2$ map), and then increased the number of neurons one at a time in the 1D case (Sec.~\ref{sec: 1D}).
@@ -125,7 +125,6 @@
             After training the networks as discussed in Sec.~\ref{sec: 1Dt}, we used them to classify the fitted SEDs of the sample of 142 galaxies from \citetalias{Hossein12}.
             The upper panel in Fig.~\ref{fig: 1by2V} shows the result of this classification using the $1\times2$~network from Fig.~\ref{fig: 1by2T}.
             Eighty of the galaxies have SEDs similar to those of the early type galaxies and the SEDs of the rest are similar to the starburst galaxies.
-            %The lower panels show the average SED of the galaxies in each node. 
             The lower left panel shows the average SED of the 80 galaxies that were classified as quiescent. 
             These galaxies are similar to the ones in the left node in the upper panel of Fig.~\ref{fig: 1by2T}:
             the SEDs clearly show the 4000\AA~break, one of the signatures of quiescent galaxies.
@@ -215,23 +214,15 @@
             As \citetalias{Hossein12} mentioned, part of the reason we could not classify all the galaxies using the \citetalias{Kinney96} model is that the model was constructed from co-adding spectra of 70 galaxies.
             In this small sample, it is quite possible that the best SEDs do not match any model perfectly and the original classifications have high uncertainties.
             
-            %PB20160604: is this paragraph really necessary?
-            %%Sr: I think it clears the point of having regions in middle neurons
-            %%%%%%%Sr220616: I almost completely changed the following paragraph, but I think it makes more sense, now.
             Other methods for finding the type of galaxies (e.g. $\chi^2$ fitting and supervised neural network) are limited to templates: the outliers cannot be classified.
             However, using the SOM method we categorized galaxies based on their position on trained maps, which can have empty neurons.
             The empty neurons in a trained SOM show that there must be another type of template that is absent from the \citetalias{Kinney96} template spectra.
             Using the distance within the trained network is the best way to describe the properties of this absent template.
             Therefore, with SOM, we have the freedom to categorize galaxies in intermediate (new) templates.
-            %%%%%%%Sr220616: in response to Sophia's comment; In SOM we do not fit the data. we create a network using our template. In the final version of network each neuron has a weight vector. When we give a new data to this weight vector, based on distance of the the weight vector and a new input data, the SOM finds a winner neuron. If this winner neurons were the same for K96 and T12 samples, we would say the input vector in these two case were similar. Since we know type of the galaxies in K96, we could decide about the type of the galaxies in T12. 
-            
-
-                        
-        
-        
+       . 
         \subsubsection{PROPERTIES OF CLUSTERED GALAXIES}
         
-        In order to check whether our clustering in Sec.~\ref{sec: 1Dv}~is correct, in this section we examine the relations between median properties of the galaxies in each neuron.  %%%%%%%Sr220616:changed "conclusion" to clustering!
+        In order to check whether our clustering in Sec.~\ref{sec: 1Dv}~is correct, in this section we examine the relations between median properties of the galaxies in each neuron. 
         
         \begin{figure}
             \centering
@@ -241,15 +232,10 @@
         \end{figure}
        
         Fig.~\ref{fig: props} shows the median values of stellar mass, age, specific star formation rate (sSFR; star formation rate per stellar mass), and $f_\mathrm{burst}$ of the galaxies in each neuron in the $1\times2$, $1\times4$, and $1\times8$ networks.
-        In all plots, the horizontal axis is the number of the neurons divided by the size of the network.%, and vertical axis is one of the aforementioned properties.
-%        
+        In all plots, the horizontal axis is the number of the neurons divided by the size of the network.
         As shown in Fig.~\ref{fig: props}, in all three networks, stellar mass and age decrease while sSFR and $f_\mathrm{burst}$ increase as the type changes from early type galaxies to starburst. 
-       % These trends are another evidence that this method is working and can be used to categorize galaxies based on their SEDs or even their physical properties. 
-        %Considering the results from Fig.~\ref{fig: props}, we can clearly see that s
         Separating galaxies based on SED types also leads to a separation in properties that derived (via {\sc CIGALE}) from the SEDs, as expected since the SED types are also based on {\sc CIGALE} fitting. 
     
-        
-        %Sr07062016: Is it better?
         {\sc CIGALE} has various models to derive the properties of galaxies.
         Through these models, some of the properties are already known to be correlated with each other, e.g., stellar mass and star formation rate.
         \citetalias{Noll09} studied other relations between properties with no direct correlation in the models in a sample of SINGS galaxies.
@@ -298,8 +284,7 @@
         As mentioned in both \citetalias{Noll09} and \citetalias{Hossein12}, galaxies with smaller mass tend to be younger and more active.
         Fig.~\ref{fig: props} shows similar results: younger and more active galaxies have less stellar mass and more f$_{\rm {burst}}$.
         From older to younger galaxies, the colour of the points changes from red to blue, which shows a good correlation with their SED type.
-        %for more details discussion on these correlations, we encourage readers to read \citetalias{Noll09} and \citetalias{Hossein12}.
-        
+       
         \citetalias{Noll09} studied a correlation between A$_{\rm {FUV}}$ and other properties of galaxies and showed that the attenuation has no dependence on the specific star formation or age.
         In contrast to \citetalias{Noll09}, we find a correlation between A$_{\rm {FUV}}$ and these two parameters, shown in the lower panels of Fig.~\ref{fig: props_vs_props}.
         The general trend of the correlation between A$_{\rm {FUV}}$ and sSFR in Fig.~\ref{fig: props_vs_props} is similar to the trend found by \cite{Dale07}.
@@ -325,7 +310,6 @@
     This approach can be used to trace and recognize the outliers.
     To execute the second approach, we used the {\tiny selforgmap} library in {\tiny MATLAB}.
     Using the {\tiny selforgmap} code, based on the size of a map and the ordering step neighbourhood distance, we can arrange that the data spread all over the SOM or sit close together, allowing room for outliers.
-%    The latter case, can be used to identify outliers. 
 
     To get the best result from both methods, we should have SOMs with ``enough"  neurons to give any new types of galaxies a chance to find their places in the map.
     ``Enough  neurons" is a vague statement, but as mentioned in Sec.~\ref{sec: method} the size of SOMs is arbitrary and depends on the size of the input data and the kind of information needed from the SOMs.
@@ -385,12 +369,3 @@
     In both lower maps in Fig.~\ref{fig: 12by12}, most galaxies are in the quiescent side of the SOM, which was predictable from the results in Sec.\ref{sec: 1Dv}. This does not imply that in general there are more quiescent galaxies at higher red-shifts but rather is a selection effect from the fact that those galaxies had more reliable redshift estimates.
     
     Although for ease of presentation this paper first discusses 1D networks and continues to 2D networks, we suggest that users of SOMs for galaxy SED classification should use 2D networks first. These can be used as a first step with networks similar to the upper left map in Fig.~\ref{fig: 12by12} to identify outliers in the sample.
-%    In this case, all the outliers or specific cases would be identified and removed from the sample. 
-
-    
-    % \subsection{Caveat}
-    % There is no established method to find the best SOM initial values. 
-    % Size of the maps, number of neighbours in each steps, number of iterations could vary and each one give us a new results.
-    % Also, since at the beginning the weights are generated randomly, in each run the results could have small differences.
-    %no quantitative way to analyse the data?!
- 
