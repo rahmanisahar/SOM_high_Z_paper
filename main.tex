@@ -39,9 +39,10 @@
 \newcommand \Spitzer {{\it Spitzer }}
 \newcommand \GALEX {GALEX }
 \newcommand \Herschel {{\it Herschel }}
-\newcommand{\sii}{S~{\textsc II}\ } 
-\newcommand{\oiii}{O~{\textsc III}\ } 
-\newcommand{\hi}{H~{\textsc I}\ }
+\newcommand \sii {[S~\textsc{ii}]} 
+\newcommand \oiii {[O~\textsc{iii}]} 
+\newcommand \hi {H~\textsc{i}}
+\newcommand \hii {H~\textsc{ii} }
 
 \newcommand \aaj {A\&A}
 \newcommand \aarv {A\&ARv}%: Astronomy and Astrophysics Review (the)
@@ -95,20 +96,20 @@ $^{3}$Department of Physics $\&$ Astronomy, University of Victoria, Finnerty Roa
 %----------------------------------------------------------------------------------------
 
 \begin{abstract}
-The spectral energy distribution (SED) of a galaxy contains information about its physical properties.
-Classifying SEDs using templates helps elucidate the nature of a galaxy's energy sources.
-However, available templates are limited, which can complicate SED classification.
-Most current classification methods cannot classify SEDs outside the range of templates, and will fail in special cases.
+The \textbf{\textcolor{red}{spectra}} of a galaxy contains information about its physical properties.
+Classifying \textbf{\textcolor{red}{spectra}} using templates helps elucidate the nature of a galaxy's energy sources.
+However, available templates are limited, which can complicate \textbf{\textcolor{red}{spectra}} classification.
+Most current classification methods classify \textbf{\textcolor{red}{spectra}} outside the range of templates \textbf{with low accuracy}, and will fail in special cases.
 In this paper, we introduce a new method of classifying the spectral
 energy distributions of high redshift galaxies: the self-organizing map.
 Self-organizing maps are a type of artificial neural network, mostly used to identify subgroups in a sample.
 We trained an unsupervised self-organizing map networks using a set of
 galaxy SED templates covering the wavelength range from far ultraviolet to near infrared.
-The trained networks were used to classify the SEDs of a sample of 142 galaxies with $0.5 < z < 1$.
+The trained networks were used to classify the \textbf{\textcolor{red}{spectra}} of a sample of 142 galaxies with $0.5 < z < 1$.
 Compared to previous attempts to classify this sample, the
-self-organizing map approach was able to better classify the SEDs which had
+self-organizing map approach was able to better classify the \textbf{\textcolor{red}{spectra}} which had
 similarities with more than one template.
-The averaged SEDs and physical properties of the galaxies in each neuron of the self-organizing maps are consistent with other results on galaxy evolution.
+The \textbf{\textcolor{red}{median spectra}} and physical properties of the galaxies in each neuron of the self-organizing maps are consistent with other results on galaxy evolution.
 
 
 \end{abstract}
@@ -123,7 +124,7 @@ The averaged SEDs and physical properties of the galaxies in each neuron of the 
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
 
-\import{sections0.06/}{intro0.06.tex}
+\import{sections0.07/}{intro0.07.tex}
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
@@ -132,7 +133,7 @@ The averaged SEDs and physical properties of the galaxies in each neuron of the 
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
 
-\import{sections0.06/}{data0.06.tex}
+\import{sections0.07/}{data0.07.tex}
 
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
@@ -142,7 +143,7 @@ The averaged SEDs and physical properties of the galaxies in each neuron of the 
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
 
-\import{sections0.06/}{method0.06.tex}
+\import{sections0.07/}{method0.07.tex}
 
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
@@ -151,7 +152,7 @@ The averaged SEDs and physical properties of the galaxies in each neuron of the 
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
-\import{sections0.06/}{results0.06.tex}
+\import{sections0.07/}{results0.07.tex}
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
@@ -159,13 +160,15 @@ The averaged SEDs and physical properties of the galaxies in each neuron of the 
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
-\section{SUMMARY AND FUTURE APPLICATIONS}
-\label{sec: summary}
+\\section{Summary and Future Applications}
+\label{sec: summary_SOMZ}
+
 Self-organizing maps can be used to classify celestial objects (e.g. stars, quasars, spectra of galaxies, light curves, etc.)
 Galaxy spectra can be classified in various networks with different sizes/dimensions based on the information needed from the data. 
 If a broad and general classification is required, networks can have one dimension with a few neurons.
 If one needs more detailed classifications, a higher number of neurons should be used.
 Since self-organizing maps do not include the uncertainty of input parameters, sometimes too much attention to detail can cause problems in classifications. 
+%Some small differences could easily be the result of atmosphere fluctuation or other instrumental or observational problems. 
 When using the SOM method, one should consider whether small differences between objects are physically meaningful when separating two groups from each other.
 
 We used SOMs to classify the template spectra of \citetalias{Kinney96}, made from galaxies with known morphological type, and created networks with different uses.
@@ -185,8 +188,14 @@ as belonging to one of the morphological types introduced by \citetalias{Kinney9
 The properties of the galaxies in the \citetalias{Hossein12} sample using the new classification were found to be more tightly correlated in mean values of age, specific star formation rate, stellar mass, and far-UV extinction than in previous studies. 
 The properties of the galaxies in each group are in good agreement with their morphological types.
 
+Two-dimensional networks can be used to find the relations of the neurons and classifications in more detail.
+The sample galaxies have more freedom to be categorized, and only 23 of them occupy exactly the same neurons as the \citetalias{Kinney96} template spectra (in one-dimensional networks this number was 56).
+Additionally, by using two-dimensional networks we showed that we do not have any outliers in the sample galaxies.
+
+
+
 \section*{ACKNOWLEDGMENTS}
-The authors thank S. Lianou and A. Tammour for their useful comments. 
+The authors thank S. Lianou and A. Tammour, and A. Sigut for their useful comments. 
 S.R. and P.B. also acknowledge research support from the Natural Sciences and Engineering Research Council of Canada. 
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
@@ -198,5 +207,6 @@ S.R. and P.B. also acknowledge research support from the Natural Sciences and En
 \bibliographystyle{apalike}
 \bibliography{ref_mining_h.bib}
 
-\import{sections0.0/}{apps0.0.tex}
+%\import{sections0.0/}{apps0.0.tex}
+\import{sections0.07/}{apps_0.07.tex}
 \end{document}

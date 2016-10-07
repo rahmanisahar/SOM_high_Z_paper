@@ -12,7 +12,7 @@
  \label{sec: som}
  
  The self-organizing map is a clustering method which reduces the dimension of the data, usually to one or two dimensions (1D or 2D), while preserving topological features of the original dataset.
- The result of an SOM is a set of nodes (neurons) that are arranged in a 1D or 2D arrays \citep{Kohonen98}. 
+ The result of a SOM is a set of nodes (neurons) that are arranged in a 1D or 2D arrays \citep{Kohonen98}. 
  Each node may contain one or more samples from the input data.
  The distance between the nodes represents similarity or dissimilarity of the underlying samples, i.e., similar data are closer together in the array and the distance between two nodes is related to the dissimilarity of their samples.
  A weight vector ``\boldit{W}" with the same dimension as the input data is associated with each node and will be varied during the training process.
@@ -120,6 +120,7 @@ We can conclude that although each galaxy had the chance to occupy any of the ne
 This network is considered a training network and can be used to cluster any new dataset with similar entries.
 Some neurons were left empty in this network because they never became a winner for data in the mock sample.
 However, their weights have been updated in each iteration, and they could be a winner for data in the new dataset.
+
 
 As we show in the following sections, with data from real galaxies there are more than two dimensions and two galaxies never have exactly the same information. 
 If the network has enough neurons, the input data points would eventually separate from each other and cluster into smaller groups. 
