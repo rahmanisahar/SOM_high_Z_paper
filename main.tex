@@ -96,15 +96,15 @@ $^{3}$Department of Physics $\&$ Astronomy, University of Victoria, Finnerty Roa
 %----------------------------------------------------------------------------------------
 
 \begin{abstract}
-The \textbf{\textcolor{red}{spectra}} of a galaxy contains information about its physical properties.
+The \textbf{\textcolor{red}{spectrum}} of a galaxy contains information about its physical properties.
 Classifying \textbf{\textcolor{red}{spectra}} using templates helps elucidate the nature of a galaxy's energy sources.
-However, available templates are limited, which can complicate \textbf{\textcolor{red}{spectra}} classification.
+However, available templates are limited, which can complicate \textbf{\textcolor{red}{spectral}} classification.
 Most current classification methods classify \textbf{\textcolor{red}{spectra}} outside the range of templates \textbf{with low accuracy}, and will fail in special cases.
-In this paper, we introduce a new method of classifying the spectral
-energy distributions of high redshift galaxies: the self-organizing map.
+In this paper, we introduce a new method of classifying the \textbf{\textcolor{red}{spectra}}
+of high redshift galaxies: the self-organizing map.
 Self-organizing maps are a type of artificial neural network, mostly used to identify subgroups in a sample.
-We trained an unsupervised self-organizing map networks using a set of
-galaxy SED templates covering the wavelength range from far ultraviolet to near infrared.
+We trained semi-supervised self-organizing map networks using a set of
+templates covering the wavelength range from far ultraviolet to near infrared. 
 The trained networks were used to classify the \textbf{\textcolor{red}{spectra}} of a sample of 142 galaxies with $0.5 < z < 1$.
 Compared to previous attempts to classify this sample, the
 self-organizing map approach was able to better classify the \textbf{\textcolor{red}{spectra}} which had
@@ -114,8 +114,13 @@ The \textbf{\textcolor{red}{median spectra}} and physical properties of the gala
 
 \end{abstract}
 \begin{keywords} 
- galaxies: high red shifts, galaxies: spectral energy distribution, methods: observational, methods: statistical, data mining, methods:data analysis
+ galaxies: high-redshift, 
+ galaxies: \textbf{\textcolor{red}{spectra}}, 
+ methods: observational, 
+ methods: statistical, 
+ methods:data analysis
 \end{keywords}
+
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
@@ -160,12 +165,13 @@ The \textbf{\textcolor{red}{median spectra}} and physical properties of the gala
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
-\\section{Summary and Future Applications}
+\section{Summary and Future Applications}
 \label{sec: summary_SOMZ}
 
 Self-organizing maps can be used to classify celestial objects (e.g. stars, quasars, spectra of galaxies, light curves, etc.)
 Galaxy spectra can be classified in various networks with different sizes/dimensions based on the information needed from the data. 
-If a broad and general classification is required, networks can have one dimension with a few neurons.
+If a broad and general classification is required, networks can have one dimension with a few neurons. 
+\textbf{\textcolor{red}{Other classification methods such as K-means and supervised artificial neural networks can provide a general classifications with similar performance as SOM.}}
 If one needs more detailed classifications, a higher number of neurons should be used.
 Since self-organizing maps do not include the uncertainty of input parameters, sometimes too much attention to detail can cause problems in classifications. 
 %Some small differences could easily be the result of atmosphere fluctuation or other instrumental or observational problems. 
@@ -173,30 +179,35 @@ When using the SOM method, one should consider whether small differences between
 
 We used SOMs to classify the template spectra of \citetalias{Kinney96}, made from galaxies with known morphological type, and created networks with different uses.
 By varying the size of the networks, we found the relative similarity between the \citetalias{Kinney96} template classes.
+Two-dimensional networks can be used to find the relations of the neurons and classifications in great detail.
+The sample galaxies have more freedom to be categorized, and only 23 of them occupy exactly the same neurons as the \citetalias{Kinney96} template spectra (in one-dimensional networks this number was 56).
+Additionally, by using two-dimensional networks we showed that we do not have any outliers in the sample galaxies.
+
 A one-dimensional network with 22 neurons was needed in order to
 separate all 12 \citetalias{Kinney96} spectra; we concluded that \citetalias{Kinney96} types B and E, and types SB1 and SB2, are very similar to each other.
 We also showed that networks generated with the SOM method can be used to easily identify new types of spectra in large surveys.
 
-A sample of 142 high-redshift galaxy SEDs from \citetalias{Hossein12} was classified by the trained networks.
-The classification results showed that using SOMs can allow identification of galaxies with SEDs similar to two or more morphological types.
+A sample of 142 high-redshift galaxy \textbf{\textcolor{red}{spectra}} from \citetalias{Hossein12} was classified by the trained networks.
+The classification results showed that using SOMs can allow identification of galaxies with \textbf{\textcolor{red}{spectra}} similar to two or more morphological types.
 The freedom of having in-between types is one of the main differences between supervised and unsupervised artificial neural networks.
-\citetalias{Hossein12} used a supervised training method to train networks with \citetalias{Kinney96} SED templates and classify the same sample of 142 galaxy spectra;
-however, they could not classify 37 out of 142 spectra.
-The unsupervised method used in this project was able to classify  all 142 spectra in the sample
+\citetalias{Hossein12} used a supervised training method to train networks with \citetalias{Kinney96} \textbf{\textcolor{red}{spectral}} templates and classify the same sample of 142 galaxy spectra;
+however, \textbf{\textcolor{red}{this method}} could not classify 37 out of 142 spectra.
+The unsupervised artificial neural network method used in this project was able to classify  all 142 spectra in the sample
 as belonging to one of the morphological types introduced by \citetalias{Kinney96} or a class in between those types.
+\textbf{Although, it might seem that the classification spectra using SOMs are an arbitrary classification, we should remind that this classification is emerged form the results of data mining on the previous templates.}
+%The classification based on SOM networks are not arbitrary, because there is an actual relation between each neurons}
 
 The properties of the galaxies in the \citetalias{Hossein12} sample using the new classification were found to be more tightly correlated in mean values of age, specific star formation rate, stellar mass, and far-UV extinction than in previous studies. 
 The properties of the galaxies in each group are in good agreement with their morphological types.
-
-Two-dimensional networks can be used to find the relations of the neurons and classifications in more detail.
-The sample galaxies have more freedom to be categorized, and only 23 of them occupy exactly the same neurons as the \citetalias{Kinney96} template spectra (in one-dimensional networks this number was 56).
-Additionally, by using two-dimensional networks we showed that we do not have any outliers in the sample galaxies.
+\textbf{This particular sample of high-redshift galaxies is well-described by the range of the K96 templates, although some of the spectra fall in between template classes. 
+This implies that these galaxies are not hugely different from those found in the local universe.
+The self-organizing map method can order the spectra in such a way as to also match the order along the age/SFR and SSFR/M* relation.}
 
 
 
 \section*{ACKNOWLEDGMENTS}
 The authors thank the referee for insightful comments which helped us to improve the manuscript.
-The authors thank S. Lianou and A. Tammour, S.C. Gallagher and A. Sigut for their useful comments. 
+The authors thank S. Lianou, A. Tammour, S.C. Gallagher and A. Sigut for their useful comments. 
 S.R. and P.B. also acknowledge research support from the Natural Sciences and Engineering Research Council of Canada. 
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------

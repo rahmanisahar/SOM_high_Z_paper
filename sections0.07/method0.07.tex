@@ -18,7 +18,7 @@
  A weight vector ``\boldit{W}" with the same dimension as the input data is associated with each node and will be varied during the training process.
  This vector is the key factor in determining the position of the nodes in a map.
  \cite{Geach12} presented the application of the self-organized map and discussed its algorithm in detail.
- In this section we briefly discuss the algorithm of SOM, how we create our maps. 
+ In this section we briefly discuss the algorithm of SOM and how we create our maps. 
  
  \subsubsection{Algorithm of SOM} 
  \label{sec: algorithm}
@@ -37,7 +37,7 @@
       In each iteration, the SOM code:
      \begin{enumerate}
         \item chooses a random vector from the dataset ($V_i$).
-        \item calculates the Euclidean distance in $\in \Re^n$ space for each node, $j$, as  $D_j^2= \sum_{i=0}^{i=n} (V_i - W_i)^2$, and finds a neuron with minimum $D_j$, (``$D_{j_{min}}$"). This neuron is the winner node and is called the Best Matching Unit (BMU). 
+        \item calculates the Euclidean distance in $\in \Re^n$ space for each node, $j$, as  $D_j^2= \sum_{i=0}^{i=n} (V_i - W_{j_i})^2$, and finds a neuron with minimum $D_j$, (``$D_{j_{min}}$"). This neuron is the winner node and is called the Best Matching Unit (BMU). 
         \item  computes the radius of the neighbourhood of the BMU to find nodes within this radius. The weight vectors of these nodes will be affected in the next steps. The radius of the neighbourhood is arbitrary and can be set to be as high as half of the SOM size. It then decays exponentially over each iteration as
         \begin{equation}
             r^t_{BMU} = r^0_{BMU}e^{(-t/\tau)}
@@ -54,7 +54,7 @@
      
 \subsection{Creating self-organizing maps}
 \label{sec: create_som}
-     In order to create SOMs, we use the {\sc matlab} neural network toolbox~\citep[NNT,][]{matlabtolbox}. 
+     In order to create SOMs, we use the {\sc matlab} neural network toolbox~\citep[NNT,][]{matlabtolbox}, written for \textsc{matlab2015b}. 
      An SOM in {\sc nnt} can be created by the {\sc newsom} or {\sc selforgmap} libraries, both of which work in two phases, an ``ordering phase" and a ``tuning phase". 
      The first phase is called the ``ordering phase" and
      starts with maximum neighbourhood distance and an initial high learning factor (usually 0.9) is provided by the user. 
@@ -73,8 +73,17 @@
      We create the final SOMs with initial values for number of iterations in ordering phase, ordering phase learning factor, tuning phase learning factor, and tuning phase neighbourhood distance of 1000, 0.9, 0.02, and 1, respectively. 
      To present our results, we use {\sc nnt}'s built-in plotting tool.
      Specifically, we use two of the plots in this tool: a hits map, which shows the number of times each neuron has became the winner (hits), and a distance map, which shows the distance between those neurons.
-     In the maps, the purple hexagonal shapes represent the neurons. 
+     In the maps, the coloured hexagonal shapes represent the neurons. 
      The distances in a distance map are shown by the grey cycle colours:
      the darker the colour, the larger the distance between neurons.
      In the hit maps, neurons with zero hits are left empty.
      
+     
+\subsection{K-means clustering}
+\label{sec: kmeans_method}     
+\textbf{In the K-means method, the user decides in advance on a number of clusters, $K$, which cannot be greater than the dimension of data. 
+The algorithm randomly chooses $K$ random points to be set as the centroids of the clusters.
+Then it finds the data points that are closest to the each assumed centroid and clusters them together.
+Mean values of the data points assigned to each cluster are calculated and become the new centroid of the cluster. 
+The algorithm finds new clusters based on the new centroids and repeats the procedure until it converges.
+We used \textsc{matlab} K-means library~\citep{Seber84, Spath85}, written for \textsc{matlab2015b}, to perform the K-means clustering.}
