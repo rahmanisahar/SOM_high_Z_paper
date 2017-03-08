@@ -1,0 +1,96 @@
+\section{Introduction}
+\label{sec: intro_somz}
+%General information about SEDs
+Nearly all information we can obtain from a galaxy is encapsulated in the light it emits; every observable phenomenon in a galaxy leaves a footprint on its spectral energy distribution (SED).
+We can determine some physical properties of a galaxy by properly modeling various features observed in its SED, and the general shape of the SED can be used as an identifier of the morphological type.
+Considering the main features of SEDs, galaxies can be categorized into two main groups: quiescent or star-forming.
+Each group has its own characteristic features and can in turn be divided into many sub-branches.
+
+%%Creating templates and NIR_UV templates
+Several attempts have been made to create a complete set of templates for categorizing the spectral type of galaxies using observations of nearby galaxies~(e.g.~\citealt{Kinney93}, \citealt[][hereafter \citetalias{Kinney96}]{Kinney96}, \citealt{Bershady00}, \citealt{Mannucci01}). 
+Based on their usage, these templates are restricted to certain wavelengths.
+In the near-infrared (NIR) to ultraviolet (UV) wavelengths (the region where the energy output of stars peaks), the spectrum\footnote{In the remainder of this paper, we are concerned with a limited range in wavelength, and so we refer to spectra rather than spectral energy distributions.} contains information about the main physical properties of galaxies, e.g., age, star formation rate (SFR), stellar mass, metallicity, and interstellar medium. 
+
+
+% categorizing galaxies based on their SED
+
+Advances in techniques and detectors have resulted in more detailed observations and also made classification of galaxies more complex.
+Since no two galaxies, even with the same morphology, have exactly the same properties, classifying spectra of galaxies using templates is very challenging.
+To overcome this challenge, many fitting methods have been developed and used to find template matches for spectra, with $\chi^2$ minimization being the most commonly used. 
+Artificial neural networks, K-means clustering, and principal component analysis are some other methods used to cluster and classify spectral types of galaxies \citep[e.g.][]{Allen13,Ordov14,Shi15}.
+
+%ANNs
+Artificial neural networks (ANNs), which are inspired by the way neurons in a human brain route and process data, are very powerful tools that are used in data processing and pattern recognition problems.
+An ANN contains many interconnected units (nodes or neurons) which process data and work together to solve problems.
+It uses a set of training methods to learn about nonlinear and complex relations between input and output data, and how to apply these relations to new sets of data~\citep[e.g.][]{Hossein14,Hossein16a,Hossein16b,Ellison16a, Ellison16b}.
+Studies have shown that ANNs outperform chi-square minimizing techniques and can be used as an alternative choice for fitting data~\citep[e.g.][]{Marquez91}.
+Specifically, ANNs perform faster in large databases~\citep[][]{Gulati97}.
+
+%Training methods for networks - some grammar edits 20170122
+Neural networks can be trained using two methods: supervised and unsupervised.
+In supervised methods, a neural network is trained using input data based on a desired outcome.
+These methods are very useful for classification of data with specific target values.
+In unsupervised methods there is no prediction of output:
+these methods classify data based on their underlying structures and hidden patterns.
+Unsupervised methods are very helpful in obtaining knowledge from the data, or when the underlying structure of the data is not well established.
+
+%SOM
+A Kohonen self-organizing map (also called self-organizing map, or SOM) is an (semi)-supervised neural network for mapping and visualizing a complex and nonlinear high dimension data introduced by~\citet{Kohonen82}.
+It shows simple geometrical relationships in non-linear high dimensional data on a map \citep{Kohonen98}.
+%%%After_second_Referee_report
+\textbf{The training of a self-organizing map is fully unsupervised.
+     Using the resulting map as a template to classify other data requires labelling the output, which is why some groups consider self-organizing maps to be a (semi)-supervised method.}
+
+
+%SOM in Astronomy
+The utilization of the SOM in astronomy dates back to the 1990s, with \citet[][]{Odewahn92}, \citet[][]{Hernandez94}, and \citet[][]{Murtagh95} among the first to use SOMs in their studies.
+\citet{Geach12} used COSMOS data to demonstrate two of the main applications of SOMs: object classification and clustering, and photometric redshift estimation. The latter has been the subject of many other studies \citep[e.g.][]{Kind14a}.
+From classifying quasars' spectra to star/galaxy classifications, from gamma-ray burst clustering to classification of light curves, this method has proved to be useful in various fields of astronomy \citep[e.g.][]{Maehoenen95, Miller96, Andreon00, Balastegui01, Rajaniemi02, Brett04, Scaringi09}.
+
+
+%SOM in Astronomy continued.
+Large spectroscopic surveys have made available integrated spectra of millions of galaxies.
+These integrated spectra combine the light of billions of individual stars and nebulae within a galaxy, and
+finding patterns and common characteristics between galaxies can be a complex task.
+\citet{In12} introduced a new clustering tool based on the SOM method for analyzing these large datasets.
+They used $\sim 60000$ spectra from the Sloan Digital Sky Survey \citep[SDSS;][]{Abazajian09} to test their tool, and created very large SOMs to analyze the type of spectra/objects.
+They also generated SOMs from quasars' spectra in order to find unusual types of spectra. 
+Later, \citet{Meusinger16} used these SOMs and updated data from SDSS and other surveys to find a new class of quasars.
+The other application of SOMs is to find outliers or errors in the data.
+\citet{Fustes13} produced a package based on SOM to classify spectra from the GAIA survey that were previously classified as ``unknown'' by the SDSS pipeline. This package can distinguish an astronomical object from instrumental artifact, and then classify the object based on its spectrum.
+
+%K-means vs. SOM
+% the comparison between k-means and SOM is confusing and wordy. K-means optimizes a partition of the data based on distance in the feature space only.  SOMs operate on a combination of distance in feature space and distance in the resulting low-dimensional map.  I am not sure how this achieves "smoothing", nor whether this is an important detail (the paper never mentions it again).  I recommend explaining what is meant here and why a "smooth" solution is better, or omitting this detail.  Explaining how SOM can be reduced to k-means is a good addition.
+K-means clustering~\citep{Macqueen67} is another unsupervised method used in many astronomical studies~\citep[e.g.][]{DAbrusco12,Ordov14,Boersma14,Aycha16}.
+K-means clustering divides data into $K$ clusters, in such a way that each data point belongs to the cluster with the nearest mean value.
+To first order, SOM and K-means work similarly: both algorithms operate on the distances between \boldit{N} $\in \Re^m$ objects defined by the properties under consideration.
+The SOM algorithm also considers distances between objects in the low-dimensional map, as  controlled by a neighborhood function. 
+When the radius of the neighbourhood function goes to zero, the SOM algorithm loses its ordering power and acts like K-means clustering.
+%%%%After second referee report
+\textbf{On the other note, in the K-means clustering the centre of each cluster are independent, but in the SOM the winner nodes adjust each other and provide an ordered display of clusters. Therefore, the (dis)-similarity between each cluster becomes more profound.}
+
+%20170122: combined and reorganized last 2 paragraphs of section - DRAFT
+%%%%After second referee report
+The goal of this work is to compare SOM-based classification of galaxy spectra to two other methods: supervised neural network and (unsupervised) K-means. 
+The SOM-based classification involves generating one- and two-dimensional self-organizing maps using the \citetalias{Kinney96} spectral templates. 
+These maps are used to classify the spectra of 142 galaxies with $0.5 < z < 1$, the same
+sample as analyzed by ~\citet[][hereafter \citetalias{Hossein12}]{Hossein12}.
+That work classified spectra using a supervised (multi-layer feed-forward) neural network method and the spectral templates presented by \citetalias{Kinney96}.
+The K-means method is used to cluster the \citetalias{Kinney96} and then find distance of each \citetalias{Hossein12} data to centre of clusters to classify them.
+ As in \citetalias{Hossein12}, we examine the averaged properties of the new galaxy groups and compare them with previous work.
+ %HERE IS WHERE WE MENTION OUR METRIC TO SAY WHICH METHOD IS BETTER
+
+
+% haven't figured out where to put this.
+%\citetalias{Hossein12} also 
+%showed that there are tight correlations between physical properties of galaxies, and these %correlations might be different for each type of galaxy.
+%This method could only match 105 out of the 142 galaxies directly to the \citetalias{Kinney96} templates; classifying the remaining 37 galaxies required combining template spectra.
+%Our hypothesis was that since a self-organizing map has the freedom to classify objects in between known classes, it could be applied to these data to find the best spectral class for the 37 galaxies that could not be classified by the supervised method.
+
+%What we did
+
+This paper is organized as follows.
+In Section~\ref{sec: data_highZ}, we present the data used to train the networks and the data classified using the trained networks. 
+We describe the SOM and K-means clustering methods in Section~\ref{sec: method_somz}. 
+The results of the spectral classifications and comparison with previous studies are presented in Section~\ref{sec: result}. 
+In Section~\ref{sec: summary_SOMZ}, we summarize our results and discuss potential future work in this subject.

@@ -78,12 +78,18 @@
      the darker the colour, the larger the distance between neurons.
      In the hit maps, neurons with zero hits are left empty.
      
+     %%%After_second_referee_report
+     \textbf{As mentioned in the introduction, one of the main advantages of the SOM method  is that the resulting networks can be used to cluster new datasets with no additional training required.
+     New data with the same dimensionality as the original input data can be presented to the already trained network: the SOM algorithm finds the best matching unit considering the weight of nodes in the trained network and each vector from the new data set.
+     The winner node determines the place of each new vector on the SOM.
+     Based on the location of the new vectors on the SOM, they can be compared with the original data set. %20170122PB: unclear what "they" refers to
+     Sections~\ref{sec: 1Dv} and ~\ref{sec: 2D} show the results of galaxy spectral classifications using networks trained on template spectra.}
      
 \subsection{K-means clustering}
 \label{sec: kmeans_method}     
-\textbf{In the K-means method, the user decides in advance on a number of clusters, $K$, which cannot be greater than the number of data points. 
+In the K-means method, the user decides in advance on a number of clusters, $K$, which cannot be greater than the number of data points. 
 The algorithm randomly chooses $K$ random points to be the centroids of the clusters.
 Then it finds the data points that are closest to each assumed centroid and clusters them together.
 The mean values of the data points assigned to each cluster are calculated and become the new centroid of the cluster. 
 The algorithm finds new clusters based on the new centroids and repeats the procedure until it converges.
-We used \textsc{matlab} K-means library~\citep{Seber84, Spath85}, written for \textsc{matlab2015b}, to perform the K-means clustering.}
+We used \textsc{matlab} K-means library~\citep{Seber84, Spath85}, written for \textsc{matlab2015b}, to perform the K-means clustering.
