@@ -8,6 +8,32 @@
 
 \section{METHOD}
 \label{sec: method_somz}
+
+\textbf{In this section we describe the algorithms for both self-organizing maps and K-means clustering. As K-means is both simpler and more well-known, we introduce it briefly first before discussing SOM in detail.} 
+
+%Sahar: note that I changed the notation a little bit here, for both K-means and SOM. Where you had $n$ in the SOM description I changed it to $d$.
+
+\subsection{K-means clustering}
+\label{sec: kmeans_method}
+
+\textbf{
+The K-means method partitions a data set $x_i$, having $n$ points in $d$-dimensional feature space, into $K$ clusters.
+The number of clusters $K<n$ must be decided by the user in advance, and the cluster centroids in feature space are located at positions $\mu_k$.
+The goal of the algorithm is to minimize the sum
+\begin{equation}
+\label{eq:km_sos}
+J = \sum_{i=1}^n \sum_{k=1}^K \min \big( \norm{x_i - \mu_k}^2 \big)
+\end{equation}
+where $\norm{z}$ indicates the distance measurement in $d$-dimensional space. In this work the Euclidean distance is is used, but other metrics are also possible.
+The algorithm is initialized by randomly choosing $K$ random points as cluster centroids.
+Each data point is assigned to the cluster with the closest centroid, and the centroids are re-calculated.
+The steps of re-assigning cluster membership and re-calculating the cluster centroids are repeated until a stopping criterion is reached (a maximum number of iterations or no change in cluster assignments).
+We used the \textsc{matlab} K-means library~\citep{Seber84, Spath85}, written for \textsc{matlab2015b}, to perform  K-means clustering.
+The default maximum number of iterations (100) was used.
+}
+
+%Sahar: Please check that the last sentence is correct. Also please check that the K-means version you used was randomly picking the initial centroids - looks like Matlab can also do this in other ways.
+
  \subsection{Self Organizing Maps}
  \label{sec: som}
  
@@ -22,33 +48,33 @@
  
  \subsubsection{Algorithm of SOM} 
  \label{sec: algorithm}
-     Assume we have a dataset which contains vectors, \boldit{V} $\in \Re^n$, and we want to map them on an S1 by S2 map. 
+     Assume we have a dataset which contains vectors, \boldit{V} $\in \Re^d$, and we want to map them on an S1 by S2 map. 
      Sizes of SOMs are arbitrary and there are no rules regarding choosing one over the other. 
-    \citet{Vesanto05} suggested that a total number of $5\sqrt{n}$ neurons is a sufficient size, but users usually choose the size of the grids based on their dataset and their application of the results.
+    \citet{Vesanto05} suggested that a total number of $5\sqrt{d}$ neurons is a sufficient size, but users usually choose the size of the grids based on their dataset and their application of the results.
 
      We start by creating S1 $\times$ S2 empty neurons. 
      The arrangement of these neurons depends on the map's topology provided by the user. 
      In the case of 1D maps, since each neuron has two immediate neighbours, the topology of the map does not have any effect on the final result and any topology can be chosen.
      However, in 2D maps, the shape of the neurons specifies the number of immediate neighbours for each neuron and it is up to user to choose the most suitable shape based on the data.
      In this paper, we choose hexagonal topology, which gives each neuron six neighbours, and provides more interactions between neurons.
-     Initially a random weight vector, \boldit{W} $\in \Re^n$, will be assigned to each node.
+     Initially a random weight vector, \boldit{W} $\in \Re^d$, will be assigned to each node.
      The process of creating SOM happens over a series of $N$ iterations, where $N$ is set by the user. 
      During each iteration the weight vectors might change according to the Kohonen learning rule (equation~\ref{equ: weight adj}). 
       In each iteration, the SOM code:
      \begin{enumerate}
         \item chooses a random vector from the dataset ($V_i$).
-        \item calculates the Euclidean distance in $\in \Re^n$ space for each node, $j$, as  $D_j^2= \sum_{i=0}^{i=n} (V_i - W_{j_i})^2$, and finds a neuron with minimum $D_j$, (``$D_{j_{min}}$"). This neuron is the winner node and is called the Best Matching Unit (BMU). 
+        \item calculates the Euclidean distance in $\in \Re^d$ space for each node, $j$, as  $D_j^2= \sum_{i=0}^{i=d} (V_i - W_{j_i})^2$, and finds a neuron with minimum $D_j$, (``$D_{j_{\min}}$"). This neuron is the winner node and is called the Best Matching Unit (BMU). 
         \item  computes the radius of the neighbourhood of the BMU to find nodes within this radius. The weight vectors of these nodes will be affected in the next steps. The radius of the neighbourhood is arbitrary and can be set to be as high as half of the SOM size. It then decays exponentially over each iteration as
         \begin{equation}
-            r^t_{BMU} = r^0_{BMU}e^{(-t/\tau)}
+            r^t_{\rm BMU} = r^0_{\rm BMU}e^{(-t/\tau)}
         \end{equation}
-        where $\tau$ is a decay constant and is usually set to be the same as the number of iterations, $N$. $r^0_{BMU}$ and $r^t_{BMU}$ are the radii of the neighbourhood at 0th and $t$th iteration, respectively. 
-        \item changes the weight vectors of the BMU and all the nodes within $r^t_{BMU}$ as:
+        where $\tau$ is a decay constant and is usually set to be the same as the number of iterations, $N$. $r^0_{BMU}$ and $r^t_{\rm BMU}$ are the radii of the neighbourhood at 0th and $t$th iteration, respectively. 
+        \item changes the weight vectors of the BMU and all the nodes within $r^t_{\rm BMU}$ as:
         \begin{equation}
             \label{equ: weight adj}
             w(t+1)=w(t)+L(t) \times R(t) \times(v(t)-w(t))
         \end{equation}
-        where $L(t) = L_0 e^{(-t/\tau)}$ is the learning factor, which prevents the divergence of the SOM and $R(t)=\exp(-\frac{D_j^2}{2r^t_{BMU}})$ is the influence rate. $R(t)$ determines how the weight of each node in the neighbourhood of BMU will change.
+        where $L(t) = L_0 e^{(-t/\tau)}$ is the learning factor, which prevents the divergence of the SOM and $R(t)=\exp(-\frac{D_j^2}{2r^t_{\rm BMU}})$ is the influence rate. $R(t)$ determines how the weight of each node in the neighbourhood of BMU will change.
      \end{enumerate}
      These steps are then repeated $N$ times.
      
@@ -82,14 +108,6 @@
      \textbf{As mentioned in the introduction, one of the main advantages of the SOM method  is that the resulting networks can be used to cluster new datasets with no additional training required.
      New data with the same dimensionality as the original input data can be presented to the already trained network: the SOM algorithm finds the best matching unit considering the weight of nodes in the trained network and each vector from the new data set.
      The winner node determines the place of each new vector on the SOM.
-     Based on the location of the new vectors on the SOM, they can be compared with the original data set. %20170122PB: unclear what "they" refers to
+     The location of the new vectors on the SOM allows them to be compared with the original data set. 
      Sections~\ref{sec: 1Dv} and ~\ref{sec: 2D} show the results of galaxy spectral classifications using networks trained on template spectra.}
      
-\subsection{K-means clustering}
-\label{sec: kmeans_method}     
-In the K-means method, the user decides in advance on a number of clusters, $K$, which cannot be greater than the number of data points. 
-The algorithm randomly chooses $K$ random points to be the centroids of the clusters.
-Then it finds the data points that are closest to each assumed centroid and clusters them together.
-The mean values of the data points assigned to each cluster are calculated and become the new centroid of the cluster. 
-The algorithm finds new clusters based on the new centroids and repeats the procedure until it converges.
-We used \textsc{matlab} K-means library~\citep{Seber84, Spath85}, written for \textsc{matlab2015b}, to perform the K-means clustering.

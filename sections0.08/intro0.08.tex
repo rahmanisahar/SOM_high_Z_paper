@@ -59,35 +59,29 @@ Later, \citet{Meusinger16} used these SOMs and updated data from SDSS and other 
 The other application of SOMs is to find outliers or errors in the data.
 \citet{Fustes13} produced a package based on SOM to classify spectra from the GAIA survey that were previously classified as ``unknown'' by the SDSS pipeline. This package can distinguish an astronomical object from instrumental artifact, and then classify the object based on its spectrum.
 
-%K-means vs. SOM
-% the comparison between k-means and SOM is confusing and wordy. K-means optimizes a partition of the data based on distance in the feature space only.  SOMs operate on a combination of distance in feature space and distance in the resulting low-dimensional map.  I am not sure how this achieves "smoothing", nor whether this is an important detail (the paper never mentions it again).  I recommend explaining what is meant here and why a "smooth" solution is better, or omitting this detail.  Explaining how SOM can be reduced to k-means is a good addition.
+
 K-means clustering~\citep{Macqueen67} is another unsupervised method used in many astronomical studies~\citep[e.g.][]{DAbrusco12,Ordov14,Boersma14,Aycha16}.
 K-means clustering divides data into $K$ clusters, in such a way that each data point belongs to the cluster with the nearest mean value.
 To first order, SOM and K-means work similarly: both algorithms operate on the distances between \boldit{N} $\in \Re^m$ objects defined by the properties under consideration.
 The SOM algorithm also considers distances between objects in the low-dimensional map, as  controlled by a neighborhood function. 
 When the radius of the neighbourhood function goes to zero, the SOM algorithm loses its ordering power and acts like K-means clustering.
-%%%%After second referee report
-\textbf{On the other note, in the K-means clustering the centre of each cluster are independent, but in the SOM the winner nodes adjust each other and provide an ordered display of clusters. Therefore, the (dis)-similarity between each cluster becomes more profound.}
+
 
 %20170122: combined and reorganized last 2 paragraphs of section - DRAFT
 %%%%After second referee report
-The goal of this work is to compare SOM-based classification of galaxy spectra to two other methods: supervised neural network and (unsupervised) K-means. 
-The SOM-based classification involves generating one- and two-dimensional self-organizing maps using the \citetalias{Kinney96} spectral templates. 
-These maps are used to classify the spectra of 142 galaxies with $0.5 < z < 1$, the same
-sample as analyzed by ~\citet[][hereafter \citetalias{Hossein12}]{Hossein12}.
-That work classified spectra using a supervised (multi-layer feed-forward) neural network method and the spectral templates presented by \citetalias{Kinney96}.
-The K-means method is used to cluster the \citetalias{Kinney96} and then find distance of each \citetalias{Hossein12} data to centre of clusters to classify them.
- As in \citetalias{Hossein12}, we examine the averaged properties of the new galaxy groups and compare them with previous work.
- %HERE IS WHERE WE MENTION OUR METRIC TO SAY WHICH METHOD IS BETTER
-
-
-% haven't figured out where to put this.
+The goal of this work is to compare SOM-based classification of galaxy spectra to two other methods: supervised neural network and (unsupervised) K-means clustering.
+The questions we want to answer are: (1) do galaxy spectra form a continuous distribution or can they be separated into discrete groups as represented by the \citetalias{Kinney96} templates? (2) if the distribution is continuous, how do galaxy properties vary along the spectral distribution.
+We analyze the same sample of 142 galaxies with $0.5 < z < 1$ as 
+\citet[][hereafter \citetalias{Hossein12}]{Hossein12}, who classified the spectra using a supervised (multi-layer feed-forward) neural network method with the \citetalias{Kinney96} templates.
+This method could only match 105 out of the 142 galaxies directly to the \citetalias{Kinney96} templates; classifying the remaining 37 galaxies required combining template spectra.
+%not sure if we want this sentence or not
+%Our hypothesis was that since a self-organizing map has the freedom to classify objects in between known classes, it could be applied to these data to find the best spectral class for the 37 galaxies that could not be classified by the supervised method.
+% also not sure if we want these sentences.
+% As in \citetalias{Hossein12}, we examine the averaged properties of the new galaxy groups and compare them with previous work.
 %\citetalias{Hossein12} also 
 %showed that there are tight correlations between physical properties of galaxies, and these %correlations might be different for each type of galaxy.
-%This method could only match 105 out of the 142 galaxies directly to the \citetalias{Kinney96} templates; classifying the remaining 37 galaxies required combining template spectra.
-%Our hypothesis was that since a self-organizing map has the freedom to classify objects in between known classes, it could be applied to these data to find the best spectral class for the 37 galaxies that could not be classified by the supervised method.
+ %HERE IS WHERE WE MENTION OUR METRIC TO SAY WHICH METHOD IS BETTER
 
-%What we did
 
 This paper is organized as follows.
 In Section~\ref{sec: data_highZ}, we present the data used to train the networks and the data classified using the trained networks. 

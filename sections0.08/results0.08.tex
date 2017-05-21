@@ -209,7 +209,7 @@
     
     \subsubsection{Properties of the Clustered Galaxies}
         
-       In order to check whether our clustering in Sec.~\ref{sec: 1Dv}~is correct, in this section we examine the relations between median properties of the galaxies in each neuron. 
+       In order to check whether our clustering in Sec.~\ref{sec: 1Dv}~is meaningful, in this section we examine the relations between median properties of the galaxies in each neuron. 
         
         \begin{figure*}
             \centering
@@ -284,11 +284,11 @@
         Both \cite{Dale07} and \citetalias{Noll09} argued that these apparent trends can be a result of the dependence of star formation history on L$_{IR}$/L$_{FUV}$.
         Whether this dependence is real or not, our results here show that using self-organizing maps can separate spectra of galaxies in such a way that the characteristics of each of these groups are in agreement with the general picture of the galaxy evolution.
         
-       One of the key features of SOMs is the ability to not only classify objects but to provide an {\em ordered} classification. 
-       Figure~\ref{fig: props_vs_props} shows that the SOM correctly determines an ordering of the physical properties of the galaxy models used to make the classified spectra. 
+    % This is better but could perhaps still use work    
+       \textbf{One of the key features of SOMs is the ability to not only classify objects but to provide an {\em ordered} classification.  K-means clustering and supervised ANNs can sort galaxy spectra into classes but do not naturally order them. Ordering is important in the case where the physical causes of the differences between classes/clusters are unknown. Average properties of objects within clusters (possibly from data not used for classification) can be used to test hypotheses about the physical differences. 
+       Figure~\ref{fig: props_vs_props} shows that the SOM ordering also corresponds to the ordering of the physical properties of the galaxy models used to make the classified spectra. 
        The median properties of the spectral groups change on going from one end of the SOM to the other.
-       K-means clustering and supervised ANNs can sort galaxy spectra into classes but do not naturally order them.
-       Therefore, by using the SOM method, we not only study galaxies in different clusters, we also can study the trends between them as well.
+       Therefore, by using the SOM method, we can study not only how galaxies group into spectral clusters, but the trends between the clusters as well.}
 
         
     \subsection{Comparison of the self-organizing maps and K-means methods}
