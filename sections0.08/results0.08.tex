@@ -1,6 +1,8 @@
 \section{Results and Discussion}
 \label{sec: result}
 
+% Sahar: might have to move some of this text around
+
     In this section we show the results of the neural networks trained using the \citetalias{Kinney96} template spectra.
     Training with \citetalias{Kinney96} templates results in networks that have regions corresponding to galaxies of known morphological type. 
     The trained networks can then be used to categorize other galaxies.
@@ -17,6 +19,38 @@
     
     For each generated network, we compare the results with the \citetalias{Kinney96} categorization.
     We also use these networks to classify the \citetalias{Hossein12} galaxy sample, and compare this classification with that from the supervised networks in \citetalias{Hossein12}.
+
+\subsection{One-dimensional self-organizing maps and K-means clustering: templates}
+
+\begin{figure*}
+\begin{subfigure}[b]{0.49\textwidth}
+\centering
+\includegraphics[width=.99\textwidth, height= 7.5cm]{k_means_images/classified_group_in_4cluster_kinney.pdf}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.49\textwidth}
+\centering \includegraphics[width=.99\textwidth, height= 7.5cm]{k_means_images/classified_group_in_4cluster_som.pdf}
+\end{subfigure}
+\caption{Clustering the \citetalias{Kinney96} template spectra using K-means clustering (left) and SOM (right). Note that both methods randomly assign the initial values for their analysis, therefore the cluster number is only used for distinguishing cluster membership.}
+\label{fig: som_k_means_4}
+\end{figure*}
+        
+        We performed K-means clustering on the \citetalias{Kinney96} template spectra using 4 clusters \textbf{and then assigned each of the 142 galaxies in the \citetalias{Hossein12}  sample to the cluster with the closest centroid.}
+        %We measured distance between the centroid of each cluster and spectra of each galaxy to classify galaxies using K-means method.
+        
+       % For a direct comparison between clustered spectra and templates, the spectral angle distance provides more information on the overall shape of spectra than a minimum chi-square method, which considers spectra as unrelated points in a high dimensional space. 
+        %Using the spectral angle distance, the spectra are treated as connected entities, which helps the shapes of the spectra to be recognized. 
+        %In other words, the similarity of spectra are considered based on the general shape of the spectra rather than comparing each point.
+        %(Although an SOM uses the Euclidean distance to find the differences, using the information of all the spectra, at the same time the SOM algorithm can recognize the overall shapes and treat the spectra as connected entities as well. 
+        %Hence, there is no need to use the spectral angle distance in the SOM method.)
+    Fig.~\ref{fig: som_k_means_4} shows the clustering of the template spectra in 4 groups using both K-means and SOMs.
+        In the K-means method empty clusters are not allowed. 
+        Hence a $K=12$ clustering would produce one-object clusters as in Fig.~\ref{fig: k96}.
+        Both methods shown in Fig.~\ref{fig: som_k_means_4} separated the most starburst-like and quiescent galaxies in a similar manner.
+        However, they show discrepancies for spectral types between the extreme cases.
+
+%Sahar: here is where we discuss which of the templates is in each group for the 2 methods. Possibly also introduce the performance metric here.
+
 
     \subsection{One-Dimensional Self-Organizing Maps}
     \label{sec: 1D_somz}
@@ -285,90 +319,14 @@
         Whether this dependence is real or not, our results here show that using self-organizing maps can separate spectra of galaxies in such a way that the characteristics of each of these groups are in agreement with the general picture of the galaxy evolution.
         
     % This is better but could perhaps still use work    
-       \textbf{One of the key features of SOMs is the ability to not only classify objects but to provide an {\em ordered} classification.  K-means clustering and supervised ANNs can sort galaxy spectra into classes but do not naturally order them. Ordering is important in the case where the physical causes of the differences between classes/clusters are unknown. Average properties of objects within clusters (possibly from data not used for classification) can be used to test hypotheses about the physical differences. 
+       \textbf{One of the key features of SOMs is the ability to not only classify objects but to provide an {\em ordered} classification.
+       K-means clustering and supervised ANNs can sort galaxy spectra into classes but do not naturally order them. Ordering is important in the case where the physical causes of the differences between classes/clusters are unknown. Average properties of objects within clusters (possibly from data not used for classification) can be used to test hypotheses about the physical differences. 
        Figure~\ref{fig: props_vs_props} shows that the SOM ordering also corresponds to the ordering of the physical properties of the galaxy models used to make the classified spectra. 
        The median properties of the spectral groups change on going from one end of the SOM to the other.
        Therefore, by using the SOM method, we can study not only how galaxies group into spectral clusters, but the trends between the clusters as well.}
 
         
-    \subsection{Comparison of the self-organizing maps and K-means methods}
-    \label{sec: Kmeansvssom}
     
-        We performed K-means clustering on the \citetalias{Kinney96} template spectra using 4 clusters and on the \citetalias{Hossein12} 142 sample galaxies using 22 clusters.
-        22 clusters were chosen to be able to compare the results of K-means clustering with the 1D SOM in Fig.~\ref{fig: 1by22V}. 
-        We computed the median spectrum for each cluster (in K-means) or neuron (in SOM) to compare the results.
-    
-        To classify the 142 sample galaxies, we calculate the median of the spectra in each cluster, and compare them with the \citetalias{Kinney96} template spectra.
-        We measured the spectral angle distance, also known as the cosine distance, between the medians and the template spectra to find the best match between them as follows:
-        \begin{equation}
-            \cos(\theta) = \frac{\sum_{i=1}^{n} s_it_i}{(\sum_{i=1}^{n} s^2_i)^{0.5} (\sum_{i=1}^{n} t^2_i)^{0.5}}
-        \end{equation}
-        where $s_i$ and $t_i$ are the $i^{\rm th}$ wavelength of the sample and template spectra, respectively. 
-        $\theta$ is the angle between the spectra, such that a value of zero means completely similar and a value of $180^{\circ}$ means completely different spectra. 
-        Since $-1<\cos(\theta)<1$, $1-\cos(\theta)$ is an easier way to measure and report the dissimilarity between two spectra.
-        The clusters were classified by finding the \citetalias{Kinney96} template spectrum with the most similarity to the median spectrum.
-   
-        For a direct comparison between clustered spectra and templates, the spectral angle distance provides more information on the overall shape of spectra than a minimum chi-square method, which considers spectra as unrelated points in a high dimensional space. 
-        Using the spectral angle distance, the spectra are treated as connected entities, which helps the shapes of the spectra to be recognized. 
-        In other words, the similarity of spectra are considered based on the general shape of the spectra rather than comparing each point.
-        (Although an SOM uses the Euclidean distance to find the differences, using the information of all the spectra, at the same time the SOM algorithm can recognize the overall shapes and treat the spectra as connected entities as well. 
-        Hence, there is no need to use the spectral angle distance in the SOM method.)
-    
-
-        \begin{figure*}
-            \begin{subfigure}[b]{0.49\textwidth}
-                \centering
-                \includegraphics[width=.99\textwidth, height= 7.5cm]{k_means_images/classified_group_in_4cluster.pdf}
-            \end{subfigure}
-                \hfill
-            \begin{subfigure}[b]{0.49\textwidth}
-                \centering \includegraphics[width=.99\textwidth, height= 7.5cm]{k_means_images/classified_group_in_4cluster_som.pdf}
-            \end{subfigure}
-            \caption{Clustering the \citetalias{Kinney96} template spectra using K-means clustering (left) and SOM (right). Note that both methods randomly assign the initial values for their analysis, therefore the cluster number is only used for distinguishing cluster membership.}
-            \label{fig: som_k_means_4}
-        \end{figure*}
-        Fig.~\ref{fig: som_k_means_4} shows the clustering of the template spectra in 4 groups using both K-means and SOMs.
-        In the K-means method empty clusters are not allowed. 
-        Hence a $K=12$ clustering would produce one-object clusters as in Fig.~\ref{fig: k96}.
-        Both plots in Fig.~\ref{fig: som_k_means_4} separated the most starburst and quiescent galaxies in a similar manner.
-        However, they show discrepancies for spectral types between the extreme cases. 
-        The other difference between these two methods is that the network created by the SOM method can be used to classify the other spectra, while for the K-means clusters they can only be used for one set of data.
-
-
-
-        \begin{figure*}
-            \begin{subfigure}[b]{0.49\textwidth}
-                \centering
-                \includegraphics[width=.99\textwidth, height= 7.5cm]{k_means_images/max_cosine2.pdf}
-            \end{subfigure}
-            \hfill
-            \begin{subfigure}[b]{0.49\textwidth}
-                \centering \includegraphics[width=.99\textwidth, height= 7.5cm]{k_means_images/min_cosine2.pdf}
-            \end{subfigure}
-            \caption{Left: the best-matched of the \citetalias{Kinney96} templates for the median spectrum of members in cluster number 9. This fit has the maximum $1-\cos(\theta)$ among all 22 clusters. Right: the best fit of the \citetalias{Kinney96} templates to the median spectrum of cluster number 22. This the best fitting result for 22 clusters.}
-            \label{fig: k_means_minmax}
-        \end{figure*}
-        For analyzing 142 sample galaxies from \citetalias{Hossein12}, we chose the number of clusters for the K-means analysis to be 22.
-        The median spectra of the members of each cluster were fitted by a spectrum from the \citetalias{Kinney96} templates.
-        Although the K-means clustering method separated the spectra of 142 sample galaxies into 22 different groups, only 7 templates were chosen as the best match with these 22 groups; some of the clusters are classified as the same spectral type.
-        Fig.~\ref{fig: k_means_minmax} shows the best and the worst fitting results among the 22 clusters. 
-        As we expected from the results of Section~\ref{sec: 1Dv} and \citetalias{Hossein12} paper, we cannot classify all the 142 sample galaxies with exactly 12 templates. 
-        Some of the classifications are almost perfect matches, however, there are groups of galaxies that are not exactly similar to any of the template spectra.
-        The left plot in the Fig.~\ref{fig: k_means_minmax} is an example of a group of galaxies that can not be considered as an outlier (in the sense that they are not a completely different type of galaxies), but they cannot be matched exactly with any of the template spectra.
-
-        There are substantial differences between the K-means and SOM-based classification.
-        From the K-means clustering, we classified 5 out of 22 clusters, 42 galaxies in total, as Sa type galaxies; 7 clusters, 28 galaxies in total, were classified as SB1 type galaxies.
-        Using the SOM method (see Fig.~\ref{fig: 1by22V}, only 19 galaxies were classified as Sa and 19 galaxies were classified as SB1. 
-        The comparison between the median of the spectra classified by SOM and by K-means clustering shows that they are clearly tracing each other.
-        However, the normalized flux in each case is slightly different: 
-        the SB1 galaxies are fainter at short wavelengths and brighter at longer wavelengths for the K-means clusters compared to the SOM ones.
-        These differences are reversed for Sa galaxies.
-    
-        Using K-means clustering, no clusters were classified as Sb or SB2, which have very similar spectra to Sa and SB1, respectively.
-        On the other hand, using the SOM method, 14 galaxies were recognized as having similar spectra to SB2, and 33 galaxies were recognized as having spectra similar to Sa or Sb.
-        It seems that the K-means clustering method cannot recognize the differences between template spectra that have similar spectra (i.e. SB1 and SB2, or Sa and Sb), which suggests that the SOM method considers more details while clustering the spectra.
-        Being limited to the template set is another disadvantage of the K-means algorithm over the SOM method.
-        We can say that SOM has the advantages of creating a new network (template) based on the existing templates, and classifying galaxies using this new network.
       
     \subsection{Two-Dimensional Self-Organizing Maps}
     \label{sec: 2D}
@@ -448,7 +406,71 @@
         Using 2D maps results in categorizing galaxies into more intermediate types than in 1D maps.
         In both lower maps in Fig.~\ref{fig: 12by12}, most galaxies are in the quiescent side of the SOM, which was predictable from the results in Section\ref{sec: 1Dv}. 
         This does not imply that in general there are more quiescent galaxies at higher redshift but rather is a selection effect from the fact that those galaxies had more reliable redshift estimates.
-    
-        Although for ease of presentation this paper first discusses 1D networks and continues to 2D networks, we suggest that users of SOMs for galaxy spectral classification should use 2D networks first.These can be used as a first step with networks similar to the upper left map in Fig.~\ref{fig: 12by12} to identify outliers in the sample.
+        
+    Although for ease of presentation this paper first discusses 1D networks and continues to 2D networks, we suggest that users of SOMs for galaxy spectral classification should use 2D networks first.
+         These can be used as a first step with networks similar to the upper left map in Fig.~\ref{fig: 12by12} to identify outliers in the sample.
         After finding and removing outliers in the input data, the use of 1D and 2D maps is complementary.
         One-dimensional maps are helpful for exploring the general behaviour of the data, while 2D maps show a more detailed picture.
+        % Sahar: can we say anything more quantitative here about the difference betwen 1D and 2D?
+   
+\subsection{Comparison of the self-organizing map, K-means, and supervised ANN methods}
+    \label{sec: Kmeansvssom}
+    %Sahar: I moved some of this here from the introduction. May need a little more work or to be moved elsewhere.
+    The one and two-dimensional self-organizing map classifications are compared briefly above. 
+    The 2-D maps allow galaxies to be members of more intermediate classes, and this is a general advantage of SOMs compared to the artificial neural network method used by \citetalias{Hossein12}: in the SOM method galaxies do not need to exactly match template spectra. 
+    \citetalias{Hossein12} found that the ANN method could only match 105 out of the 142 galaxies directly to the \citetalias{Kinney96} templates; classifying the remaining 37 galaxies required combining template spectra.
+     
+        \textbf{In order to compare results from SOM, K-means, and unsupervised ANN, we used two different methods.
+        We measured the best fit between \citetalias{Kinney96} template spectra and the \citetalias{Hossein12} 142 galaxies spectra, using minimum chi-square.
+        We scored K-means, SOM 4 nodes, SOM 12 nodes SOM 22 nodes and unsupervised ANN using the following system:
+        If the galaxy in each cluster/node was classified the same as the minimum chi-square class, this scored 1 point. 
+        If it was between two nodes (in case of SOM12 and SOM22) this scored 0.5 point. 
+        Otherwise, the classification score was zero points. 
+        Therefore, if the total score of a galaxy from 142 galaxies is 5, it means that all techniques classified the galaxy to the same group.
+        If it is 4.5, it means that either in the SOM with 12 nodes or the SOM with 22 nodes, that galaxy belonged to the in-between area and so on.
+        Comparing the scores, only 12 per cent of galaxies scored 5, 4 per cent had a score of 4.5 and 20 per cent had a score of 4.
+        In total 37 per cent of galaxies had a score greater than 4 which means that these methods are in fair agreement.
+        To see which methods gave the most similar results to the minimum chi-square fitting method, we added up the scores for each of the methods and found K-means 124, SOM-4 103, SOM-12 111.5, SOM-22 79, and unsupervised ANN 52.
+        This shows that the K-means method and SOM-12 nodes have the most similarity with minimum chi-square fitting.}
+        
+        
+        \textbf{To check the degree of agreement between different methods, we measured the Fleiss kappa index. 
+        The Fleiss Kappa index is a measure of agreement between three or more raters that are classifying a specific number of objects (i.e. 142 galaxies) to number of classes (i.e. 12 templates).
+        To differentiate between different SOMs we measured two different Fleiss kappa. First, we measured agreement between K-means, SOM-12 nodes, and unsupervised ANN, and then we measured agreement between K-means, SOM-22 nodes, and unsupervised ANN.
+        The resulting values of Fleiss kappa were $\sim 27$ per cent and $\sim 21$ per cent, respectively.
+        According to \citep{landis77}, the interpretation of a Fliess kappa measure in the range of 21--40 per cent is that the raters are in fair agreement.
+        }
+
+   %     \begin{figure*}
+    %        \begin{subfigure}[b]{0.49\textwidth}
+   %             \centering
+   %             \includegraphics[width=.99\textwidth, height= %7.5cm]{k_means_images/max_cosine2.pdf}
+   %         \end{subfigure}
+   %         \hfill
+   %         \begin{subfigure}[b]{0.49\textwidth}
+   %             \centering \includegraphics[width=.99\textwidth, height= %7.5cm]{k_means_images/min_cosine2.pdf}
+   %         \end{subfigure}
+   %         \caption{Left: the best-matched of the \citetalias{Kinney96} templates for the median spectrum of members in cluster number 9. This fit has the maximum $1-\cos(\theta)$ among all 22 clusters. Right: the best fit of the \citetalias{Kinney96} templates to the median spectrum of cluster number 22. This the best fitting result for 22 clusters.}
+   %         \label{fig: k_means_minmax}
+   %     \end{figure*}
+   %     For analyzing 142 sample galaxies from \citetalias{Hossein12}, we chose the number of clusters for the K-means analysis to be 22.
+   %     The median spectra of the members of each cluster were fitted by a spectrum from the \citetalias{Kinney96} templates.
+   %     Although the K-means clustering method separated the spectra of 142 %sample galaxies into 22 different groups, only 7 templates were chosen as the best match with these 22 groups; some of the clusters are classified as the same spectral type.
+   %     Fig.~\ref{fig: k_means_minmax} shows the best and the worst fitting results among the 22 clusters. 
+   %     As we expected from the results of Section~\ref{sec: 1Dv} and \citetalias{Hossein12} paper, we cannot classify all the 142 sample %galaxies with exactly 12 templates. 
+  %      Some of the classifications are almost perfect matches, however, there %are groups of galaxies that are not exactly similar to any of the template spectra.
+   %     The left plot in the Fig.~\ref{fig: k_means_minmax} is an example of a group of galaxies that can not be considered as an outlier (in the sense that they are not a completely different type of galaxies), but they cannot be matched exactly with any of the template spectra.
+
+   %     There are substantial differences between the K-means and SOM-based classification.
+   %     From the K-means clustering, we classified 5 out of 22 clusters, 42 %galaxies in total, as Sa type galaxies; 7 clusters, 28 galaxies in total, %were classified as SB1 type galaxies.
+   %     Using the SOM method (see Fig.~\ref{fig: 1by22V}, only 19 galaxies were classified as Sa and 19 galaxies were classified as SB1. 
+   %     The comparison between the median of the spectra classified by SOM and by K-means clustering shows that they are clearly tracing each other.
+   %     However, the normalized flux in each case is slightly different: 
+   %     the SB1 galaxies are fainter at short wavelengths and brighter at longer wavelengths for the K-means clusters compared to the SOM ones.
+   %     These differences are reversed for Sa galaxies.
+   % 
+   %     Using K-means clustering, no clusters were classified as Sb or SB2, which have very similar spectra to Sa and SB1, respectively.
+   %     On the other hand, using the SOM method, 14 galaxies were recognized as having similar spectra to SB2, and 33 galaxies were recognized as having spectra similar to Sa or Sb.
+  %      It seems that the K-means clustering method cannot recognize the differences between template spectra that have similar spectra (i.e. SB1 and SB2, or Sa and Sb), which suggests that the SOM method considers more %details while clustering the spectra.
+  %      Being limited to the template set is another disadvantage of the K-means algorithm over the SOM method.
+   %     We can say that SOM has the advantages of creating a new network (template) based on the existing templates, and classifying galaxies using this new network.

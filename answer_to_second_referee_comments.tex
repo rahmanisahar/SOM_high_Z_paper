@@ -11,22 +11,19 @@ This paper proposes the use of self-organizing maps (1D and 2D) to aid in classi
 
 The sentence that was added about 1D vs. 2D maps comes very late in the paper and is quite abstract, stating that the two methods are complementary.  The Introduction should establish the goals of the investigation so the reader understands the purpose of each experiment as well as its significance.
 
---- We have reorganized the last two paragraphs of Section 1 to better describe the goals of the investigation. 
+--- We have reorganized the last two paragraphs of Section 1 and added text to better describe the goal of the investigation: comparing different methods of classifying galaxy spectra against templates, with a focus on self-organizing maps. We have added additional text in Sections 4.2 and 5 comparing 1D and 2D SOMs.
 %TBD: 
 We have also added some text to Section 5 discussing the significance. 
 
 
 The paper claims that "Compared to previous attempts to classify this sample, the self-organizing map approach was able to better classify the spectra which had similarities with more than one template." (abstract), but I cannot find a quantitative comparison with any previous results.  Figure 9 is presented as the result to compare with previous work, but since the previous results are not presented nor summarized, the reader can't tell how they differ.  The paper reports "more precision", but this is not defined; does it mean smaller error bars?  Stronger correlation?  How does this show "better classification"?  To support such a claim, this paper needs to select a performance metric and report on the values achieved in these experiments, compared to other methods.
-%--- should I put the figure from the previous paper, maybe Noll09 one??! 
-% I don't think including the figure from Noll09 will be enough. It's the performance metric that's critical here.
+--- We selected several performance metrics. Two of them (an agreement score and the Fleiss kappa score) measure the degree to which the classifications agree. As a measure of the classification performance, we calculate the dispersion in properties of the galaxies in each class and compare these values between methods. The results of this analysis are discussed in Section 4.4.
 
 I had suggested comparing the results to a simple nearest-neighbor classification baseline, but this was not addressed.
-%--- why could not I find anything about it in the 1st report?:(
-%20170122PB: it's there but well-hidden - the sentence which includes "what performance does one get simply by assigning each of the 142 spectra to its closest match from the 12 templates"
---- We apologize for missing this suggestion in the previous version. We have now included this in the analysis and the results are reported in Section XX.
+--- We apologize for missing this helpful suggestion in the previous version. This is now part of the analysis described in the paragraph above; the results appear in Section 4.4.
 
 The comment about how SOMs provide an ordered clustering of the data (with respect to feature values), which k-means does not, is certainly true.  But the paper must then explain why this is important or valuable.
---- We have added text to the end of both Section 4.1 and Section 5 explaining the utility of an ordered clustering.
+--- We have added text to the end of both Section 4.2 (formerly section 4.1) and Section 5 explaining the utility of an ordered clustering.
 
 2. Perhaps I have missed it somewhere, but I don't think the paper ever states how exactly the classification of new data is done.  As I understand it, the authors train an SOM using template spectra, then classify new spectra by determining which SOM node is the best fit for the new item and classifying it based on the labeled template spectra that also reside in that node -- but this isn't actually stated anywhere.  Please add text explaining the classification step.  This would probably go in the final paragraph of the introduction and/or a new subsection in section 3 ("Method") - this section describes SOMs and k-means but not how to use either model to classify new data. (i.e., the SOM can't classify anything without knowing the labels of its original data set.  So although it builds the SOM in an unsupervised way, it requires the supervision of the template labels to be able to assign a label to a new item).
 -- Added the following paragraph  at the end of section 3.2: 
@@ -42,7 +39,7 @@ On page 2, lines 29-31, the authors added this text: "An SOM can be trained with
      Using the resulting map as a template to classify other data requires labelling the output, which is why some groups consider self-organizing maps to be a (semi)-supervised method."
 
 3. The inclusion of k-means helps give useful context to this work. Figure 10 shows a head-to-head comparison of k-means and SOM applied to the 12 templates using 4 clusters/nodes.  But I can't tell which one is better.  The text states that they are similar but "show discrepancies for spectra types between the extreme cases".  Which ones?  How can I tell from this figure?
---- % need a comment here
+--- The text describing the differences between the K-means and SOM classification of the templates (in particular, which templates are grouped together by the two methods) has been rewritten and moved to Section 4.1 (newly added in this revision). 
 
 At the bottom of page 10, the paper states: "The other difference between these two methods is that the network created by the SOM method can be used to classify the other spectra, while for the K-means clusters they can only be used for one set of data."  This isn't true.  (The paper itself points out that SOM reduces to k-means if the weight on the neighborhood function goes to 0, so you should be able to use the result in the same way.)  You can (and should, to do a direct comparison) use the clusters just like you used the SOM nodes - for a new data point, assign it to the most similar cluster center, then assign the template label from the original data used to construct the clusters.
 %--- I do not know how to do that!
@@ -51,7 +48,7 @@ At the bottom of page 10, the paper states: "The other difference between these 
 
 To analyze the 142 galaxies, the SOM and k-means experiments used different methodology and so are difficult to compare or understand. It seems that for k-means, the authors clustered the 142 sample galaxies and then classified the mean spectrum in each cluster and reported how well that did.  But for the SOM, the authors constructed the SOM based on the 12 templates from K96 and then assigned classes to individual new spectra (not the nodes).  This doesn't seem comparable.  Please use the same methodology in both cases.
 --- This is a reasonable criticism and we have ... 
-
+%TBD: need to finish this
 
 Further, k-means and the SOM used different distance functions (Euclidean vs. spectral angle distance) when operating on the same data.  Differences in results could simply be due to this change.  The authors' explanation for this choice does not make sense to me.
 

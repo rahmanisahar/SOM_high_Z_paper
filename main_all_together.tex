@@ -1,9 +1,11 @@
 \documentclass[useAMS,usenatbib]{mn2e}
+\bibliographystyle{mn2e}
+
 \usepackage{amsmath}
-%\usepackage{hyperref}
+\usepackage{commath}
+\usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage{natbib}
-\bibliographystyle{mn2e}
 \usepackage{times}
 \usepackage{float}
 %\usepackage{caption}
@@ -20,19 +22,9 @@
 %\usepackage{booktabs,fixltx2e}
 \usepackage[flushleft]{threeparttable}
 
-\newcommand \kpc        {\,{\rm kpc}}
-\newcommand \halpha    {H$\alpha $\ }
-\newcommand \um    {$\mu$m\ }
-\newcommand \mice {$\mu$m}
-\newcommand \nprime {N$^\prime$}
-\newcommand \boldit {\textbf{\textit{}}}
-\newcommand \eqnprime {N^\prime}
+
 \newcommand \Spitzer {{\it Spitzer }}
-\newcommand \GALEX {GALEX }
-\newcommand \Herschel {{\it Herschel }}
-\newcommand{\sii}{S~{\textsc II}\ } 
-\newcommand{\oiii}{O~{\textsc III}\ } 
-\newcommand{\hi}{H~{\textsc I}\ }
+\newcommand{\boldit}[1]{\textbf{\mathversion{bold}#1}}
 
 \newcommand \aaj {A\&A}
 \newcommand \aarv {A\&ARv}%: Astronomy and Astrophysics Review (the)
@@ -137,11 +129,11 @@ Artificial neural networks (ANNs), K-mean clustering, and principal component an
 
 %ANNs
 ANNs are very powerful tools to use in data processing and pattern recognition problems.
-Their information process method was inspired by the way neurons in human brains work.
+Their information processing method was inspired by the way neurons in human brains work.
 An ANN contains many interconnected units (nodes or neurons) which process data and work together to solve problems.
-It uses set of training methods to learn about a non-linear and complex relations between input and output data and how to apply it to new sets of data.
-Studies show that ANNs provides better fitting than minimizing chi-square and would be an alternative choice for fitting data~\citep[e.g.][]{Marquez91,Moayed09}.
-In cases that both methods show the same correlation, ANNs still are a better method of fitting due their faster results in large data bases~\citep[][]{Gulati97}.
+It uses a set of training methods to learn about a non-linear and complex relations between input and output data and how to apply it to new sets of data.
+Studies show that ANNs provide better fitting than minimizing chi-squared and would be an alternative choice for fitting data~\citep[e.g.][]{Marquez91,Moayed09}.
+In cases that both methods show the same correlation, ANNs still are a better method of fitting due to their faster results on large databases \citep[][]{Gulati97}.
 
 %Training methods for networks
 Neural networks can be trained using two methods; supervised and unsupervised.

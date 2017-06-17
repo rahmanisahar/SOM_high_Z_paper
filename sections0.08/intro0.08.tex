@@ -10,7 +10,9 @@ Each group has its own characteristic features and can in turn be divided into m
 Several attempts have been made to create a complete set of templates for categorizing the spectral type of galaxies using observations of nearby galaxies~(e.g.~\citealt{Kinney93}, \citealt[][hereafter \citetalias{Kinney96}]{Kinney96}, \citealt{Bershady00}, \citealt{Mannucci01}). 
 Based on their usage, these templates are restricted to certain wavelengths.
 In the near-infrared (NIR) to ultraviolet (UV) wavelengths (the region where the energy output of stars peaks), the spectrum\footnote{In the remainder of this paper, we are concerned with a limited range in wavelength, and so we refer to spectra rather than spectral energy distributions.} contains information about the main physical properties of galaxies, e.g., age, star formation rate (SFR), stellar mass, metallicity, and interstellar medium. 
-
+\textbf{TEXT HERE RE: WHY WE CARE ABOUT CLASSIFYING
+(1) do galaxy spectra form a continuous distribution or can they be separated into discrete groups as represented by the \citetalias{Kinney96} templates? (2) if the distribution is continuous, how do galaxy properties vary along the spectral distribution?
+}
 
 % categorizing galaxies based on their SED
 
@@ -35,9 +37,8 @@ these methods classify data based on their underlying structures and hidden patt
 Unsupervised methods are very helpful in obtaining knowledge from the data, or when the underlying structure of the data is not well established.
 
 %SOM
-A Kohonen self-organizing map (also called self-organizing map, or SOM) is an (semi)-supervised neural network for mapping and visualizing a complex and nonlinear high dimension data introduced by~\citet{Kohonen82}.
+A Kohonen self-organizing map (also called self-organizing map, or SOM) is a (semi)-supervised neural network for mapping and visualizing a complex and nonlinear high dimension data introduced by~\citet{Kohonen82}.
 It shows simple geometrical relationships in non-linear high dimensional data on a map \citep{Kohonen98}.
-%%%After_second_Referee_report
 \textbf{The training of a self-organizing map is fully unsupervised.
      Using the resulting map as a template to classify other data requires labelling the output, which is why some groups consider self-organizing maps to be a (semi)-supervised method.}
 
@@ -69,11 +70,19 @@ When the radius of the neighbourhood function goes to zero, the SOM algorithm lo
 
 %20170122: combined and reorganized last 2 paragraphs of section - DRAFT
 %%%%After second referee report
-The goal of this work is to compare SOM-based classification of galaxy spectra to two other methods: supervised neural network and (unsupervised) K-means clustering.
-The questions we want to answer are: (1) do galaxy spectra form a continuous distribution or can they be separated into discrete groups as represented by the \citetalias{Kinney96} templates? (2) if the distribution is continuous, how do galaxy properties vary along the spectral distribution.
+\textbf{
+The goal of this work is to compare different methods of classifying galaxy spectra against templates, with a particular focus on self-organizing maps. 
+The questions we want to answer are: 
+(1) What is the degree of agreement between $\chi^2$ fitting, one- and two-dimensional self-organizing maps, K-means clustering and artificial neural networks? 
+(2) Are certain spectral types more (or less) consistently classified by the different methods? 
+(3) To what extent do the average properties of galaxy classes represent a continuous distribution of physical properties?
 We analyze the same sample of 142 galaxies with $0.5 < z < 1$ as 
 \citet[][hereafter \citetalias{Hossein12}]{Hossein12}, who classified the spectra using a supervised (multi-layer feed-forward) neural network method with the \citetalias{Kinney96} templates.
-This method could only match 105 out of the 142 galaxies directly to the \citetalias{Kinney96} templates; classifying the remaining 37 galaxies required combining template spectra.
+For each of the 142 galaxies, we find the best chi-squared fit among the 12 templates  to have a base for comparing the methods' performance.
+We also use the Fleiss Kappa index \citet{Fleiss71} to test interrater reliability  
+between the three methods.
+}
+
 %not sure if we want this sentence or not
 %Our hypothesis was that since a self-organizing map has the freedom to classify objects in between known classes, it could be applied to these data to find the best spectral class for the 37 galaxies that could not be classified by the supervised method.
 % also not sure if we want these sentences.
