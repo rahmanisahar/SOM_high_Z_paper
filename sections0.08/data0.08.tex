@@ -1,15 +1,15 @@
-\section{Data}
+\section{DATA}
 \label{sec: data_highZ}
 We use spectral templates from \citetalias{Kinney96} (in 10~\AA\ wavelength bins) to train neural networks. 
 We classify the spectra of 142 galaxies at $0.5<z<1$ from \citetalias{Hossein12} using the trained networks, and use their physical properties to test the new classifications.
 Following the \citetalias{Hossein12} work, we chose these two sets of data not only to show the application of SOMs in spectral clustering, but also to easily compare supervised and unsupervised methods.
 
 
- \subsection{Kinney Spectral Templates}
+ \subsection{Kinney spectral templates}
      \begin{figure}
         \centering
-        \includegraphics[width=0.5\textwidth]{images/k96.jpg}
-        \caption[\citet{Kinney96} spectral templates for 12 types of galaxies]{\citet{Kinney96} spectral templates for 12 types of galaxies, from fig. 1 in \citet{Hossein12}. The type of each template is shown in each frame. Plots B, E, S0, Sa, Sb and Sc show spectra that belong to quiescent galaxies. Starburst galaxy spectra are indicated with SB1 to SB6. Higher numbers represent more intrinsic extinction. Note that the vertical axis label from \citet{Hossein12} is incorrect:  the quantity plotted in the vertical axis is flux density, not flux.}
+        \includegraphics[width=0.47\textwidth]{images/k96.jpg}
+        \caption {\citet{Kinney96} spectral templates for 12 types of galaxies, from fig. 1 in \citet{Hossein12}. The type of each template is shown in each frame. Plots B, E, S0, Sa, Sb and Sc show spectra that belong to quiescent galaxies. Starburst galaxy spectra are indicated with SB1 to SB6. Higher numbers represent more intrinsic extinction. Note that the vertical axis label from \citet{Hossein12} is incorrect:  the quantity plotted in the vertical axis is flux density, not flux.}
         \label{fig: k96}
     \end{figure}
       
@@ -34,8 +34,6 @@ Following the \citetalias{Hossein12} work, we chose these two sets of data not o
     The 142 galaxies were selected based on the availability of photometry from HST/ACS, VLA/ISAAC, and {\it Spitzer}/MIPS and IRAC (10--13 filters with $\sim 0.4<\lambda<24~\mu$m in the observed frame).
    Data from these instruments was necessary in order to have a complete picture of stellar population and star formation rate. 
     For each galaxy, a robust spectroscopic redshift and photometric measurements from the GOODS-MUSIC catalogue \citep{Santini09} were available.
-%  We have gone back and forth on the following sentence several times. The commented-out version (what you had) doesn't make sense to me. I replaced it with what I understand was done, based on reading T12.
-%   \citetalias{Hossein12} matched the point spread function (PSF) of the photometric data with \citetalias{Kinney96} data 
 \citetalias{Hossein12} used point-spread-function matched photometry 
     from \citet{Santini09} as input to the Code Investigating GALaxy Emission ({\em CIGALE});~\citep[][hereafter N09]{Noll09} to generate the best-fit SED for each galaxy.
     \citetalias{Hossein12} produced the best SED match, with the wavelength interval of 910~\AA~to $\sim 80$~cm, for each galaxy\footnote{This wavelength interval is the default output of the {\em CIGALE} code.}.
@@ -72,5 +70,5 @@ $A_\mathrm{FUV}$ & mag & attenuation at 1500\,\AA{} \\
 \end{table}
 
     We classify SEDs that were produced by \citetalias{Hossein12} using the created networks.
-    These SEDs are publicly available~\footnote{All the SEDs produced by \citetalias{Hossein12}  can be found at this \href{http://telbib.eso.org/detail.php?bibcode=2012AJ....144..172T}{ESO webpage}.} in the form of flux per rest frame wavelength over a wide range of wavelengths.
+    These SEDs are publicly available\footnote{All the SEDs produced by \citetalias{Hossein12}  can be found at this \href{http://telbib.eso.org/detail.php?bibcode=2012AJ....144..172T}{ESO webpage}.} in the form of flux per rest frame wavelength over a wide range of wavelengths.
     Since we have chosen the \citetalias{Hossein12} SEDs to be classified by the trained network, we only used the part of the SEDs that have the same wavelength range as the \citetalias{Kinney96} spectral templates.  

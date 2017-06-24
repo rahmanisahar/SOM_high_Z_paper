@@ -11,7 +11,6 @@
 
 \textbf{In this section we describe the algorithms for both self-organizing maps and K-means clustering. As K-means is both simpler and more well-known, we introduce it briefly first before discussing SOM in detail.} 
 
-%Sahar: note that I changed the notation a little bit here, for both K-means and SOM. Where you had $n$ in the SOM description I changed it to $d$.
 
 \subsection{K-means clustering}
 \label{sec: kmeans_method}
@@ -32,9 +31,8 @@ We used the \textsc{matlab} K-means library~\citep{Seber84, Spath85}, written fo
 The default maximum number of iterations (100) was used.
 }
 
-%Sahar: Please check that the last sentence is correct. Also please check that the K-means version you used was randomly picking the initial centroids - looks like Matlab can also do this in other ways.
 
- \subsection{Self Organizing Maps}
+ \subsection{Self-organizing maps}
  \label{sec: som}
  
  The self-organizing map is a clustering method which reduces the dimensionality of the data, usually to one or two dimensions (1D or 2D), while preserving topological features of the original dataset.
@@ -63,13 +61,14 @@ The default maximum number of iterations (100) was used.
       In each iteration, the SOM code:
      \begin{enumerate}
         \item chooses a random vector from the dataset ($V_i$).
-        \item calculates the Euclidean distance in $\in \Re^d$ space for each node, $j$, as  $D_j^2= \sum_{i=0}^{i=d} (V_i - W_{j_i})^2$, and finds a neuron with minimum $D_j$, (``$D_{j_{\min}}$"). This neuron is the winner node and is called the Best Matching Unit (BMU). 
+        \item calculates the Euclidean distance in $\Re^d$ space for each node, $j$, as  $D_j^2= \sum_{i=0}^{i=d} (V_i - W_{j_i})^2$, and finds a neuron with minimum $D_j$, (``$D_{j_{\min}}$"). This neuron is the winner node and is called the Best Matching Unit (BMU). 
         \item  computes the radius of the neighbourhood of the BMU to find nodes within this radius. The weight vectors of these nodes will be affected in the next steps. The radius of the neighbourhood is arbitrary and can be set to be as high as half of the SOM size. It then decays exponentially over each iteration as
         \begin{equation}
             r^t_{\rm BMU} = r^0_{\rm BMU}e^{(-t/\tau)}
         \end{equation}
         where $\tau$ is a decay constant and is usually set to be the same as the number of iterations, $N$. $r^0_{BMU}$ and $r^t_{\rm BMU}$ are the radii of the neighbourhood at 0th and $t$th iteration, respectively. 
         \item changes the weight vectors of the BMU and all the nodes within $r^t_{\rm BMU}$ as:
+        %Sahar: should w and v in the equation below be W and V (to match the text)?
         \begin{equation}
             \label{equ: weight adj}
             w(t+1)=w(t)+L(t) \times R(t) \times(v(t)-w(t))
@@ -104,10 +103,8 @@ The default maximum number of iterations (100) was used.
      the darker the colour, the larger the distance between neurons.
      In the hit maps, neurons with zero hits are left empty.
      
-     %%%After_second_referee_report
      \textbf{As mentioned in the introduction, one of the main advantages of the SOM method is that the resulting networks can be used to cluster new datasets with no additional training required.
      New data with the same dimensionality as the original input data can be presented to the already trained network: the SOM algorithm finds the best matching unit considering the weight of nodes in the trained network and each vector from the new data set.
      The winner node determines the place of each new vector on the SOM.
-     The location of the new vectors on the SOM allows them to be compared with the original data set. 
-     Sections~\ref{sec: 1Dv} and ~\ref{sec: 2D} show the results of galaxy spectral classifications using networks trained on template spectra.}
+     The location of the new vectors on the SOM allows them to be compared with the original data set. }
      
