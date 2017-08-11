@@ -1,0 +1,129 @@
+\section{METHOD}
+\label{sec: method_somz}
+
+In this section we describe the algorithms for both self-organizing maps and K-means clustering. As K-means is both simpler and more well-known, we introduce it briefly first before discussing SOM in detail. 
+
+
+\subsection{K-means clustering}
+\label{sec: kmeans_method}
+
+%Referee: The objective function for k-means (equation 1, page 4) is not quite clear as it does not indicate what the "min" is taken over; I suggest adding a subscript "k" here (assuming that is what was intended).
+
+The K-means method partitions a data set $x_i$, having $n$ points in $d$-dimensional feature space, into $K$ clusters.
+The number of clusters $K\leq n$ must be decided by the user in advance, and the cluster centroids in feature space are located at positions $\mu_k$.
+The goal of the algorithm is to minimize the sum
+\begin{equation}
+\label{eq:km_sos}
+J = \sum_{i=1}^n \sum_{k=1}^K \min \big( \norm{x_i - \mu_k}^2 \big)
+\end{equation}
+where $\norm{z}$ indicates the distance measurement in $d$-dimensional space. In this work the Euclidean distance is is used, but other metrics are also possible.
+The algorithm is initialized by randomly choosing $K$ points as cluster centroids.
+Each data point is assigned to the cluster with the closest centroid, and the centroids are re-calculated.
+The steps of re-assigning cluster membership and re-calculating the cluster centroids are repeated until a stopping criterion is reached (a maximum number of iterations or no change in cluster assignments).
+We used the \textsc{matlab} K-means library~\citep{Seber84, Spath85}, written for \textsc{matlab2015b}, to perform  K-means clustering.
+The default maximum number of iterations (100) was used.
+
+
+
+ \subsection{Self-organizing maps}
+ \label{sec: som}
+ 
+ The self-organizing map is a clustering method which reduces the dimensionality of the data, usually to one or two dimensions (1D or 2D), while preserving topological features of the original dataset.
+ The result of an SOM is a set of nodes (neurons) that are arranged in a 1D or 2D arrays \citep{Kohonen98}. 
+ Each node may contain one or more samples from the input data.
+ The distance between the nodes represents similarity or dissimilarity of the underlying samples, i.e., similar data are closer together in the array and the distance between two nodes is related to the dissimilarity of their samples.
+ A weight vector ``\boldit{W}" with the same dimension as the input data is associated with each node and will be varied during the training process.
+ This vector is the key factor in determining the position of the nodes in a map.
+ \cite{Geach12} presented the application of the self-organized map and discussed its algorithm in detail.
+ In this section we briefly discuss the algorithm of SOM and how we create our maps. 
+ 
+ \subsubsection{SOM algorithm} 
+ \label{sec: algorithm}
+     Assume we have a dataset which contains vectors, \boldit{V} $\in \Re^d$, and we want to map them on an S1 by S2 map. 
+     Sizes of SOMs are arbitrary and there are no rules regarding choosing one over the other. 
+    \citet{Vesanto05} suggested that a total number of $5\sqrt{d}$ neurons is a sufficient size, but users usually choose the size of the grids based on their dataset and their application of the results.
+
+     We start by creating S1 $\times$ S2 empty neurons. 
+     The arrangement of these neurons depends on the map's topology provided by the user. 
+     In the case of 1D maps, since each neuron has two immediate neighbours, the topology of the map does not have any effect on the final result and any topology can be chosen.
+     However, in 2D maps, the shape of the neurons specifies the number of immediate neighbours for each neuron and it is up to user to choose the most suitable shape based on the data.
+     In this paper, we choose hexagonal topology, which gives each neuron six neighbours, and provides more interactions between neurons.
+     Initially a random weight vector, \boldit{W} $\in \Re^d$, will be assigned to each node.
+     The process of creating SOM happens over a series of $N$ iterations, where $N$ is set by the user. 
+     During each iteration the weight vectors might change according to the Kohonen learning rule (equation~\ref{equ: weight adj}). 
+      In each iteration, the SOM code:
+     \begin{enumerate}
+        \item chooses a random vector from the dataset ($V_i$).
+        \item calculates the Euclidean distance in $\Re^d$ space for each node, $j$, as  $D_j^2= \sum_{i=0}^{i=d} (V_i - W_{j_i})^2$, and finds a neuron with minimum $D_j$, (``$D_{j_{\min}}$"). This neuron is the winning node and is called the Best Matching Unit (BMU). 
+        \item  computes the radius of the neighbourhood of the BMU to find nodes within this radius. The weight vectors of these nodes will be affected in the next steps. The radius of the neighbourhood is arbitrary and can be set to be as high as half of the SOM size. It then decays exponentially over each iteration as
+        \begin{equation}
+            r^t_{\rm BMU} = r^0_{\rm BMU}e^{(-t/\tau)}
+        \end{equation}
+        where $\tau$ is a decay constant and is usually set to be the same as the number of iterations, $N$. $r^0_{BMU}$ and $r^t_{\rm BMU}$ are the radii of the neighbourhood at 0th and $t$th iteration, respectively. 
+        \item changes the weight vectors of the BMU and all the nodes within $r^t_{\rm BMU}$ as:
+        \begin{equation}
+            \label{equ: weight adj}
+            w(t+1)=w(t)+L(t) \times R(t) \times(v(t)-w(t))
+        \end{equation}
+        where $L(t) = L_0 e^{(-t/\tau)}$ is the learning factor, which prevents the divergence of the SOM and $R(t)=\exp(-\frac{D_j^2}{2r^t_{\rm BMU}})$ is the influence rate. $R(t)$ determines how the weight of each node in the neighbourhood of BMU will change.
+     \end{enumerate}
+     These steps are then repeated $N$ times.
+     
+\subsection{Creating self-organizing maps}
+\label{sec: create_som}
+     In order to create SOMs, we use the {\sc matlab} neural network toolbox~\citep[NNT,][]{matlabtolbox}, written for \textsc{matlab2015b}. 
+     An SOM in {\sc nnt} can be created by the {\sc newsom} or {\sc selforgmap} libraries, both of which work in two phases, an ``ordering phase" and a ``tuning phase". 
+     The first phase is called the ``ordering phase" and
+     starts with maximum neighbourhood distance and an initial high learning factor (usually 0.9) is provided by the user. 
+     The ordering phase continues for a requested number of iterations.
+     During the iterations, the learning factor decreases to the tuning phase learning factor and the neighbourhood distance reaches that of the tuning phase as well.
+     Both the learning factor and the neighbourhood of the tuning phase are set by the user. 
+     The amount by which these two factors change in each iteration depends on the number of iterations.
+     
+     In the second, or ``tuning'' phase,
+     the neighbourhood distance is kept at the user-defined minimum.
+     The learning factor, however, decreases gradually.
+     The gradual change in the leaning factor helps to fine-tune the topology results, leading to a more stable SOM. 
+     To allow the fine tuning, the number of iterations in this phase must be much larger than the that of the ordering phase. 
+     We chose the number of epochs in the tuning phase to be 3 times the number of epochs in the ordering phase.
+     
+     We create the final SOMs with initial values for number of iterations in ordering phase, ordering phase learning factor, tuning phase learning factor, and tuning phase neighbourhood distance of 1000, 0.9, 0.02, and 1, respectively. 
+     To present our results, we use {\sc nnt}'s built-in plotting tool.
+     Specifically, we use two of the plots in this tool: a hits map, which shows the number of times each neuron has become the winner (hits), and a distance map, which shows the distance between those neurons.
+     In the maps, the coloured hexagonal shapes represent the neurons. 
+     The distances in a distance map are shown by the grey cycle colours:
+     the darker the colour, the larger the distance between neurons.
+     In the hit maps, neurons with zero hits are left empty.
+     
+     As mentioned in the introduction, one of the main advantages of the SOM method is that the resulting networks can be used to cluster new datasets with no additional training required.
+     New data with the same dimensionality as the original input data can be presented to the already trained network: the SOM algorithm finds the best matching unit considering the weight of nodes in the trained network and each vector from the new data set.
+     The winning node determines the place of each new vector on the SOM.
+     The location of the new vectors on the SOM allows them to be compared with the original data set.
+     
+     \subsection{Classification and clustering metrics}
+     \label{sec:metrics}
+     
+     We use several metrics to measure the degree of agreement between classification methods. 
+     As a baseline method for assigning galaxy spectra to template classes, we compute the value of chi-squared between each galaxy and each template and assign the galaxy to the template class with lowest chi-squared value. 
+     A metric of agreement with this classification is an agreement score, computed as follows.
+    If a method sorted a galaxy into the same cluster or neuron as its best-fit chi-square template, this was considered a match and scored 1 point. 
+    For the larger-sized self-organized maps, if a galaxy was classified between two nodes, one of which contained its best-fit chi-square template, this scored 0.5 point. 
+    Otherwise, the classification score was zero points.     
+     Another method to check the degree of agreement between different methods is the Fleiss kappa index \citet{landis77}. 
+    This index measures agreement between three or more raters that are classifying a specific number of objects to a number of classes and was calculated using the R software package.
+
+        
+        
+        Classification and clustering are related techniques, and we make
+        another comparison between the classification methods with a clustering metric, the silhouette score  \citep{rousseeuw87}.        
+This score is a metric used to describe cluster compactness and isolation, given by:
+\begin{equation}
+S = \frac{1}{n} \sum{\frac{b - a}{\max\big(a, b\big)}}
+\end{equation}
+where $a$ is the mean distance between a point and the other points in its cluster, and $b$ is the mean distance between a point and the nearest cluster of which that point is not a member.
+A higher silhouette score corresponds to a partition with better defined clusters.
+For a given dataset, the score generally declines with the number of clusters and is sometime used to determine the optimal cluster number.
+In this work we use the silhouette score to compare classifications with a comparable number of classes, as a measure of similarity within the classes.
+Mean values for each classification were calculated using the \textsc{scikit-learn} Python package \citep{sklearn}.
+
+     
