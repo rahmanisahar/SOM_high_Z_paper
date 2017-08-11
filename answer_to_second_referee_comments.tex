@@ -1,6 +1,4 @@
-We thank the reviewer for his/her helpful comments and apologize for the delay in returning a revised version of the manuscript. Large blocks of changed text in the manuscript appear in bold (we have also made minor grammatical and style changes which are not marked). Our responses to individual comments are in the text below, beginning with ---
-
-%TBD: make sure to delete comments in this file before submitting!
+We thank the reviewer for his/her helpful comments and apologize for the delay in returning a revised version of the manuscript. Large blocks of changed text in the manuscript appear in bold (we have also made minor grammatical and style changes which are not marked). The subsections of Section 4 have been reorganized both to address the referee's comments and make the flow more logical. Our responses to individual comments are in the text below, beginning with ---
 
 
 Reviewer's Comments:
@@ -17,15 +15,15 @@ We have also added some text to Section 5 discussing the significance of the wor
 
 
 The paper claims that "Compared to previous attempts to classify this sample, the self-organizing map approach was able to better classify the spectra which had similarities with more than one template." (abstract), but I cannot find a quantitative comparison with any previous results.  Figure 9 is presented as the result to compare with previous work, but since the previous results are not presented nor summarized, the reader can't tell how they differ.  The paper reports "more precision", but this is not defined; does it mean smaller error bars?  Stronger correlation?  How does this show "better classification"?  To support such a claim, this paper needs to select a performance metric and report on the values achieved in these experiments, compared to other methods.
---- We selected several performance metrics. Two of them (an agreement score and the Fleiss kappa score) measure the degree to which the classifications agree. 
-% TBD: have not done the following yet
-As a measure of the classification performance, we calculate the dispersion in properties of the galaxies in each class and compare these values between methods. The results of this analysis are discussed in Section 4.4.
+--- We measure performance metrics in two areas: one set of metrics (an agreement score and the Fleiss kappa score) measures the degree to which the different classifications agree. The other set (silhouette score and Pearson correlation coefficient) measures the similarity between properties of galaxies assigned to the same class. The metrics are described in Section 3.4.
+
+The results of this analysis are described in Sections 4.3 and 4.4. We have rewritten the abstract and summary to reflect the results.
 
 I had suggested comparing the results to a simple nearest-neighbor classification baseline, but this was not addressed.
---- We apologize for missing this helpful suggestion in the previous version. This is now part of the analysis described in the paragraph above; the results appear in Section 4.4.
+--- We apologize for missing this helpful suggestion in the previous version. This is now part of the analysis described in the paragraph above; the results appear in Section 4.3.
 
 The comment about how SOMs provide an ordered clustering of the data (with respect to feature values), which k-means does not, is certainly true.  But the paper must then explain why this is important or valuable.
---- We have added text to the end of both Section 4.2 (formerly section 4.1) and Section 5 explaining the utility of an ordered clustering.
+--- We have added text to the end of both Section 4.4 (formerly section 4.1) and Section 5 explaining the utility of an ordered clustering.
 
 2. Perhaps I have missed it somewhere, but I don't think the paper ever states how exactly the classification of new data is done.  As I understand it, the authors train an SOM using template spectra, then classify new spectra by determining which SOM node is the best fit for the new item and classifying it based on the labeled template spectra that also reside in that node -- but this isn't actually stated anywhere.  Please add text explaining the classification step.  This would probably go in the final paragraph of the introduction and/or a new subsection in section 3 ("Method") - this section describes SOMs and k-means but not how to use either model to classify new data. (i.e., the SOM can't classify anything without knowing the labels of its original data set.  So although it builds the SOM in an unsupervised way, it requires the supervision of the template labels to be able to assign a label to a new item).
 -- Added the following paragraph  at the end of section 3.2: 
@@ -40,19 +38,17 @@ On page 2, lines 29-31, the authors added this text: "An SOM can be trained with
      Using the resulting map as a template to classify other data requires labelling the output, which is why some groups consider self-organizing maps to be a (semi)-supervised method."
 
 3. The inclusion of k-means helps give useful context to this work. Figure 10 shows a head-to-head comparison of k-means and SOM applied to the 12 templates using 4 clusters/nodes.  But I can't tell which one is better.  The text states that they are similar but "show discrepancies for spectra types between the extreme cases".  Which ones?  How can I tell from this figure?
---- The text describing the differences between the K-means and SOM classification of the templates (in particular, which templates are grouped together by the two methods) has been rewritten and moved to Section 4.1 (newly added in this revision). 
+--- The text describing the differences between the K-means and SOM classification of the templates (in particular, which templates are grouped together by the two methods) has been rewritten and moved to Section 4.1.2. 
 
 At the bottom of page 10, the paper states: "The other difference between these two methods is that the network created by the SOM method can be used to classify the other spectra, while for the K-means clusters they can only be used for one set of data."  This isn't true.  (The paper itself points out that SOM reduces to k-means if the weight on the neighborhood function goes to 0, so you should be able to use the result in the same way.)  You can (and should, to do a direct comparison) use the clusters just like you used the SOM nodes - for a new data point, assign it to the most similar cluster center, then assign the template label from the original data used to construct the clusters.
 --- We thank the referee for this helpful suggestion and have implemented it in our use of K-means. The text has been changed to remove this incorrect statement.
 
 To analyze the 142 galaxies, the SOM and k-means experiments used different methodology and so are difficult to compare or understand. It seems that for k-means, the authors clustered the 142 sample galaxies and then classified the mean spectrum in each cluster and reported how well that did.  But for the SOM, the authors constructed the SOM based on the 12 templates from K96 and then assigned classes to individual new spectra (not the nodes).  This doesn't seem comparable.  Please use the same methodology in both cases.
 --- This is a reasonable criticism and we have changed our methodology to match between methods. We now use the templates to generate the initial classification in both cases, and then apply that classification to the 142 sample galaxies.
-%TBD: Sahar please check.
 
 
 Further, k-means and the SOM used different distance functions (Euclidean vs. spectral angle distance) when operating on the same data.  Differences in results could simply be due to this change.  The authors' explanation for this choice does not make sense to me.
 --- We have changed to using the Euclidean distance in both cases.
-%TBD: Sahar please check.
 
 The text says that Figure 11 shows "the best and the worst fitting results among the 22 clusters" (for k-means) but instead it seems to show the best-fit for two clusters (9 and 22) which both look pretty good.  The text implies that Fig 11 (right) is a poor match, but it looks very good.  Please explain.
 --- We apologize for the confusion. As we have substantially changed the comparison between K-means and SOM results, this figure is no longer relevant and has been removed.

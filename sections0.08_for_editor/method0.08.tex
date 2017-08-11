@@ -1,13 +1,13 @@
 \section{METHOD}
 \label{sec: method_somz}
 
-\textbf{In this section we describe the algorithms for both self-organizing maps and K-means clustering. As K-means is both simpler and more well-known, we introduce it briefly first before discussing SOM in detail.} 
+In this section we describe the algorithms for both self-organizing maps and K-means clustering. As K-means is both simpler and more well-known, we introduce it briefly first before discussing SOM in detail. 
 
 
 \subsection{K-means clustering}
 \label{sec: kmeans_method}
 
-\textbf{
+
 The K-means method partitions a data set $x_i$, having $n$ points in $d$-dimensional feature space, into $K$ clusters.
 The number of clusters $K<n$ must be decided by the user in advance, and the cluster centroids in feature space are located at positions $\mu_k$.
 The goal of the algorithm is to minimize the sum
@@ -21,7 +21,7 @@ Each data point is assigned to the cluster with the closest centroid, and the ce
 The steps of re-assigning cluster membership and re-calculating the cluster centroids are repeated until a stopping criterion is reached (a maximum number of iterations or no change in cluster assignments).
 We used the \textsc{matlab} K-means library~\citep{Seber84, Spath85}, written for \textsc{matlab2015b}, to perform  K-means clustering.
 The default maximum number of iterations (100) was used.
-}
+
 
 
  \subsection{Self-organizing maps}
@@ -94,25 +94,25 @@ The default maximum number of iterations (100) was used.
      the darker the colour, the larger the distance between neurons.
      In the hit maps, neurons with zero hits are left empty.
      
-     \textbf{As mentioned in the introduction, one of the main advantages of the SOM method is that the resulting networks can be used to cluster new datasets with no additional training required.
+     As mentioned in the introduction, one of the main advantages of the SOM method is that the resulting networks can be used to cluster new datasets with no additional training required.
      New data with the same dimensionality as the original input data can be presented to the already trained network: the SOM algorithm finds the best matching unit considering the weight of nodes in the trained network and each vector from the new data set.
      The winner node determines the place of each new vector on the SOM.
-     The location of the new vectors on the SOM allows them to be compared with the original data set. }
+     The location of the new vectors on the SOM allows them to be compared with the original data set.
      
      \subsection{Classification and clustering metrics}
      \label{sec:metrics}
-     \textbf{
+     
      We use several metrics to measure the degree of agreement between classification methods. 
      As a baseline method for assigning galaxy spectra to template classes, we compute the value of chi-squared between each galaxy and each template and assign the galaxy to the template class with lowest chi-squared value. 
      A metric of agreement with this classification is an agreement score, computed as follows.
-        If a method sorted a galaxy into the same cluster or neuron as its best-fit chi-square template, this was considered a match and scored 1 point. 
-        For the larger-sized self-organized maps, if a galaxy was classified between two nodes, one of which contained its best-fit chi-square template, this scored 0.5 point. 
-        Otherwise, the classification score was zero points.     
+    If a method sorted a galaxy into the same cluster or neuron as its best-fit chi-square template, this was considered a match and scored 1 point. 
+    For the larger-sized self-organized maps, if a galaxy was classified between two nodes, one of which contained its best-fit chi-square template, this scored 0.5 point. 
+    Otherwise, the classification score was zero points.     
      Another method to check the degree of agreement between different methods is the Fleiss kappa index \citet{landis77}. 
-        This index measures agreement between three or more raters that are classifying a specific number of objects to a number of classes and was calculated using the R software package.
-        }
+    This index measures agreement between three or more raters that are classifying a specific number of objects to a number of classes and was calculated using the R software package.
+
         
-        \textbf{
+        
         Classification and clustering are related techniques, and we make
         another comparison between the classification methods with a clustering metric, the silhouette score  \citep{rousseeuw87}.        
 This score is a metric used to describe cluster compactness and isolation, given by:
@@ -124,5 +124,5 @@ A higher silhouette score corresponds to a partition with better defined cluster
 For a given dataset, the score generally declines with the number of clusters and is sometime used to determine the optimal cluster number.
 In this work we use the silhouette score to compare classifications with a comparable number of classes, as a measure of similarity within the classes.
 Mean values for each classification were calculated using the \textsc{scikit-learn} Python package \citep{sklearn}.
-}
+
      

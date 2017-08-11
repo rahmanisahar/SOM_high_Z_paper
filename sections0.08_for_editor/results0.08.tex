@@ -141,7 +141,7 @@
     \end{figure*}
         
     We performed K-means clustering on the \citetalias{Kinney96} template spectra using 4 clusters.
-    \textbf{
+  
     Fig.~\ref{fig: som_k_means_4} shows the clustering of the template spectra into 4 groups using both K-means and SOMs.
     Both methods separated the most starburst-like and quiescent galaxies in a similar manner.
     However, they show discrepancies for spectral types between these extreme cases.
@@ -152,7 +152,7 @@
     Another noticeable difference is that K-means clustered the SB1 and SB2 templates in one group and SB3 to SB6 in another while
     the SOM network grouped the SB1 to SB4 templates in one neuron and SB5 and SB6 in another.
     As Fig.~\ref{fig: som_k_means_4} shows, K-means clustering of the templates produced groups more similar to each other, while SOM emphasizes the templates' differences.
-    }
+    
     
     \begin{table}
     \centering
@@ -182,10 +182,10 @@
         \subsubsection{Classifying the galaxy sample}
          \label{sec: 1Dv}
          
-         \textbf{After training with the templates, we used both K-means and self-organizing maps to classify the 142 galaxies in the \citetalias{Hossein12} sample.
+         After training with the templates, we used both K-means and self-organizing maps to classify the 142 galaxies in the \citetalias{Hossein12} sample.
          K-means classification was performed by assigned each galaxy to the K-means cluster with the closest centroid and the results are discussed in Section~\ref{sec: Kmeansvssomvsann}.
         This section examines the results of one-dimensional SOM-based classification in detail.
-         }
+         
          
             
             The upper panel in Fig.~\ref{fig: 1by2V} shows the result of this classification using the $1\times2$~network from Fig.~\ref{fig: 1by2T}.
@@ -339,7 +339,7 @@
         For example, the SB6 category is placed near Sb galaxies in the 1D network in Fig.~\ref{fig: 1by22T}.
         However, in the upper left panel of Fig.~\ref{fig: 12by12}, we can see that the Sb and SB galaxies are completely separated. 
         This shows that more details of spectral shapes are considered by 2D networks, which is one of the main advantages of  using 2D maps over 1D ones.
-        \textbf{In this case, the two dimensions of the self-organizing map correspond approximately to quiescent versus star-forming (left to right) and less to more extinction (bottom to top).} 
+       In this case, the two dimensions of the self-organizing map correspond approximately to quiescent versus star-forming (left to right) and less to more extinction (bottom to top). 
     
         As in the other map, in the upper right panel of Fig.~\ref{fig: 12by12}, galaxies are generally divided into two main groups.
         The border between the quiescent galaxies and the starburst ones is the black strips in the middle of the map, ending with the bright grey colour at the bottom of the map in the fifth neuron.
@@ -355,7 +355,7 @@
         Comparing this categorization with the 1D one from Fig.~\ref{fig: 1by22V}, we can see that only 23 galaxies correspond exactly to \citetalias{Kinney96} types.
         Using 2D maps results in categorizing galaxies into more intermediate types than in 1D maps.
         In both lower maps in Fig.~\ref{fig: 12by12}, most galaxies are in the quiescent side of the SOM, which was predictable from the results in Section~\ref{sec: 1Dv}.
-        This does not \textbf{necessarily} imply that in general there are more quiescent galaxies at higher redshift but could be a selection effect for galaxies that had more reliable redshift estimates.
+        This does not necessarily imply that in general there are more quiescent galaxies at higher redshift but could be a selection effect for galaxies that had more reliable redshift estimates.
         
     Although for ease of presentation this paper first discusses 1D networks and continues to 2D networks, we suggest that users of SOMs for galaxy spectral classification should use 2D networks first.
          These can be used as a first step with networks similar to the upper left map in Fig.~\ref{fig: 12by12} to identify outliers in the sample.
@@ -371,7 +371,7 @@
     Below we compare various other classification methods with the results of the 1-D self-organizing maps using the metrics described in Section~\ref{sec:metrics}.
     Because the 2-D SOMs subdivide the sample into a larger number of groups, each containing a small number of objects, they are not directly comparable to the other methods and are not included here.
        
-        \textbf{To compare results from SOM, K-means, and unsupervised ANN, we first consider how well these methods matched a simple chi-squared fitting classification. 
+       To compare results from SOM, K-means, and unsupervised ANN, we first consider how well these methods matched a simple chi-squared fitting classification. 
         Matching galaxy spectra to templates using chi-squared, we found that not all of the templates had matches among the galaxy sample: no galaxy spectra were best-matched to the B, E, or Sc templates. 
         This is consistent with the results from the self-organized maps.
         Summing the classification score over all galaxies in the sample allows us to compare how well each technique matched the results of chi-squared fitting.
@@ -383,17 +383,17 @@
         The score-5 galaxies classified similarly by all methods were primarily (60 per cent) in the Sa template group. 
         The score $>=3$ galaxies were predominantly SB1, Sa, and Sb type (32, 28, 18 per cent, respectively).
         The different methods show the most agreement for galaxies similar to the SB1 and Sa templates, with less agreement on the high-extinction starburst types (SB5, SB6).
-        }   
+           
         
-        \textbf{We also used the Fleiss kappa index \citet{landis77} to 
+       We also used the Fleiss kappa index \citet{landis77} to 
         measure the agreement between methods. 
         Here the `raters' are the different methods classifying a specific number of objects (i.e. 142 galaxies) to a number of classes (i.e. 12 templates).
         We computed two different values of Fleiss kappa, between  K-means, unsupervised ANN, and either 
          $1\times12$-sized or $1\times22$-sized SOMs.
         The resulting values were $\sim 27$ per cent and $\sim 21$ per cent, respectively.
-        According to \citet{landis77}, the interpretation of a Fleiss kappa measure in the range 21--40 per cent is that the raters are in fair agreement, consistent with the results above.} 
+        According to \citet{landis77}, the interpretation of a Fleiss kappa measure in the range 21--40 per cent is that the raters are in fair agreement, consistent with the results above. 
 
-\textbf{A final comparison between the classification methods is 
+A final comparison between the classification methods is 
 made with the silhouette score  \citep{rousseeuw87}.
 The highest score among our classification was for K-means (0.549), followed by $1\times4$-sized SOM (0.371), $1\times12$-sized SOM (0.302) and $1\times22$-sized SOM (0.249).
 The chi-squared fitting resulted in a score of 0.221 and the supervised neural network 0.142.
@@ -401,7 +401,7 @@ As discussed in Section~\ref{sec:metrics}, the silhouette score usually declines
 However, the $1\times12$-sized SOM, chi-squared fitting, and supervised neural network all have either 8 or 9 classes.
 In this case we can compare scores directly and conclude that the self-organized map yields groups with more internal similarity.
 This is in contrast to the comparison between K-means and self-organized maps for the templates alone (see Section\ref{sec: Kmeansvssom}) where K-means clustering  produced groups more similar to each other, and emphasizes that the exact data used in a clustering process can strongly affect the outcome.
-}
+
 
  \subsection{Properties of spectral groups}
        
@@ -429,7 +429,7 @@ This is in contrast to the comparison between K-means and self-organized maps fo
         \citetalias{Hossein12} replicated the upper plots in Fig.~\ref{fig: props_vs_props}, and found a tighter correlation than in the \citetalias{Noll09} results. 
         
         \begin{figure*}
-\includegraphics[width=\textwidth]{images0.01/1d/fig11_new_col.png}
+\includegraphics[width=\textwidth]{images0.01/1d/fig11_new_bw.png}
         \caption{
         From top to bottom: relations between age (t$_{\rm {D4000}}$) and sSFR ($\phi$), sSFR and stellar mass, age (t$_{\rm {D4000}}$) and stellar mass, and A$_{\rm {FUV}}$ with sSFR, age (t$_{\rm {D4000}}$) and stellar mass. 
         Circles, pentagons, and squares show the median values of these properties of galaxies in the $1\times22$, $1\times 12$ and $1\times4$ SOM networks; 
@@ -454,8 +454,8 @@ This is in contrast to the comparison between K-means and self-organized maps fo
         
         \citetalias{Noll09} studied relations between A$_{\rm {FUV}}$ and other properties of galaxies and found that the attenuation had no dependence on the specific star formation or age.
         In contrast to \citetalias{Noll09}, we find a correlation between A$_{\rm {FUV}}$ and these two parameters, shown in the lower panels of Fig.~\ref{fig: props_vs_props}.
-        {\bf Although weaker then the correlations above, Pearson correlation coefficients are higher for the SOM groups than for other methods, particularly for the $1x12$-sized SOM. 
-        The slightly different distribution of this particular classification (see Fig.~\ref{fig: 1by12T}) classifies the most quiescent objects as similar to slightly more active galaxies, lessening the turnover in properties as A$_{\rm {FUV}}$ increases.}
+        Although weaker then the correlations above, Pearson correlation coefficients are higher for the SOM groups than for other methods, particularly for the $1x12$-sized SOM. 
+        The slightly different distribution of this particular classification (see Fig.~\ref{fig: 1by12T}) classifies the most quiescent objects as similar to slightly more active galaxies, lessening the turnover in properties as A$_{\rm {FUV}}$ increases.
         
         The general sense of the correlation between A$_{\rm {FUV}}$ and sSFR in Fig.~\ref{fig: props_vs_props} is similar to the trend found by \cite{Dale07}.
         They used IR luminosity to UV luminosity ratio (L$_{IR}$/L$_{FUV}$) as a measure of A$_{\rm {FUV}}$ and compared it with sSFR for all 75 galaxies in the SINGS survey.
@@ -465,8 +465,8 @@ This is in contrast to the comparison between K-means and self-organized maps fo
         Both \cite{Dale07} and \citetalias{Noll09} argued that these apparent trends can be a result of the dependence of star formation history on L$_{IR}$/L$_{FUV}$.
         Whether this dependence is real or not, our results here show that using self-organizing maps can separate spectra of galaxies in such a way that the characteristics of each of these groups are in agreement with the general picture of galaxy evolution.
           
-       \textbf{One of the key features of SOMs is the ability to not only classify objects but to provide an {\em ordered} classification.
+       One of the key features of SOMs is the ability to not only classify objects but to provide an {\em ordered} classification.
        K-means clustering and supervised ANNs can sort galaxy spectra into classes but do not naturally order them. Ordering is important in the case where the physical causes of the differences between classes/clusters are unknown. Average properties of objects within clusters (possibly from data not used for classification) can be used to test hypotheses about the physical differences. 
        Figures~\ref{fig: props} and~\ref{fig: props_vs_props} show that the SOM ordering also corresponds to the ordering of the physical properties of the galaxy models used to make the classified spectra. 
        The median properties of the spectral groups change on going from one end of the SOM to the other.
-       Therefore, by using the SOM method, we can study not only how galaxies group into spectral clusters, but the trends between the clusters as well.}
+       Therefore, by using the SOM method, we can study not only how galaxies group into spectral clusters, but the trends between the clusters as well.

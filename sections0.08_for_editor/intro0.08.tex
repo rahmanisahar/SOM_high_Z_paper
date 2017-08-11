@@ -10,10 +10,10 @@ Each group has its own characteristic features and can in turn be divided into m
 Several attempts have been made to create a complete set of templates for categorizing the spectral type of galaxies using observations of nearby galaxies~(e.g.~\citealt{Kinney93}, \citealt[][hereafter \citetalias{Kinney96}]{Kinney96}, \citealt{Bershady00}, \citealt{Mannucci01}). 
 Based on their usage, these templates are restricted to certain wavelengths.
 In the near-infrared (NIR) to ultraviolet (UV) wavelengths (the region where the energy output of stars peaks), the spectrum\footnote{In the remainder of this paper, we are concerned with a limited range in wavelength, and so we refer to spectra rather than spectral energy distributions.} contains information about the main physical properties of galaxies, e.g., age, star formation rate (SFR), stellar mass, metallicity, and interstellar medium. 
-\textbf{
+
 Using templates to classify galaxy spectra can help to answer the question of whether galaxy spectra form a continuous distribution or can  be separated into discrete groups.
 Templates are also helpful in computing $K$-corrections and discovering new classes of objects as outliers \citep{Folkes96}.
-}
+
 
 
 
@@ -40,8 +40,8 @@ Unsupervised methods are very helpful in obtaining knowledge from the data, or w
 
 A Kohonen self-organizing map (also called self-organizing map, or SOM) is a (semi)-supervised neural network for mapping and visualizing a complex and nonlinear high dimension data introduced by~\citet{Kohonen82}.
 It shows simple geometrical relationships in non-linear high dimensional data on a map \citep{Kohonen98}.
-\textbf{The training of a self-organizing map is fully unsupervised.
-     Using the resulting map as a template to classify other data requires labelling the output, which is why some groups consider self-organizing maps to be a (semi)-supervised method.}
+The training of a self-organizing map is fully unsupervised.
+     Using the resulting map as a template to classify other data requires labelling the output, which is why some groups consider self-organizing maps to be a (semi)-supervised method.
 
 
 
@@ -70,7 +70,7 @@ When the radius of the neighbourhood function goes to zero, the SOM algorithm lo
 
 
 
-\textbf{
+
 The goal of this work is to investigate the use of self-organizing maps in classifying galaxy spectra against templates, and compare them to other methods. 
 The questions we want to answer are: 
 (1) What is the degree of agreement between classifications produced $\chi^2$ fitting, one- and two-dimensional self-organizing maps, K-means clustering and artificial neural networks? 
@@ -83,7 +83,7 @@ We compute an agreement score for each method and also use the Fleiss Kappa inde
 between the methods.
 To measure how well each classification method groups similar objects together, we
 calculate the silhouette scores and dispersions in properties between galaxies classified in the same groups.
-}
+
 
 This paper is organized as follows.
 In Section~\ref{sec: data_highZ}, we present the data used to train the networks and the data classified using the trained networks. 
