@@ -15,11 +15,11 @@ Are the true labels of the 142 galaxies unknown?  If so, could someone examine t
 Additional minor comments and suggestions:
 
 1. Great list of questions near the end of section 1.  I recommend moving (or merging) the background information/explanation of the methods that are tested to section 3 so that this important content (the goals of the work) is featured more prominently and early on.
---- TBD
+--- Done.
 
 
 2. The objective function for k-means (equation 1, page 4) is not quite clear as it does not indicate what the "min" is taken over; I suggest adding a subscript "k" here (assuming that is what was intended).
---- TBD
+--- Done.
 
 
 2. Good analysis in section 4.1.2.  Since the cluster labels are arbitrary ("cluster 1" for k-means does not mean the same thing as "cluster 1" for SOM), I suggest using letters for one algorithm (cluster A, B, C...) to make this very obvious.  Or, call the clusters K1, K1, K3... for k-means and S1, S2, S3... for SOM.
