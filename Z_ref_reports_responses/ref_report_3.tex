@@ -1,0 +1,63 @@
+Reviewer's Comments:
+
+This paper compares self-organizing maps (1D and 2D) to k-means and supervised neural networks on the task of classifying galaxy spectra. The paper has greatly improved in focus and impact in this iteration. In fact, I consider the paper ready for publication with the exception of one item:
+
+I do not understand why the clustering and SOM results are compared to the chi-square classifications.  First, the paper should motivate the use of chi-square to match spectra to templates (i.e., why not Euclidean distance as is used in all other parts of the study?).  If chi-square is retained, then to help clarify (and because there seem to be multiple interpretations out there), please provide the equation that was used to calculate the chi-square distance.
+
+More importantly, I think the comparison of clustering/SOM results to the chi-square classifications may be the result of confusion from my last review.  When I suggested comparing to a nearest-neighbor baseline, I meant to compare to its performance (on an external standard), not to use its classifications as a gold standard (unless the chi-square classifications are considered the most accurate -- but if so, then there seems to be no need to use an SOM or anything else; just use chi-square).
+
+Are the true labels of the 142 galaxies unknown?  If so, could someone examine them to provide the correct template match (perhaps starting with the chi-square fit and correcting any errors) and thereby a reference to compute classification accuracy in an objective way?  If not, there's no way to assess classification accuracy as such and the chi-square part can/should be omitted.
+
+Additional minor comments and suggestions:
+
+1. Great list of questions near the end of section 1.  I recommend moving (or merging) the background information/explanation of the methods that are tested to section 3 so that this important content (the goals of the work) is featured more prominently and early on.
+
+2. The objective function for k-means (equation 1, page 4) is not quite clear as it does not indicate what the "min" is taken over; I suggest adding a subscript "k" here (assuming that is what was intended).
+
+2. Good analysis in section 4.1.2.  Since the cluster labels are arbitrary ("cluster 1" for k-means does not mean the same thing as "cluster 1" for SOM), I suggest using letters for one algorithm (cluster A, B, C...) to make this very obvious.  Or, call the clusters K1, K1, K3... for k-means and S1, S2, S3... for SOM.
+
+3. How do we conclude from Fig 5 that "As Fig. 5 shows, K-means clustering of the templates produced groups more similar to each other, while SOM emphasizes the templates’ differences"?  To my eye, SOM clusters 1 and 2 are very similar to each other, and more so than any pair of k-means clusters.  To support the claims about cluster similarity, one can measure this empirically with, e.g., the pairwise Euclidean distance between cluster (means).  Please update the end of section 4.3 as necessary after performing this analysis.
+
+4. K-means cluster 4, which has only one item in it (Sc), genuinely seems to be different given its peak between 3000-4000 A.  Placing it in SOM cluster 3 obscures this feature.  This is worth mentioning in the discussion.
+
+5. On page 12, I am confused by the Fleiss kappa results.  Since it allows pairwise comparison of two raters, I was anticipating perhaps an upper triangular matrix of all (5 choose 2) pairs of methods compared to each other.  Instead, only two values are reported (27% and 21%) and it is not clear what (which pairs) they characterize.  Please elaborate.
+
+6. Section 5 has been greatly improved and expanded; it now summarizes key observations that arose from the study and emphasizes its importance in further study of galaxy spectra.  In particular, the final paragraph (and the end of section 4.4) provides an excellent summary of why the SOM methods can be of unique value.  It should also include a statement about the results of other assessments (Fleiss kappa and silhouette) to provide a complete summary of the findings.
+
+(By the way, this section doesn't talk about "future applications" so I suggest omitting that from the section title.)
+
+Typos/wording improvements:
+
+- page 2, line 36 (column 2):
+"classifications produced χ2 fitting," ->
+"classifications produced by χ2 fitting," ?
+
+- page 4, line 32:  In K-means clustering, K can equal n, so consider stating "K <= n" instead of "K < n".
+
+- page 4, line 41-42:
+"randomly choosing K random points" ->
+"randomly choosing K points" or
+"choosing K random points"
+
+- title of sub-section 3.2.1: consider "SOM Algorithm" instead of "Algorithm of SOM".  Or, since there is no 3.2.2, omit this sub-section heading.
+
+- page 5, line 50-51:
+"the winner node" ->
+"the winning node"
+
+- page 5, line 35:
+"is sometime used" ->
+"is sometimes used"
+
+- page 14, line 47:
+"general guidelines for use of SOM in galaxy spectral classification."
+"general guidelines for the use of SOMs in galaxy spectral classification."
+
+- page 15, line 11-13:
+"the supervised training method used by T12 with the same templates and galaxy sample could not classify 37 out of 142 spectra"
+
+As I've mentioned, "could not classify" doesn't make sense as all methods will output some prediction no matter the input.  Perhaps "could not classify correctly" was intended.
+
+- page 15, line 25-27:
+"The relations between group-averaged properties of the sample galaxies in the using the SOM-based classification" ->
+"The relations between group-averaged properties of the sample galaxies using the SOM-based classification" ?

@@ -1,3 +1,30 @@
+%Referee comments
+%1d. The authors stated "We have added a footnote to clarify how chi-squared was computed."  I cannot find this footnote.  Please define this method in section 3.
+
+%1e. The metrics proposed in section 3.4 are
+%- agreement of algorithm X's output with that obtained by a chi-squared minimization
+%- Fleiss kappa
+%- silhouette score (S) - also referred to as within-cluster similarity
+
+%I suggest referring to the first metric as "chi-squared agreement" (here and throughout, including the discussion of results starting in section 4.3) or some other term to capture the fact that it specifically relates an algorithm to the chi-squared results.
+
+%I am still confused by the the Fleiss kappa results.  If the chi-squared method is the point of reference to use (as with the proposed agreement metric), why does it not appear here?  What does it tell us to determine that the k-means, supervised ANN, and SOMs are in "fair" agreement? (with each other?)  Is that a goal?  The chi-squared agreement analysis showed higher agreement with the SOM than with the other methods, so I wouldn't expect (nor want) there to be high kappa values between those three.  As currently presented, I don't think this adds anything to the paper, and I suggest omitting it (or rephrasing as a second measure of agreement with chi-squared, and computing values accordingly).
+
+%2. The re-organization of the paper is helpful for the Introduction, but the new content needs to be better integrated into sections 3.1 and 3.2.  Currently it reads disjointedly.
+
+%2a. Section 3.1: The notation "N \in R^m" does not make sense, especially since m is not defined.  Consider something like "N objects, each represented by m features" or "N objects x \in R^m, where m is the number of features used to represent each object".
+
+%Note that the following paragraph uses a lower-case "n" for the number of objects.  Please make these consistent.
+
+%2b. Section 3.2:
+%- The text prior to 3.2.1 is now rather unwieldy and hard to follow.  It jumps back and forth between ANNs and SOMs. I suggest making a new 3.2 that covers "Artificial neural networks" (since the paper treats them as an alternative to SOMs later) and 3.3 can be devoted to SOMs as a specialized (semi-supervised) version of ANNs.  Merge old and new content to make a logical flow.
+%- Provide a citation for ANNs when first mentioned.
+%- What is meant by "a set of training methods" (end of page 3, column 2)?  Typically only a single training method (e.g., backpropagation) is used.
+%- Standard practice is to avoid having a single subsection (3.2.1). Remove the subsection heading, or make two (3.2.1, 3.2.2) on different sub-topics.  For example, section 3.3 could (should) be merged into the SOM section, as a subsection.
+
+% from minor ref comments:
+%2. The paper now asserts that ANNs outperform chi-square methods (top of page 4, left column) - in what sense?  Accuracy (which as we've discussed may not be measurable)?  Runtime?  Something else?
+
 \section{METHOD}
 \label{sec: method_somz}
 
@@ -7,13 +34,13 @@ As K-means is both simpler and more well-known, we introduce it briefly first be
 \subsection{K-means clustering}
 \label{sec: kmeans_method}
 
-\changed{
+
 K-means clustering~\citep{Macqueen67} is an unsupervised method used in many astronomical studies~\citep[e.g.][]{DAbrusco12,Ordov14,Boersma14,Aycha16}.
 K-means clustering divides data into $K$ clusters, in such a way that each data point belongs to the cluster with the nearest mean value.
 To first order, SOM and K-means work similarly: both algorithms operate on the distances between \boldit{N} $\in \Re^m$ objects defined by the properties under consideration.
 The SOM algorithm also considers distances between objects in the low-dimensional map, as controlled by a neighborhood function. 
 When the radius of the neighbourhood function goes to zero, the SOM algorithm loses its ordering power and acts like K-means clustering.
-}
+
 
 
 The K-means method partitions a data set $x_i$, having $n$ points in $d$-dimensional feature space, into $K$ clusters.
@@ -35,15 +62,15 @@ The default maximum number of iterations (100) was used.
  \subsection{Self-organizing maps}
  \label{sec: som}
 
-\changed{
+
  Artificial neural networks (ANNs), which are inspired by the way neurons in a human brain route and process data, are very powerful tools that are used in data processing and pattern recognition problems.
 An ANN contains many interconnected units (nodes or neurons) which process data and work together to solve problems.
 It uses a set of training methods to learn about nonlinear and complex relations between input and output data, and how to apply these relations to new sets of data~\citep[e.g.][]{Hossein14,Hossein16a,Hossein16b,Ellison16a, Ellison16b}.
 Studies have shown that ANNs outperform chi-square minimizing techniques and can be used as an alternative choice for fitting data~\citep[e.g.][]{Marquez91}.
 Specifically, ANNs perform faster in large databases~\citep[][]{Gulati97}.
-}
 
-\changed{
+
+
 A Kohonen self-organizing map (also called self-organizing map, or SOM) is a (semi)-supervised neural network for mapping and visualizing a complex and nonlinear high dimension data introduced by~\citet{Kohonen82}.
 It shows simple geometrical relationships in non-linear high dimensional data on a map \citep{Kohonen98}.
 The training of a self-organizing map is fully unsupervised.
@@ -51,9 +78,9 @@ The training of a self-organizing map is fully unsupervised.
 The utilization of the SOM in astronomy dates back to the 1990s, with \citet[][]{Odewahn92}, \citet[][]{Hernandez94}, and \citet[][]{Murtagh95} among the first to use SOMs in their studies.
 \citet{Geach12} used COSMOS data to demonstrate two of the main applications of SOMs: object classification and clustering, and photometric redshift estimation. The latter has been the subject of many other studies \citep[e.g.][]{Kind14a}.
 From classifying quasars' spectra to star/galaxy classifications, from gamma-ray burst clustering to classification of light curves, this method has proved to be useful in various fields of astronomy \citep[e.g.][]{Maehoenen95, Miller96, Andreon00, Balastegui01, Rajaniemi02, Brett04, Scaringi09}.
-}
 
-\changed{
+
+
 Large spectroscopic surveys have made available integrated spectra of millions of galaxies.
 These integrated spectra combine the light of billions of individual stars and nebulae within a galaxy, and
 finding patterns and common characteristics between galaxies can be a complex task.
@@ -63,7 +90,7 @@ They also generated SOMs from quasars' spectra in order to find unusual types of
 Later, \citet{Meusinger16} used these SOMs and updated data from SDSS and other surveys to find a new class of quasars.
 The other application of SOMs is to find outliers or errors in the data.
 \citet{Fustes13} produced a package based on SOM to classify spectra from the GAIA survey that were previously classified as ``unknown'' by the SDSS pipeline. This package can distinguish an astronomical object from instrumental artifact, and then classify the object based on its spectrum.
-}
+
 
  
  The self-organizing map is a clustering method which reduces the dimensionality of the data, usually to one or two dimensions (1D or 2D), while preserving topological features of the original dataset.
@@ -142,7 +169,7 @@ The other application of SOMs is to find outliers or errors in the data.
      \label{sec:metrics}
      
      We use several metrics to measure the degree of agreement between classification methods. 
-     As a baseline method for assigning galaxy spectra to template classes, we compute the value of chi-squared between each galaxy and each \changed{template}%
+     As a baseline method for assigning galaxy spectra to template classes, we compute the value of chi-squared between each galaxy and each template%
 \footnote{The \citetalias{Kinney96} template spectra do not have tabulated uncertainties and we assume them to be photon-noise dominated for the purposes of computing $\chi^2$.}
      and assign the galaxy to the template class with lowest chi-squared value. 
      A metric of agreement with this classification is an agreement score, computed as follows.

@@ -1,0 +1,116 @@
+\documentclass[useAMS,usenatbib]{mn2e}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=True,
+    linkcolor=red,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    citecolor=blue,
+}
+\usepackage{graphicx}
+\usepackage{natbib}
+\bibliographystyle{mn2e}
+\usepackage{times}
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{color,soul}
+\usepackage{import}
+\usepackage[T1]{fontenc}
+\usepackage{ae,aecompl}
+\usepackage{amssymb}	% Extra maths symbols
+\usepackage{multicol}        % Multi-column entries in tables
+\usepackage{pgffor}
+\usepackage{commath}	% Extra maths symbols
+
+% 22Jan2018: following 2 commands now work (they didn't before)
+\newcommand{\boldit}[1]{\textbf{\textit{#1}}}
+% for changed text to be bold: uncomment following line and comment out line after that
+\newcommand{\changed}[1]{\textbf{#1}} 
+% for changed text to be normal: comment out line above this, uncomment line below
+%\newcommand{\changed}[1]{#1}  
+
+\newcommand \aaj {A\&A}
+\newcommand \aarv {A\&ARv}%: Astronomy and Astrophysics Review (the)
+\newcommand \aas{A\&AS}%: Astronomy and Astrophysics Supplement Series
+\newcommand \afz {Afz}%: Astrofizika
+\newcommand \aj {AJ}%: Astronomical Journal (the)
+\newcommand \apss {Ap\&SS}%: Astrophysics and Space Science
+\newcommand \apj {ApJ}
+\newcommand \apjs {ApJS}%: Astrophysical Journal Supplement Series (the)
+\newcommand \araa {ARA\&A} %: Annual Review of Astronomy and Astrophysics
+\newcommand \asp {ASP Conf. Ser.}%: Astronomy Society of the Pacific Conference Series
+\newcommand \azh {Azh}%: Astronomicheskij Zhurnal
+\newcommand \baas {BAAS}%: Bulletin of the American Astronomical Society
+\newcommand \mem {Mem. RAS}%: Memoirs of the Royal Astronomical Society
+\newcommand \mnassa {MNASSA}%: Monthly Notes of the Astronomical Society of Southern Africa
+\newcommand \mnras {MNRAS} %: Monthly Notices of the Royal Astronomical Society
+%\newcommand {Nature}%(do not abbreviate)
+\newcommand \pasj {PASJ}%: Publications of the Astronomical Society of Japan
+\newcommand \pasp {PASP}%: Publications of the Astronomical Society of the Pacific
+\newcommand \qjras {QJRAS}%: Quarterly Journal of the Royal Astronomical Society
+\newcommand \mex {Rev. Mex. Astron. Astrofis.}%: Revista Mexicana de Astronomia y Astrofisica
+%\newcommand {Science }%}%(do not abbreviate)
+\newcommand \sva {SvA}%: Soviet Astronomy
+\newcommand \aap {A\&A} %:Astronomy & Astrophysics
+\newcommand \apjl {ApJL} %:The Astrophysical Journal Letters
+
+
+\begin{document}
+% TITLE
+\defcitealias{Hossein12}{T12}
+\defcitealias{Kinney96}{K96}
+\defcitealias{Noll09}{N09}
+
+\title[Classifying high-$z$ galaxy spectra]{Classifying galaxy spectra at $0.5<z<1$ with self-organizing maps}
+%\author{rahmani.sahar}
+\date{\today}
+\author[S.~Rahmani, H.~Teimoorinia and P.~Barmby]{S.~Rahmani$^{1,2}$\thanks{E-mail:
+srahma49@uwo.ca}, H.~Teimoorinia$^{3,4}$, P.~Barmby$^{1,2}$\\
+$^{1}$Department of Physics $\&$ Astronomy, Western University, London, ON N6A 3K7, Canada\\
+$^{2}$Centre for Planetary Science \& Exploration, Western University, London, ON N6A 3K7, Canada\\
+$^{3}$Department of Physics $\&$ Astronomy, University of Victoria, Finnerty Road, Victoria, British Columbia, V8P 1A1, Canada\\
+$^{4}$NRC Herzberg Astronomy and Astrophysics, 5071 West Saanich Road, Victoria, BC, V9E 2E7, Canada }
+\maketitle
+
+
+\begin{abstract}
+    The spectrum of a galaxy contains information about its physical properties.
+    Classifying spectra using templates helps elucidate the nature of a galaxy's energy sources.
+    In this paper, we investigate the use of self-organizing maps in classifying galaxy spectra against templates.
+    We trained semi-supervised self-organizing map networks using a set of
+    templates covering the wavelength range from far ultraviolet to near infrared. 
+    The trained networks were used to classify the spectra of a sample of 142 galaxies with $0.5 < z < 1$ and the results compared to classifications performed using K-means clustering, a supervised neural network, and chi-squared minimization.
+    Spectra corresponding to quiescent galaxies were more likely to be classified similarly by all methods while starburst spectra showed more variability.
+    Compared to classification using chi-squared minimization or the supervised neural network, the galaxies classed together by the self-organizing map had more similar spectra.
+     The class ordering provided by the one-dimensional self-organizing maps corresponds to an ordering in physical properties, a potentially important feature for the exploration of large datasets.
+\end{abstract}
+\begin{keywords} 
+ galaxies: high-redshift, 
+ galaxies: spectra, 
+ methods: observational, 
+ methods: statistical, 
+ methods:data analysis
+\end{keywords}
+
+\import{sections0.10/}{intro0.10.tex}
+
+\import{sections0.10/}{data0.10.tex}
+
+\import{sections0.10/}{method0.10.tex}
+
+\import{sections0.10/}{results0.10.tex}
+
+\import{sections0.10/}{summary0.10.tex}
+
+\section*{ACKNOWLEDGMENTS}
+The authors thank the referee for thorough and insightful comments which helped us to improve the work.
+The authors thank S. Lianou, A. Tammour, S.C. Gallagher, R.G. Abraham, M. Daley and A. Sigut for their useful comments. 
+S.R. and P.B. also acknowledge research support from the Natural Sciences and Engineering Research Council of Canada. 
+
+\bibliographystyle{apalike}
+\bibliography{ref_mining_h.bib}
+
+\import{sections0.10/}{apps_0.10.tex}
+\end{document}

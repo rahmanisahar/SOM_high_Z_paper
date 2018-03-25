@@ -9,41 +9,52 @@ More importantly, I think the comparison of clustering/SOM results to the chi-sq
 
 Are the true labels of the 142 galaxies unknown?  If so, could someone examine them to provide the correct template match (perhaps starting with the chi-square fit and correcting any errors) and thereby a reference to compute classification accuracy in an objective way?  If not, there's no way to assess classification accuracy as such and the chi-square part can/should be omitted.
 
---- TBD
+[The following is from the referee's response to our request for clarification of these comments:]
+"By "compare to an external standard" I mean "compare performance on a labeled sample", i.e., one labeled by humans, to see how well the proposed method (and a simple nearest-neighbors baseline) can predict those classifications. 
+
+My suggestion with the 142 galaxies was that, if their types are not previously known, to have a human label them (i.e., assign which of the 12 K96 templates each one should belong to).  That would allow for an assessment of the automated classification quality.  If no human can do this, then (as stated) there is no way to assess classification accuracy of the proposed methods.”" 
+
+--- Given that the K96 templates cannot represent all possible galaxy spectral features, we don't believe that there is one "right answer" for the classification results. In our opinion, assigning galaxies to templates via quantitative chi-squared/nearest-neighbour is a common practice and therefore it is valuable to compare the results of this practice to those from clustering and SOMs. (We have added a footnote to clarify how chi-squared was computed.) However, matching galaxies to templates via "chi-by-eye" is becoming increasingly less common in the era of massively multi-plexed spectroscopic surveys and we do not believe that such a comparison would add useful information to the paper. We have therefore retained the chi-square results.
 
 
 Additional minor comments and suggestions:
 
 1. Great list of questions near the end of section 1.  I recommend moving (or merging) the background information/explanation of the methods that are tested to section 3 so that this important content (the goals of the work) is featured more prominently and early on.
---- Done.
+--- Done. Specifically, the former paragraphs 4,6,7,8 of the introduction have been moved to the beginning of section 3.2 (introduction paragraphs 6 and 7 were combined); the former paragraph 9 of the introduction was moved to the beginning of section 3.1.
 
 
 2. The objective function for k-means (equation 1, page 4) is not quite clear as it does not indicate what the "min" is taken over; I suggest adding a subscript "k" here (assuming that is what was intended).
 --- Done.
 
 
-2. Good analysis in section 4.1.2.  Since the cluster labels are arbitrary ("cluster 1" for k-means does not mean the same thing as "cluster 1" for SOM), I suggest using letters for one algorithm (cluster A, B, C...) to make this very obvious.  Or, call the clusters K1, K1, K3... for k-means and S1, S2, S3... for SOM.
---- Thank you for this helpful suggestion. TBD.
+[sic] 2. Good analysis in section 4.1.2.  Since the cluster labels are arbitrary ("cluster 1" for k-means does not mean the same thing as "cluster 1" for SOM), I suggest using letters for one algorithm (cluster A, B, C...) to make this very obvious.  Or, call the clusters K1, K1, K3... for k-means and S1, S2, S3... for SOM.
+--- Thank you for this helpful suggestion. Done and changed the table 2 accordingly.
 
 
 3. How do we conclude from Fig 5 that "As Fig. 5 shows, K-means clustering of the templates produced groups more similar to each other, while SOM emphasizes the templates’ differences"?  To my eye, SOM clusters 1 and 2 are very similar to each other, and more so than any pair of k-means clusters.  To support the claims about cluster similarity, one can measure this empirically with, e.g., the pairwise Euclidean distance between cluster (means).  Please update the end of section 4.3 as necessary after performing this analysis.
---- TBD
+--- The referee is entirely correct that the text isn't consistent with the Figure. This was a failure to communicate clearly on our part: we were referring to the inputs to the two methods here, not the outputs. We've changed some text at the end of Section 4.1.2 to clarify.
+
 
 4. K-means cluster 4, which has only one item in it (Sc), genuinely seems to be different given its peak between 3000-4000 A.  Placing it in SOM cluster 3 obscures this feature.  This is worth mentioning in the discussion.
--- TBD
+-- Done, now mentioned in section 4.1.2.
 
 
 5. On page 12, I am confused by the Fleiss kappa results.  Since it allows pairwise comparison of two raters, I was anticipating perhaps an upper triangular matrix of all (5 choose 2) pairs of methods compared to each other.  Instead, only two values are reported (27% and 21%) and it is not clear what (which pairs) they characterize.  Please elaborate.
---- TBD
+
+-- Done. We understand that Fleiss kappa is unlike the other kappas such as Cohen's kappa in that it does  work for comparison of more than two raters. Hence, in this paper we measured the Fliess kappa index for three methods twice: firstly for K-means, supervised ANN and 1*12-sized SOM and secondly for K-means, supervised ANN and 1*22-sized SOM. We changed the wording of the paper to be more clear about this.  
 
 
 6. Section 5 has been greatly improved and expanded; it now summarizes key observations that arose from the study and emphasizes its importance in further study of galaxy spectra.  In particular, the final paragraph (and the end of section 4.4) provides an excellent summary of why the SOM methods can be of unique value.  It should also include a statement about the results of other assessments (Fleiss kappa and silhouette) to provide a complete summary of the findings.
---- TBD
+--- Done and added "Comparing different classification methods, we found that spectra classified similarly by all methods were well-matched to quiescent templates (\citetalias{Kinney96} Sa and Sb). 
+    Spectra with emission lines or ultraviolet emission showed more variable classification results.
+    Classification produced by self-organized maps showed closer correspondence than the supervised method results to the classification from a chi-squared match.
+    Using the Fleiss kappa index to compare classifications showed that the K-means, supervised ANN and one-dimensional SOM are in fair agreement.
+    One-dimensional self-organized-map based classification resulted in a 
+    higher silhouette score for than classification using chi-squared minimization or the supervised neural network, indicating that the galaxies classed together by the SOM had more similar spectra."
 
 
 (By the way, this section doesn't talk about "future applications" so I suggest omitting that from the section title.)
 --- Done
 
 Typos/wording improvements:
-
---- We have made all of the suggested changes.
+--- We have made all of the suggested changes. They have not been marked with boldface in the text. 

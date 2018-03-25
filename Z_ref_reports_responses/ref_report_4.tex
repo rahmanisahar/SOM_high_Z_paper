@@ -1,0 +1,53 @@
+27 February 2018
+
+Scientific Editor's Comments:
+
+Please ensure you fully address all comments from the reviewer.
+
+
+
+Reviewer's Comments:
+
+This paper compares self-organizing maps (1D and 2D) to k-means and supervised neural networks on the task of classifying galaxy spectra.
+
+1. The paper has again improved, but the narrative still needs work to explain how the chi-squared method fits in.
+
+1a. The authors state (in their response, but not in the paper) that there is no known correct classification for these galaxies.  Please add this necessary context for the paper.  This positions the work in the world of of (semi-) supervision, since correct labels are not available.
+
+1b. The use of the chi-squared template assignment needs to be clearly explained and justified.  The author response states that this is a common method employed in the research community.  This too should be added to the paper to justify why it was chosen as a reference point (ideally with references to show its common usage by others).
+
+1c. If chi-squared minimization is the current most widely used method, then the paper needs to make a strong case for why to bother using a different method (SOMs) that only imperfectly approximates (i.e., does not have 100% agreement with) the chi-squared method.  I expect that the benefit is obtaining the insights provided from the analysis of the trained SOM structure, which cannot be achieved with the chi-squared method.  Make this explicit (up front, in the Introduction) so the reader understands why they might want to bother using this new method instead of chi-squared.
+
+1d. The authors stated "We have added a footnote to clarify how chi-squared was computed."  I cannot find this footnote.  Please define this method in section 3.
+
+1e. The metrics proposed in section 3.4 are
+- agreement of algorithm X's output with that obtained by a chi-squared minimization
+- Fleiss kappa
+- silhouette score (S) - also referred to as within-cluster similarity
+
+I suggest referring to the first metric as "chi-squared agreement" (here and throughout, including the discussion of results starting in section 4.3) or some other term to capture the fact that it specifically relates an algorithm to the chi-squared results.
+
+I am still confused by the the Fleiss kappa results.  If the chi-squared method is the point of reference to use (as with the proposed agreement metric), why does it not appear here?  What does it tell us to determine that the k-means, supervised ANN, and SOMs are in "fair" agreement? (with each other?)  Is that a goal?  The chi-squared agreement analysis showed higher agreement with the SOM than with the other methods, so I wouldn't expect (nor want) there to be high kappa values between those three.  As currently presented, I don't think this adds anything to the paper, and I suggest omitting it (or rephrasing as a second measure of agreement with chi-squared, and computing values accordingly).
+
+2. The re-organization of the paper is helpful for the Introduction, but the new content needs to be better integrated into sections 3.1 and 3.2.  Currently it reads disjointedly.
+
+2a. Section 3.1: The notation "N \in R^m" does not make sense, especially since m is not defined.  Consider something like "N objects, each represented by m features" or "N objects x \in R^m, where m is the number of features used to represent each object".
+
+Note that the following paragraph uses a lower-case "n" for the number of objects.  Please make these consistent.
+
+2b. Section 3.2:
+- The text prior to 3.2.1 is now rather unwieldy and hard to follow.  It jumps back and forth between ANNs and SOMs. I suggest making a new 3.2 that covers "Artificial neural networks" (since the paper treats them as an alternative to SOMs later) and 3.3 can be devoted to SOMs as a specialized (semi-supervised) version of ANNs.  Merge old and new content to make a logical flow.
+- Provide a citation for ANNs when first mentioned.
+- What is meant by "a set of training methods" (end of page 3, column 2)?  Typically only a single training method (e.g., backpropagation) is used.
+- Standard practice is to avoid having a single subsection (3.2.1). Remove the subsection heading, or make two (3.2.1, 3.2.2) on different sub-topics.  For example, section 3.3 could (should) be merged into the SOM section, as a subsection.
+
+Minor comments:
+
+1. Footnote 3: Aiding reproducibility is an excellent goal.  This URL points to the T12 paper, and there are links to relevant surveys, but it is not clear how to obtain the exact subset of 142 galaxies used. Please provide sufficient details so that a researcher could obtain them (e.g., a list of ids or a packaged data set with just the SEDs for those 142 galaxies).
+
+2. The paper now asserts that ANNs outperform chi-square methods (top of page 4, left column) - in what sense?  Accuracy (which as we've discussed may not be measurable)?  Runtime?  Something else?
+
+3. Section 4.3: I suggest putting the numeric results for the chi-squared agreement score (paragraph 2) and silhouette score (paragraph 4) into tables to improve their readability.
+
+4. Section 4.2.1 - typo - space needed between the symbol for "angstroms" and the word following it (e.g., "range", "break" - in the new bolded text).
+ 

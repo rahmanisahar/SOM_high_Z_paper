@@ -1,3 +1,8 @@
+% referee comments (minor)
+%3. Section 4.3: I suggest putting the numeric results for the chi-squared agreement score (paragraph 2) and silhouette score (paragraph 4) into tables to improve their readability.
+
+%4. Section 4.2.1 - typo - space needed between the symbol for "angstroms" and the word following it (e.g., "range", "break" - in the new bolded text).
+
 \section{RESULTS AND DISCUSSION}
 \label{sec: result}
 
@@ -146,15 +151,15 @@
     However, they show discrepancies for spectral types between these extreme cases.
     Table~\ref{tab:kmeans_som4} shows the group assignments of the \citetalias{Kinney96} templates in the two methods.
     Templates B, E, S0 and Sa are grouped in the same cluster/neuron in both K-means and $1\times4$-sized SOM. 
-    K-means grouped the Sb template with the above templates, but the SOM network classified it as a separate group\changed{, possibly because it is much more noisy in the ultraviolet range.}
+    K-means grouped the Sb template with the above templates, but the SOM network classified it as a separate group, possibly because it is much more noisy in the ultraviolet range.
     The K-means method clustered the Sc template as a separate group, 
-    \changed{likely due to its distinct features in the 3000--4000 \AA range,} while the SOM network grouped it with SB5 and SB6. 
-    \changed{Classifying the Sc template in the group with SB5 and SB6 obscures the peak feature in the Sc template.
-    However, when the number of SOM nodes is increased (e.g. in Fig.~\ref{fig: 1by22T}), the Sc template separates and occupies a single neuron.}
+    likely due to its distinct features in the 3000--4000 \AA range, while the SOM network grouped it with SB5 and SB6. 
+    Classifying the Sc template in the group with SB5 and SB6 obscures the peak feature in the Sc template.
+    However, when the number of SOM nodes is increased (e.g. in Fig.~\ref{fig: 1by22T}), the Sc template separates and occupies a single neuron.
     Another noticeable difference is that K-means clustered the SB1 and SB2 templates in one group and SB3 to SB6 in another, while the SOM network grouped the SB1 to SB4 templates in one neuron and SB5 and SB6 in another.
-    \changed{SB1 and S2 have similar strong emission lines in the blue, while SB3--6 show H$\alpha$ emission but only weaker emission lines at shorter wavelengths;
+    SB1 and S2 have similar strong emission lines in the blue, while SB3--6 show H$\alpha$ emission but only weaker emission lines at shorter wavelengths;
     the SB5 and SB6 templates are flatter with a less-pronounced 4000 \AA break than the remaining SB templates.
-    By comparing the membership of different clusters in Table~\ref{tab:kmeans_som4} we can see that K-means clustering emphasizes the input templates' similarities, while SOM emphasizes the templates' differences.}
+    By comparing the membership of different clusters in Table~\ref{tab:kmeans_som4} we can see that K-means clustering emphasizes the input templates' similarities, while SOM emphasizes the templates' differences.
      
     
     \begin{table}
@@ -387,8 +392,7 @@
        We also used the Fleiss kappa index \citep{Fleiss71} to 
         measure the agreement between methods. 
         Here the `raters' are the different methods classifying a specific number of objects (i.e. 142 galaxies) to a number of classes (i.e. 12 templates).
-        \changed{
-        We computed values of Fleiss kappa twice: firstly to compare results from K-means, supervised ANN, and $1\times12$-sized SOM and secondly to compare results from K-means, supervised ANN, and $1\times22$-sized SOM.}
+        We computed values of Fleiss kappa twice: firstly to compare results from K-means, supervised ANN, and $1\times12$-sized SOM and secondly to compare results from K-means, supervised ANN, and $1\times22$-sized SOM.
         The resulting values were $\sim 27$ per cent and $\sim 21$ per cent, respectively.
         According to \citet{landis77}, the interpretation of a Fleiss kappa measure in the range 21--40 per cent is that the raters are in fair agreement, consistent with the results above. 
 
